@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
-class Masyarakat extends Model
+class Masyarakat extends Authenticatable
 {
     protected $table = 'masyarakats';
     protected $fillable = [
@@ -20,4 +21,8 @@ class Masyarakat extends Model
     protected $hidden = [
         'password',
     ];
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
 }
