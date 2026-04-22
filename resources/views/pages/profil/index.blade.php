@@ -3,9 +3,14 @@
 @section('content')
 
 <div class="container-fluid">
+  <!-- HEADER PROFILE -->
+  <div class="page-header min-height-300 border-radius-xl mt-4"
+       style="background-image: url('{{ asset("assets/img/curved-images/curved0.jpg") }}');">
+
   <!-- HEADER -->
   <div class="page-header min-height-300 border-radius-xl mt-4" 
        style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+
     <span class="mask bg-gradient-primary opacity-6"></span>
   </div>
 
@@ -85,6 +90,8 @@
   </div>
 </div>
 
+<<<<<<< HEAD
+=======
 <!-- JS TEMPLATE (WAJIB) -->
 <script src="../assets_admin/js/core/popper.min.js"></script>
 <script src="../assets_admin/js/core/bootstrap.min.js"></script>
@@ -103,4 +110,5 @@
 
 <script src="../assets_admin/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 
+>>>>>>> 219044434fdb2b6e7c0d44a8eaacdb904e5547d9
 @endsection

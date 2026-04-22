@@ -2,6 +2,8 @@
 
 @section('page', 'Kategori')
 
+@section('page', 'Tables')
+
 @section('content')
 
 <div class="container-fluid py-4">
@@ -30,7 +32,7 @@
       {{ session('error') }}
     </div>
     @endif
-
+    
         <!-- TABLE -->
         <div class="card-body px-0 pt-0 pb-2">
           <div class="table-responsive p-0">
@@ -84,6 +86,16 @@
                     method="POST"  style="display:none;"> @csrf
                     @method('DELETE')
                   </form>
+                    <form action="{{ route('kategori.destroy', $k->id) }}" 
+                          method="POST" 
+                          style="display:inline;">
+                      @csrf
+                      @method('DELETE')
+                      <button onclick="return confirm('Yakin hapus?')" 
+                              class="text-danger border-0 bg-transparent font-weight-bold text-xs">
+                        Hapus
+                      </button>
+                    </form>
                   </td>
 
                 </tr>
