@@ -11,8 +11,9 @@ Route::get('/dashboard', function () {
     return view('pages.dashboard');
 });
 
+Route::resource('kategori', KategoriController::class);
+
 Route::get('/profil', function () {
     return view('pages.profil.index');
 });
 
-Route::resource('kategori', KategoriController::class);
