@@ -56,7 +56,7 @@ class KategoriController extends Controller
      */
     public function edit(Kategori $kategori)
     {
-        return view('kategori.edit', compact('kategori'));
+        return view('kategori.edit_kategori', compact('kategori'));
     }
 
     /**

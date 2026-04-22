@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page', 'Tables')
+@section('page', 'Kategori')
 
 @section('content')
 
@@ -76,8 +76,8 @@
                     </a>
 
                     <!-- DELETE -->
-                      <button type="button" onclick="confirmDelete({{ $k->id }})" accesskey="
-                      "class="text-danger border-0 bg-transparent font-weight-bold text-xs">
+                      <button type="button" onclick="confirmDelete('{{ $k->id }}')" 
+                      class="text-danger border-0 bg-transparent font-weight-bold text-xs">
                       Hapus
                     </button>
                     <form id="delete-form-{{ $k->id }}" action="{{ route('kategori.destroy', $k->id) }}" 
