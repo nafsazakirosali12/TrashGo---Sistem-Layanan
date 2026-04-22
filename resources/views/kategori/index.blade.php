@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page', 'Kategori')
+
 @section('page', 'Tables')
 
 @section('content')
@@ -18,6 +20,19 @@
           </a>
         </div>
 
+        <!-- alert -->
+        @if(session('success'))
+        <div class="alert alert-success text-white mx-3 mt-3">
+        {{ session('success') }}
+      </div>
+      @endif
+
+      @if(session('error'))
+      <div class="alert alert-danger text-white mx-3 mt-3">
+      {{ session('error') }}
+    </div>
+    @endif
+    
         <!-- TABLE -->
         <div class="card-body px-0 pt-0 pb-2">
           <div class="table-responsive p-0">
@@ -63,6 +78,14 @@
                     </a>
 
                     <!-- DELETE -->
+                      <button type="button" onclick="confirmDelete('{{ $k->id }}')" 
+                      class="text-danger border-0 bg-transparent font-weight-bold text-xs">
+                      Hapus
+                    </button>
+                    <form id="delete-form-{{ $k->id }}" action="{{ route('kategori.destroy', $k->id) }}" 
+                    method="POST"  style="display:none;"> @csrf
+                    @method('DELETE')
+                  </form>
                     <form action="{{ route('kategori.destroy', $k->id) }}" 
                           method="POST" 
                           style="display:inline;">
@@ -73,7 +96,6 @@
                         Hapus
                       </button>
                     </form>
-
                   </td>
 
                 </tr>
@@ -96,3 +118,20 @@
 </div>
 
 @endsection
+<script>
+function confirmDelete(id) {
+    Swal.fire({
+        title: 'Yakin hapus?',
+        text: "Data tidak bisa dikembalikan!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, hapus!',
+        cancelButtonText: 'Batal',
+        confirmButtonColor: '#d33'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('delete-form-' + id).submit();
+        }
+    })
+}
+</script>

@@ -21,6 +21,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
+        return view('kategori.tambah_kategori');
         return view('kategori.create');
     }
 
@@ -39,6 +40,8 @@ class KategoriController extends Controller
             'deskripsi' => $request->deskripsi
         ]);
 
+        return redirect()->route('kategori.index')
+                         ->with('success', 'Kategori berhasil ditambahkan!');
         return redirect('/kategori');
     }
 
@@ -55,6 +58,7 @@ class KategoriController extends Controller
      */
     public function edit(Kategori $kategori)
     {
+        return view('kategori.edit_kategori', compact('kategori'));
         return view('kategori.edit', compact('kategori'));
     }
 
@@ -72,7 +76,9 @@ class KategoriController extends Controller
             'nama_kategori' => $request->nama_kategori,
             'deskripsi' => $request->deskripsi
         ]);
-
+      
+        return redirect()->route('kategori.index')
+                         ->with('success', 'Kategori berhasil diupdate!');
         return redirect('/kategori');
     }
 
@@ -81,6 +87,9 @@ class KategoriController extends Controller
      */
     public function destroy(Kategori $kategori)
     {
-        //
+        $kategori->delete();
+
+        return redirect()->route('kategori.index')
+                         ->with('success', 'Kategori berhasil dihapus!');
     }
 }
