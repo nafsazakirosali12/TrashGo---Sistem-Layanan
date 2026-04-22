@@ -3,10 +3,6 @@
 @section('content')
 
 <div class="container-fluid">
-  <!-- HEADER PROFILE -->
-  <div class="page-header min-height-300 border-radius-xl mt-4"
-       style="background-image: url('{{ asset("assets/img/curved-images/curved0.jpg") }}');">
-
   <!-- HEADER -->
   <div class="page-header min-height-300 border-radius-xl mt-4" 
        style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
@@ -106,4 +102,5 @@
 </script>
 
 <script src="../assets_admin/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+
 @endsection
