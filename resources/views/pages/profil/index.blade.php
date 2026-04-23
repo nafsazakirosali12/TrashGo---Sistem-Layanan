@@ -19,7 +19,9 @@
       <!-- FOTO -->
       <div class="col-auto">
         <div class="avatar avatar-xl position-relative">
-          <img src="{{ asset('assets/img/team-1.jpg') }}"
+          <img src="{{ $admin->foto_admin 
+              ? asset($admin->foto_admin) 
+              : asset('assets/img/team-1.jpg') }}" 
                class="w-100 border-radius-lg shadow-sm">
         </div>
       </div>
@@ -27,19 +29,19 @@
       <!-- NAMA -->
       <div class="col-auto my-auto">
         <div class="h-100">
-          <h5 class="mb-1">Admin Oca</h5>
-          <p class="mb-0 font-weight-bold text-sm">Admin</p>
+          <h5 class="mb-1">
+            {{ $admin->nama_admin }}
+          </h5>
+          <p class="mb-0 font-weight-bold text-sm">
+            Admin
+          </p>
         </div>
       </div>
 
       <!-- BUTTON EDIT -->
       <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto text-end">
-        <!-- <a href="{{ route('pages.profil.edit') }}" 
+        <a href="{{ route('admin.profil.edit') }}" 
            class="btn bg-gradient-primary btn-sm">
-          Edit Profile
-        </a> -->
-        <a href="{{ route('pages.profil.edit') }}" 
-          class="btn bg-gradient-primary btn-sm">
           Edit Profile
         </a>
       </div>
@@ -67,19 +69,25 @@
             <!-- NAMA -->
             <div class="col-md-4 mb-3">
               <p class="text-xs text-secondary mb-1">Nama</p>
-              <h6 class="mb-0">Admin Oca</h6>
+              <h6 class="mb-0">
+                {{ $admin->nama_admin }}
+              </h6>
             </div>
 
             <!-- EMAIL -->
             <div class="col-md-4 mb-3">
               <p class="text-xs text-secondary mb-1">Email</p>
-              <h6 class="mb-0">admin@gmail.com</h6>
+              <h6 class="mb-0">
+                {{ $admin->email }}
+              </h6>
             </div>
 
             <!-- PASSWORD -->
             <div class="col-md-4 mb-3">
               <p class="text-xs text-secondary mb-1">Password</p>
-              <h6 class="mb-0">********</h6>
+              <h6 class="mb-0">
+                ********
+              </h6>
             </div>
 
           </div>

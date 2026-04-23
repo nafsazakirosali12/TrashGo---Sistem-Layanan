@@ -14,24 +14,25 @@
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h5 class="mb-0">Edit Profil</h5>
 
-          <a href="{{ route('pages.profil.index') }}" class="btn btn-secondary btn-sm">
+          <a href="{{ route('admin.profil.index') }}" class="btn btn-secondary btn-sm">
             Kembali
           </a>
         </div>
 
         <!-- FORM -->
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.profil.update') }}" method="POST" enctype="multipart/form-data">
           @csrf
 
           <div class="row">
 
             <!-- FOTO -->
             <div class="col-md-4 text-center mb-3">
-              <img src="{{ asset('assets/img/team-1.jpg') }}" 
-                   class="border-radius-lg shadow-sm mb-2"
-                   width="120">
-
-              <input type="file" class="form-control mt-2">
+              <img src="{{ $admin->foto_admin 
+                  ? asset($admin->foto_admin) 
+                  : asset('assets/img/team-1.jpg') }}"
+                  class="border-radius-lg shadow-sm mb-2"
+                  width="120">
+              <input type="file" name="foto_admin" class="form-control mt-2">
             </div>
 
             <div class="col-md-8">
@@ -39,23 +40,29 @@
               <!-- NAMA -->
               <div class="mb-3">
                 <label class="form-label">Nama</label>
-                <input type="text" class="form-control" value="Admin Oca">
+                <input type="text" name="nama_admin" 
+                       class="form-control" 
+                       value="{{ $admin->nama_admin }}">
               </div>
 
               <!-- EMAIL -->
               <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="email" class="form-control" value="admin@gmail.com">
+                <input type="email" name="email" 
+                       class="form-control" 
+                       value="{{ $admin->email }}">
               </div>
 
               <!-- PASSWORD -->
               <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-control" placeholder="Masukkan password baru">
+                <input type="password" name="password" 
+                       class="form-control" 
+                       placeholder="Kosongkan jika tidak diubah">
               </div>
 
               <!-- BUTTON -->
-              <button class="btn bg-gradient-primary">
+              <button type="submit" class="btn bg-gradient-primary">
                 Simpan Perubahan
               </button>
 
