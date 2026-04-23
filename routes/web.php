@@ -17,3 +17,7 @@ Route::get('/profil', function () {
     return view('pages.profil.index');
 });
 
+Route::view('/admin/profil', 'pages.profil.index')->name('pages.profil.index');
+
+Route::view('/admin/profile/edit', 'pages.profil.edit')->name('pages.profil.edit');
+
