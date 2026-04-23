@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Petugas;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PetugasController extends Controller
 {
@@ -12,7 +14,10 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        //
+        $petugas = Petugas::all();
+        return view('admin.tambah-akun.index', [
+            'petugas' => $petugas
+        ]);
     }
 
     /**
@@ -20,7 +25,7 @@ class PetugasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tambah-akun.create');
     }
 
     /**
@@ -28,7 +33,21 @@ class PetugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_tim' => 'required|min:3|max:100',
+            'nama_ketua' => 'required|min:3|max:100',
+            'email' => 'required|email|unique:petugas',
+            'password' => 'required|min:8',
+            'alamat' => 'required|max:500',
+            'status' => 'required|in:acctive,inacctive', 
+        ]);
+
+        $validated['password'] = Hash::make($validated['password']);
+
+        Petugas::create($validated);
+
+        return redirect()->route('tambah-akun')
+            ->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -42,24 +61,65 @@ class PetugasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Petugas $petugas)
+    public function edit($id)
     {
-        //
+        $petugas = Petugas::findOrFail($id);
+        return view('admin.tambah-akun.edit', [
+            'petugas' => $petugas
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Petugas $petugas)
-    {
-        //
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     $validated = $request->validate([
+    //         'nama_tim' => 'required|min:3|max:100',
+    //         'nama_ketua' => 'required|min:3|max:100',
+    //         'email' => 'required|email|unique:petugas',
+    //         'password' => 'required|min:8',
+    //         'alamat' => 'required|max:500',
+    //         'status' => 'required|in:acctive,inacctive',
+    //     ]);
 
+    //     Petugas::findOrFail($id)->update($request->validated());
+
+    //     return redirect('tambah-akun')->with('success', 'Data Berhasil Diubah');
+    // }
+
+    public function update(Request $request, $id)
+    {
+        $petugas = Petugas::findOrFail($id);
+
+        $validated = $request->validate([
+            'nama_tim' => 'required|min:3|max:100',
+            'nama_ketua' => 'required|min:3|max:100',
+            'email' => 'required|email|unique:petugas,email,' . $id,
+            'password' => 'nullable|min:8',
+            'alamat' => 'required|max:500',
+            'status' => 'required|in:acctive,inacctive',
+        ]);
+
+        if (!empty($request->password)) {
+            $validated['password'] = Hash::make($request->password);
+        } else {
+            unset($validated['password']);
+        }
+
+        $petugas->update($validated);
+
+        return redirect()->route('tambah-akun')
+            ->with('success', 'Data Berhasil Diupdate');
+    }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Petugas $petugas)
+    public function destroy($id)
     {
-        //
+        $petugas = Petugas::findOrFail($id);
+        $petugas->delete();
+
+        return redirect()->route('tambah-akun')->with ('success', 'Data Berhasil Dihapus');
     }
 }

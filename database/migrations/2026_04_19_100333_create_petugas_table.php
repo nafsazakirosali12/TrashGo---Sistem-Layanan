@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('petugas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
-            $table->foreignId('pendapatan_id')->constrained('pendapatans')->cascadeOnDelete();
+            // $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
+            // $table->foreignId('pendapatan_id')->constrained('pendapatans')->cascadeOnDelete();
+            $table->foreignId('order_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('pendapatan_id')->nullable()->constrained()->nullOnDelete();
             $table->string('nama_tim', 100);
             $table->string('nama_ketua');
             $table->string('email')->unique();
