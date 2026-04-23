@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
-class Petugas extends Model
+class Petugas extends Authenticatable
 {
     protected $table = 'petugas';
     protected $fillable = [
@@ -17,4 +18,11 @@ class Petugas extends Model
         'alamat',
         'status',
     ];
+    protected $hidden = [
+        'password',
+    ];
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
 }

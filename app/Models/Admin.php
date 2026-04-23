@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Autheticable;
+use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Autheticable
+class Admin extends Model
 {
     protected $table = 'admins';
     protected $fillable = [
@@ -17,4 +17,8 @@ class Admin extends Autheticable
     protected $hidden = [
         'password',
     ];
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
 }
