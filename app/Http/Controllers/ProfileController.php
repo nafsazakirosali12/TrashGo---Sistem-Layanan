@@ -29,6 +29,10 @@ class ProfileController extends Controller
             'email' => 'required|email',
             'password' => 'nullable|min:5',
             'foto_admin' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+        ], [
+            'nama_admin.required' => 'Profil gagal diubah! Semua field wajib diisi.',
+            'email.required' => 'Profil gagal diubah! Semua field wajib diisi.',
+            'email.email' => 'Profil gagal diubah! Format email tidak valid.',
         ]);
 
         $admin->nama_admin = $request->nama_admin;
@@ -45,9 +49,7 @@ class ProfileController extends Controller
         $file->move(public_path('assets_admin/img'), $namaFile);
         $admin->foto_admin = 'assets_admin/img/' . $namaFile;
     }
-
         $admin->save();
-
         return redirect()->route('admin.profil.index')
             ->with('success', 'Profil berhasil diupdate!');
     }

@@ -20,11 +20,15 @@
         </div>
 
         <!-- FORM -->
+        @if ($errors->any())
+          <div class="alert alert-danger text-white">
+            Profil gagal diubah! Periksa kembali input Anda.
+          </div>
+        @endif
+
         <form action="{{ route('admin.profil.update') }}" method="POST" enctype="multipart/form-data">
           @csrf
-
           <div class="row">
-
             <!-- FOTO -->
             <div class="col-md-4 text-center mb-3">
               <img src="{{ $admin->foto_admin 
@@ -36,8 +40,6 @@
             </div>
 
             <div class="col-md-8">
-
-              <!-- NAMA -->
               <div class="mb-3">
                 <label class="form-label">Nama</label>
                 <input type="text" name="nama_admin" 
@@ -45,7 +47,6 @@
                        value="{{ $admin->nama_admin }}">
               </div>
 
-              <!-- EMAIL -->
               <div class="mb-3">
                 <label class="form-label">Email</label>
                 <input type="email" name="email" 
@@ -53,7 +54,6 @@
                        value="{{ $admin->email }}">
               </div>
 
-              <!-- PASSWORD -->
               <div class="mb-3">
                 <label class="form-label">Password</label>
                 <input type="password" name="password" 
@@ -61,7 +61,6 @@
                        placeholder="Kosongkan jika tidak diubah">
               </div>
 
-              <!-- BUTTON -->
               <button type="submit" class="btn bg-gradient-primary">
                 Simpan Perubahan
               </button>
