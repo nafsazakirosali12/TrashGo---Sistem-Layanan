@@ -8,7 +8,7 @@
       <div class="card mb-4 mx-auto">
         <div class="card-header pb-0 d-flex justify-content-between">
           <h6>Daftar Petugas</h6>
-          <a href="{{ route('tambah-akun.create') }}" class="btn btn-primary btn-sm">
+          <a href="{{ route('tambah-akun.create') }}" class=" btn bg-gradient-primary">
             + Tambah Akun
           </a>
         </div>
@@ -37,7 +37,7 @@
                     <td>••••••••</td>
                     <td>{{ $p->alamat }}</td>
                     <td class="text-center">
-                      <a href="{{ route('tambah-akun.edit', $p->id) }}" class="btn btn-primary btn-sm">
+                      <a href="{{ route('tambah-akun.edit', $p->id) }}" class="btn bg-gradient-primary">
                         Edit
                       </a>
                       <form action="{{ route('tambah-akun.delete', $p->id) }}" method="POST" style="display:inline;">
