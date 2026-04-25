@@ -71,13 +71,13 @@
 
                     <!-- EDIT -->
                     <a href="{{ route('kategori.edit', $k->id) }}" 
-                       class="text-warning font-weight-bold text-xs me-2">
+                       class="btn bg-gradient-primary">
                       Edit
                     </a>
-
+                    
                     <!-- DELETE -->
                       <button type="button" onclick="confirmDelete('{{ $k->id }}')" 
-                      class="text-danger border-0 bg-transparent font-weight-bold text-xs">
+                      class="btn btn-danger btn-sm">
                       Hapus
                     </button>
                     <form id="delete-form-{{ $k->id }}" action="{{ route('kategori.destroy', $k->id) }}" 
