@@ -47,7 +47,6 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Table</span>
             <span class="nav-link-text ms-1">Kategori</span>
           </a>
         </li>
