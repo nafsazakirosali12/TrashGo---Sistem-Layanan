@@ -57,3 +57,10 @@ Route::post('/admin/profil/update', [ProfileController::class, 'update'])
 Route::get('/login', [AuthController::class, 'showLogin'])->middleware('guest:admin');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/admin/login', [AuthController::class, 'showLogin'])->middleware('guest:admin');
+Route::post('/admin/login', [AuthController::class, 'login']);
+Route::post('/admin/logout', [AuthController::class, 'logout']);
+
+// UNTUK MONITORING ORDER
+use App\Http\Controllers\OrderController;
+Route::get('/monitoring', [OrderController::class, 'monitoring'])->name('monitoring');

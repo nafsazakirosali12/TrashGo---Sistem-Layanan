@@ -10,9 +10,10 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function monitoring()
     {
-        //
+        $orders = Order::all(); // ambil semua data
+        return view('admin.monitoring', compact('orders'));
     }
 
     /**
