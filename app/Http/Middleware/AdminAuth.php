@@ -10,9 +10,8 @@ class AdminAuth
 {
     public function handle(Request $request, Closure $next)
     {
-        // kalau belum login admin
         if (!Auth::guard('admin')->check()) {
-            return redirect('/admin/login');
+            return redirect('/login');
         }
 
         return $next($request);
