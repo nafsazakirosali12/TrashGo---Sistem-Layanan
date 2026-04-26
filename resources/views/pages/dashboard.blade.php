@@ -33,16 +33,15 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Order</p>
                     <h5 class="font-weight-bolder mb-0">
-                      2,300
-                      <span class="text-success text-sm font-weight-bolder">+3%</span>
+                      {{ $total_order }}
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-bag-17 text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -55,16 +54,15 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Petugas</p>
                     <h5 class="font-weight-bolder mb-0">
-                      +3,462
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                      {{ $total_petugas }}
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -98,9 +96,9 @@
           <div class="card">
             <div class="card-body p-3">
               <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                   <div class="d-flex flex-column h-100">
-                    <h5 class="font-weight-bolder">Visi TrashGo!</h5>
+                    <h5 class="font-weight-bolder mb-4 pt-2">Visi TrashGo!</h5>
                     <p class="mb-0 text-sm text-justify">
                       TrashGo! adalah produk di segmen layanan lingkungan berbasis digital
                       yang memberikan manfaat dalam mempermudah pengelolaan sampah secara
@@ -129,11 +127,10 @@
           </div>
         </div>
         <div class="col-lg-5">
-          <div class="card h-100 p-3">
-            <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('../assets_admin/img/ivancik.jpg');">
-              <span class="mask bg-gradient-dark"></span>
-              <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-                <h5 class="text-white font-weight-bolder mb-4 pt-2">Misi TrashGo!</h5>
+          <div class="card h-100 p-3 bg-gradient-primary">
+            <div class="overflow-hidden position-relative border-radius-lg h-100">
+              <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-2">
+                <h5 class="text-white font-weight-bolder mb-2 pt-2">Misi TrashGo!</h5>
                 <ul class="text-white text-sm ps-3 mb-0" style="line-height:1.8;">
                   <li>Memiliki 150 pengguna yang terdaftar dalam kurun waktu 3 bulan.</li>
                   <li>Meningkatkan jumlah pengangkutan sampah melalui platform TrashGo!</li>
