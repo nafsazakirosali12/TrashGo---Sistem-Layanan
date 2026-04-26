@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('layouts.app');
 });
 
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-})->name('dashboard');
+Route::middleware('admin.auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
 
 // Route::get('/tambah-akun', [PetugasController::class, 'index'])->name('tambah-akun');
 // Route::get('/tambah-akun/create', [PetugasController::class, 'create'])->name('tambah-akun.create');
@@ -26,11 +27,6 @@ Route::post('/tambah-akun', [PetugasController::class, 'store'])->name('tambah-a
 Route::get('/tambah-akun/{id}', [PetugasController::class, 'edit'])->name('tambah-akun.edit');
 Route::put('/tambah-akun/{id}', [PetugasController::class, 'update'])->name('tambah-akun.update');
 Route::delete('/tambah-akun/{id}', [PetugasController::class, 'destroy'])->name('tambah-akun.delete');
-Route::middleware('admin.auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('pages.dashboard');
-    });
-});
 
 Route::resource('kategori', KategoriController::class);
 
@@ -58,8 +54,6 @@ Route::post('/admin/profil/update', [ProfileController::class, 'update'])
 
     
 // ============== LOGIN & LOGOUT ================
-Route::get('/admin/login', [AuthController::class, 'showLogin'])->middleware('guest:admin');
-Route::post('/admin/login', [AuthController::class, 'login']);
-Route::post('/admin/logout', [AuthController::class, 'logout']);
-
-
+Route::get('/login', [AuthController::class, 'showLogin'])->middleware('guest:admin');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);

@@ -16,7 +16,7 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <form action="/admin/logout" method="POST">
+              <form action="/logout" method="POST">
                 @csrf
                 <button type="submit" class="nav-link text-body font-weight-bold px-0 border-0 bg-transparent">
                   <i class="fa fa-sign-out me-sm-1"></i>
