@@ -62,4 +62,6 @@ Route::get('/admin/login', [AuthController::class, 'showLogin'])->middleware('gu
 Route::post('/admin/login', [AuthController::class, 'login']);
 Route::post('/admin/logout', [AuthController::class, 'logout']);
 
-
+// UNTUK MONITORING ORDER
+use App\Http\Controllers\OrderController;
+Route::get('/monitoring', [OrderController::class, 'monitoring'])->name('monitoring');
