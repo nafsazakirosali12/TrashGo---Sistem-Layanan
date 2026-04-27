@@ -617,8 +617,8 @@
         </div>
       </div>
 
-      <div class="fixed-plugin">
-    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <div class="">
+    <a class=" text-dark position-fixed px-3 py-2">
       <i class="fa fa-cog py-2"> </i>
     </a>
     <div class="card shadow-lg ">
@@ -628,7 +628,7 @@
           <p>See our dashboard options.</p>
         </div>
         <div class="float-end mt-4">
-          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+          <button class="btn btn-link text-dark p-0">
             <i class="fa fa-close"></i>
           </button>
         </div>
@@ -684,8 +684,8 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="../assets_admin/js/core/popper.min.js"></script>
-  <script src="../assets_admin/js/core/bootstrap.min.js"></script>
+  <!-- <script src="../assets_admin/js/core/popper.min.js"></script>
+  <script src="../assets_admin/js/core/bootstrap.min.js"></script> -->
   <script src="../assets_admin/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets_admin/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets_admin/js/plugins/chartjs.min.js"></script>
