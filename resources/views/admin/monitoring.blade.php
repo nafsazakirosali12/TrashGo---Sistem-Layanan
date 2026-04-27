@@ -10,18 +10,18 @@
             <div class="card mb-4">
 
             <!-- HEEADER -->
-             <div class="card-header pb-0">
+             <div class="card-header pb-0 d-flex justify-content-between">
                 <h6>Data Order</h6>
              </div>
 
              <!-- TABLE -->
               <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">
-                    <table class="table align-items-center mb-0">
+                    <table class="table align-items-center mb-0" style="table-layout: fixed; width:100%;">
 
                     <!-- THEAD -->
                      <thead>
-                        <tr>
+                        <tr  style="text-align: center;">
                             <th>No</th>
                             <th>ID</th>
                             <th>Masyarakat</th>
@@ -36,15 +36,16 @@
                      <!-- TBODY -->
                       <tbody>
                         @forelse($orders as $order)
-                        <tr>
+                        <tr style="text-align: center;">
                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $order->id }}</td>
-                            <td>{{ $order->masyarakat_id }}</td>
-                            <td>{{ $order->kategori_id }}</td>
+                            <td>{{ $order->masyarakat->nama_masyarakat ?? '-' }}</td>
+                            <td>{{ $order->kategori->nama_kategori ?? '-'}}</td>
                             <td>{{ $order->status }}</td>
                             <td>{{ $order->total_harga }}</td>
-                            <td>{{ $order->tanggal_order }}</td>
-                            <td>{{ $order->catatan ?? '-' }}</td>
+                            <td style="white-space: normal; word-wrap: break-word; max-width: 200px;">{{ $order->tanggal_order }}</td>
+                            <td style="white-space: normal; word-wrap: break-word; max-width: 200px;">
+                            {{ $order->catatan ?? '-' }}</td>
                         </tr>
                         @empty
                         <tr>
