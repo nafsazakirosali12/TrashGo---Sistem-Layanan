@@ -6,16 +6,16 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminAuth
+class PetugasAuth
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::guard('admin')->check()) {
+        if (!Auth::guard('petugas')->check()) {
             if (Auth::guard('masyarakat')->check()) {
-                return redirect('/home_masyarakat')->with('error', 'Anda tidak memiliki akses ke halaman Admin.');
+                return redirect('/home_masyarakat')->with('error', 'Anda tidak memiliki akses ke halaman Petugas.');
             }
-            if (Auth::guard('petugas')->check()) {
-                return redirect('/home_petugas')->with('error', 'Anda tidak memiliki akses ke halaman Admin.');
+            if (Auth::guard('admin')->check()) {
+                return redirect('/dashboard')->with('error', 'Anda tidak memiliki akses ke halaman Petugas.');
             }
             return redirect('/login');
         }
