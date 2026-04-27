@@ -20,7 +20,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets_admin/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets_admin/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets_admin/img/logo.png">
   <title>
     TrashGo!
   </title>
@@ -61,7 +61,7 @@
                   <p class="mb-0">Enter your email and password to sign in</p>
                 </div>
                 <div class="card-body">
-                  <form method="POST" action="/admin/login">
+                  <form method="POST" action="/login">
                     @csrf
 
                     {{-- ALERT --}}
