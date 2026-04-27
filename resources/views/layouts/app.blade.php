@@ -23,21 +23,23 @@
   <link id="pagestyle" href="{{ asset('assets_admin/css/soft-ui-dashboard.css?v=1.0.3') }}" rel="stylesheet" />
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
+<body class="g-sidenav-show  bg-gray-100 d-flex flex-column min-vh-100">
 
   <!-- sidebar -->
     @include('layouts.sidebar')
   <!-- end sidebar -->
 
-  <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+  <main class="main-content d-flex flex-column min-vh-100">
 
     <!-- Navbar -->
      @include('layouts.navbar')
     <!-- End Navbar -->
 
+    <div class="flex-fill">
     <!-- dashboard -->
      @yield('content')
     <!-- end dashboard -->
+    </div>
 
     <div>
     <!-- footer  -->
