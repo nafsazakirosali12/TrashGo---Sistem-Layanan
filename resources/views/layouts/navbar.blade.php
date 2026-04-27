@@ -25,9 +25,9 @@
                     <li><hr class="dropdown-divider"></li>
 
                     <li>
-                        <form action="/admin/logout" method="POST">
+                        <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button class="dropdown-item" type="submit">
+                            <button type="submit">
                                 Logout
                             </button>
                         </form>
