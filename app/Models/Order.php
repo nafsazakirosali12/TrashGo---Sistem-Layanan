@@ -15,4 +15,15 @@ class Order extends Model
         'tanggal_order',
         'catatan',
     ];
+
+public function masyarakat()
+{
+    return $this->belongsTo(Masyarakat::class, 'masyarakat_id', 'id');
+}
+
+public function kategori()
+{
+    return $this->belongsTo(Kategori::class);
+}
+
 }

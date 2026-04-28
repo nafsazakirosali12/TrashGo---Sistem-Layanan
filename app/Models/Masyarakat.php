@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 class Masyarakat extends Authenticatable
 {
     protected $table = 'masyarakats';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'nama_masyarakat',
         'jenis_kelamin',
