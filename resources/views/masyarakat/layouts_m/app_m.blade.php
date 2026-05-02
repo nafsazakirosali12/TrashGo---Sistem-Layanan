@@ -16,17 +16,20 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="assets_pengguna/images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets_pengguna/images/apple-touch-icon.png">
+    <<link rel="shortcut icon" href="{{ asset('assets_pengguna/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ asset('assets_pengguna/images/apple-touch-icon.png') }}">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets_pengguna/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets_pengguna/css/bootstrap.min.css') }}">
+
     <!-- Site CSS -->
-    <link rel="stylesheet" href="assets_pengguna/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets_pengguna/css/style.css') }}">
+
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="assets_pengguna/css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('assets_pengguna/css/responsive.css') }}">
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets_pengguna/css/custom.css">
+    <link rel="stylesheet" href="{{ asset('assets_pengguna/css/custom.css') }}">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -44,7 +47,7 @@
     @yield('content')
 
     <!-- FOOTER -->
-    @include('masyarakat.layouts_m.footer')
+    @include('masyarakat.layouts_m.footer_m')
 
 
     <!-- Start copyright  -->
@@ -57,21 +60,22 @@
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
     <!-- ALL JS FILES -->
-    <script src="assets_pengguna/js/jquery-3.2.1.min.js"></script>
-    <script src="assets_pengguna/js/popper.min.js"></script>
-    <script src="assets_pengguna/js/bootstrap.min.js"></script>
-    <!-- ALL PLUGINS -->
-    <script src="assets_pengguna/js/jquery.superslides.min.js"></script>
-    <script src="assets_pengguna/js/bootstrap-select.js"></script>
-    <script src="assets_pengguna/js/inewsticker.js"></script>
-    <script src="assets_pengguna/js/bootsnav.js."></script>
-    <script src="assets_pengguna/js/images-loded.min.js"></script>
-    <script src="assets_pengguna/js/isotope.min.js"></script>
-    <script src="assets_pengguna/js/owl.carousel.min.js"></script>
-    <script src="assets_pengguna/js/baguetteBox.min.js"></script>
-    <script src="assets_pengguna/js/form-validator.min.js"></script>
-    <script src="assets_pengguna/js/contact-form-script.js"></script>
-    <script src="assets_pengguna/js/custom.js"></script>
-</body>
+    <script src="{{ asset('assets_pengguna/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/bootstrap.min.js') }}"></script>
 
+    <!-- ALL PLUGINS -->
+    <script src="{{ asset('assets_pengguna/js/jquery.superslides.min.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/bootstrap-select.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/inewsticker.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/bootsnav.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/images-loded.min.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/isotope.min.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/baguetteBox.min.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/form-validator.min.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/contact-form-script.js') }}"></script>
+    <script src="{{ asset('assets_pengguna/js/custom.js') }}"></script>
+
+</body>
 </html>

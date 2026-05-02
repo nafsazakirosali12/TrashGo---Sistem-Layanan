@@ -33,8 +33,10 @@ Route::middleware('admin.auth')->group(function () {
 });
 
 Route::middleware('masyarakat.auth')->group(function () {
-   Route::get('/home_masyarakat', [MasyarakatController::class, 'index'])->name('home_masyarakat');
-
+   Route::get('/home_masyarakat', [MasyarakatController::class, 'index'])->name('masyarakat.pages.home_masyarakat');
+   Route::get('/masyarakat/profile', [MasyarakatController::class, 'profile'])->name('masyarakat.profile_m');
+   Route::get('/masyarakat/profile/edit', [MasyarakatController::class, 'editProfile'])->name('masyarakat.profile_m.edit_m');
+   Route::post('/masyarakat/profile/update', [MasyarakatController::class, 'updateProfile'])->name('masyarakat.profile_m.update');
 });
 
 Route::middleware('petugas.auth')->group(function () {
