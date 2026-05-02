@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('page', 'Tambah')
+
 @section('content')
 <div class="container">
   <h4>Tambah Akun Petugas</h4>

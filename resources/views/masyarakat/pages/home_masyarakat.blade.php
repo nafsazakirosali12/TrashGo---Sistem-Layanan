@@ -1,4 +1,6 @@
-@section('home_masyarakat')
+@extends('masyarakat.layouts_m.app_m')
+
+@section('content')
 <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
             <li class="text-center">

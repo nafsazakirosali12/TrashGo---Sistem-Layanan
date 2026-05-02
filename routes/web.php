@@ -13,7 +13,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
-    return view('masyarakat.layouts_m.app_m');
+    return view('masyarakat.pages.home_masyarakat');
 });
 
 Route::middleware('admin.auth')->group(function () {

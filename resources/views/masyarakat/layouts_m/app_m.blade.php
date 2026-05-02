@@ -41,7 +41,7 @@
     <!-- End Main Top -->
 
     <!-- HOME -->
-    @include('masyarakat.pages.home_masyarakat')
+    @yield('content')
 
     <!-- FOOTER -->
     @include('masyarakat.layouts_m.footer')
