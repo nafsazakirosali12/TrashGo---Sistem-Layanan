@@ -6,9 +6,16 @@ use App\Models\Order;
 use App\Models\Point;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\Kategori;
 
 class OrderController extends Controller
 {
+    // public function index()
+    // {
+    //     $orders = Order::where('masyarakat_id', auth()->id())->get();
+
+    //     return view('masyarakat.pages.order', compact('orders'));
+    // }
     /**
      * Display a listing of the resource.
      */
@@ -18,28 +25,69 @@ class OrderController extends Controller
         return view('admin.monitoring', compact('orders'));
     }
 
+    public function index()
+    {
+        $kategoris = Kategori::all();
+        return view('masyarakat.pages.order', compact('kategoris'));
+    }
+
+    // public function create()
+    // {
+    //     $kategoris = Kategori::all();
+
+    //     return view('masyarakat.pages.order_form', compact('kategoris'));
+    // }
+
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        // $user = auth()->user();
+        // if (!$user) {
+        //     return redirect('/login');
+        // }
 
+        // 1. VALIDASI FORM
+        $request->validate([
+            'kategori_id' => 'required',
+            'lokasi' => 'required',
+            'tanggal' => 'required',
+            'waktu' => 'required',
+            // 'total_harga' => 'required|integer',
+            'catatan' => 'required',
+        ]);
+
+        // 2. SIMPAN ORDER
+        $order = Order::create([
+            'masyarakat_id' => auth('masyarakat')->id(),
+            'kategori_id' => $request->kategori_id,
+            'lokasi' => $request->lokasi,
+            'tanggal' => $request->tanggal,
+            'waktu' => $request->waktu,
+            'total_harga' => 10000,
+            'catatan' => $request->catatan,
+            'status' => 'pending',
+        ]);
+
+        // 3. LANJUT KE PEMBAYARAN
+        return redirect()->route('pembayaran.show', $order->id) ->with('success', 'Order berhasil dibuat, lanjut ke pembayaran!');
+    }
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    // public function show(Order $order)
+    // {
+    //     //
+    // }
+
+    public function history()
     {
-        //
+        $orders = Order::where('masyarakat_id', auth('masyarakat')->id())
+            ->latest()
+            ->get();
+
+        return view('masyarakat.pages.riwayat_order', compact('orders'));
     }
 
     /**
