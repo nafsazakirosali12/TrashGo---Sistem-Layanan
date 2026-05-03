@@ -5,15 +5,17 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasyarakatAuthController;
 use App\Http\Controllers\MasyarakatController;
-use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PetugasAuthController;
-use App\Http\Controllers\PointController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\NotifikasiController;
+use App\Http\Controllers\PointController;
+use App\Http\Controllers\PembayaranController;
+
 
 Route::get('/', function () {
     return view('masyarakat.pages.home_masyarakat');
@@ -44,7 +46,10 @@ Route::middleware('masyarakat.auth')->group(function () {
    Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('masyarakat.pages.notifikasi');
    Route::get('/riwayat_order', [OrderController::class, 'history'])->name('masyarakat.pages.riwayat_order');
    Route::get('/about_us', [AboutController::class, 'about_us'])->name('masyarakat.pages.about_us');
-   Route::get('/order', [OrderController::class, 'order'])->name('masyarakat.pages.order');
+   Route::get('/order', [OrderController::class, 'index'])->name('masyarakat.pages.order');
+   Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+   Route::get('/pembayaran/{order}', [PembayaranController::class, 'show'])->name('pembayaran.show');
+   Route::post('/pembayaran/{order}', [PembayaranController::class, 'store'])->name('pembayaran.store');
 });
 
 Route::middleware('petugas.auth')->group(function () {
@@ -57,10 +62,19 @@ Route::get('/profil', function () {
 });
 
 // ============== LOGIN & LOGOUT ================
-Route::get('/login', [AuthController::class, 'showLogin'])->middleware('guest:admin,masyarakat,petugas');
-Route::post('/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login')->middleware('guest:admin,masyarakat,petugas');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Notifikasi
+Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('masyarakat.pages.notifikasi')->middleware('auth');
+
+Route::get('/order', [OrderController::class, 'index'])->name('masyarakat.pages.order');
+
+Route::get('/point', [PointController::class, 'index'])->name('masyarakat.pages.point');
+
+Route::get('/riwayat-order', [OrderController::class, 'riwayat'])->name('masyarakat.pages.riwayat_order');
 
 // ============== REGISTER ================
 Route::get('/register', [AuthController::class, 'showRegister'])
