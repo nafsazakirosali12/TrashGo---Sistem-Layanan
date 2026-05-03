@@ -84,4 +84,16 @@ class OrderController extends Controller
         
         return redirect()->back()->with('success', 'Order berstatus completed dan 10 Poin telah diberikan!');
     }
+
+    public function history()
+    {
+        $user = auth()->guard('masyarakat')->user();
+
+        $orders = Order::with(['kategori', 'pembayaran'])
+            ->where('masyarakat_id', $user->id)
+            ->latest()
+            ->get();
+
+        return view('masyarakat.pages.riwayat_order', compact('orders'));
+    }
 }
