@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Masyarakat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,5 +58,39 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login')->with('success', 'Berhasil logout!');
+    }
+
+    public function showRegister()
+    {
+        return view('masyarakat.pages.register');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:masyarakats,email',
+        'password' => [
+            'required',
+            'min:8',
+            'regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/'
+        ]
+    ], [
+        'name.required' => 'Nama wajib diisi',
+        'email.required' => 'Email wajib diisi',
+        'email.email' => 'Format email tidak valid',
+        'email.unique' => 'Email sudah terdaftar',
+        'password.required' => 'Password wajib diisi',
+        'password.min' => 'Password minimal 8 karakter',
+        'password.regex' => 'Password harus mengandung huruf dan angka',
+    ]);
+
+        Masyarakat::create([
+            'nama_masyarakat' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
+
+        return redirect('/login')->with('success', 'Registrasi berhasil! Silakan login.');
     }
 }
