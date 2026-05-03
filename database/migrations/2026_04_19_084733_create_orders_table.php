@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('masyarakat_id')->constrained('masyarakats')->cascadeOnDelete();
             $table->foreignId('kategori_id')->constrained('kategoris')->cascadeOnDelete();
-            $table->enum('status', ['pending', 'processing', 'completed']);
+            $table->string('lokasi');
+            $table->date('tanggal');
+            $table->time('waktu');
             $table->integer('total_harga');
-            $table->dateTime('tanggal_order');
             $table->string('catatan', 250);
+            $table->enum('status', ['pending', 'processing', 'completed']);
             $table->timestamps();
         });
     }

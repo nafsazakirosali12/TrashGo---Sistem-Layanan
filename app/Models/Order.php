@@ -10,20 +10,26 @@ class Order extends Model
     protected $fillable = [
         'masyarakat_id',
         'kategori_id',
-        'status',
+        'lokasi',
+        'tanggal',
+        'waktu',
         'total_harga',
-        'tanggal_order',
         'catatan',
+        'status',
     ];
 
-public function masyarakat()
-{
-    return $this->belongsTo(Masyarakat::class, 'masyarakat_id', 'id');
-}
+    public function masyarakat()
+    {
+        return $this->belongsTo(Masyarakat::class, 'masyarakat_id', 'id');
+    }
 
-public function kategori()
-{
-    return $this->belongsTo(Kategori::class);
-}
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'kategori_id');
+    }
 
+    public function pembayaran()
+    {
+        return $this->hasOne(Pembayaran::class, 'order_id');
+    }
 }
