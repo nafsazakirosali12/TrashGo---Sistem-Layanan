@@ -21,10 +21,34 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function store(Request $request)
     {
-        //
+        // 1. VALIDASI FORM
+        $request->validate([
+            'kategori_id' => 'required',
+            'lokasi' => 'required',
+            'tanggal' => 'required',
+            'waktu' => 'required',
+            'total_harga' => 'required|integer',
+            'catatan' => 'required',
+        ]);
+
+        // 2. SIMPAN ORDER
+        $order = Order::create([
+            'masyarakat_id' => auth()->id(),
+            'kategori_id' => $request->kategori_id,
+            'lokasi' => $request->lokasi,
+            'tanggal' => $request->tanggal,
+            'waktu' => $request->waktu,
+            'total_harga' => $request->total_harga,
+            'catatan' => $request->catatan,
+            'status' => 'pending',
+        ]);
+
+        // 3. LANJUT KE PEMBAYARAN
+        return redirect()->route('pembayaran.show', $order->id);
     }
+}
 
     /**
      * Store a newly created resource in storage.
