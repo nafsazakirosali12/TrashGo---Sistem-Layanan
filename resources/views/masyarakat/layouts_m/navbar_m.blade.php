@@ -18,13 +18,33 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.home_masyarakat') }}">Home</a></li>
+
+                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.home_masyarakat') }}">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.order') }}">Order</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.about_us') }}">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.order') }}">Order</a></li>
                         
 
                         <!-- ICON POINT, NOTIFIKASI, DROPDOWN -->
                         <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.point') }}"><i class="fa fa-coins"></i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.notifikasi') }}"><i class="fa fa-bell"></i></a></li>
+                        <li class="nav-item">
+                            <a class="nav-link position-relative" href="{{ route ('masyarakat.pages.notifikasi') }}">
+                                <i class="fa fa-bell"></i>
+
+                                @php
+                                    $orders = $orders ?? collect();
+                                    $pembayarans = $pembayarans ?? collect();
+
+                                    $totalNotif = $orders->count() + $pembayarans->count();
+                                @endphp
+
+                                @if($totalNotif > 0)
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                        {{ $totalNotif }}
+                                    </span>
+                                @endif
+                            </a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="nav-link" data-toggle="dropdown"><i class="fa fa-bars fs-4"></i></a>
                             <ul class="dropdown-menu dropdown-menu-right" style="min-width: 220px; border-radius: 8px; padding: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: none;">
