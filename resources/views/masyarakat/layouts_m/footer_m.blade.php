@@ -1,4 +1,3 @@
-@section('footer_masyarakat')
 
     <!-- Start Footer  -->
     <footer>
@@ -84,5 +83,3 @@
         </div>
     </footer>
     <!-- End Footer  -->
-
-@endsection
