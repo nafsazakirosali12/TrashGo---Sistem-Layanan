@@ -11,6 +11,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\NotifikasiController;
 
 Route::get('/', function () {
     return view('masyarakat.pages.home_masyarakat');
@@ -54,3 +55,5 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Notifikasi
+Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('notifikasi');
