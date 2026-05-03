@@ -1,85 +1,155 @@
 @extends('masyarakat.layouts_m.app_m')
 
 @section('content')
-<div class="container mt-5">
 
-    <h3 class="fw-bold mb-4">Riwayat Order</h3>
+<style>
+.table-custom {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.table-custom th {
+    font-size: 13px;
+    background: #f8f9fa;
+    border: none;
+}
+
+.table-custom td {
+    font-size: 13px;
+    border-top: 1px solid #eee;
+}
+
+/* STATUS WARNA (SOFT, GAK NORAK) */
+.status-pending {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.status-pickup {
+    color: #b08900;
+    font-weight: 500;
+}
+
+.status-selesai {
+    color: #198754;
+    font-weight: 500;
+}
+
+/* PEMBAYARAN */
+.pay-pending { color: #6c757d; }
+.pay-konfirmasi { color: #b08900; }
+.pay-paid { color: #198754; }
+.pay-failed { color: #dc3545; }
+
+.catatan {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>
+
+<div class="container mt-4 mb-5 pb-5">
+
+    <h1 class="mb-3 fw-bold">Riwayat Order</h1>
 
     @if($orders->isEmpty())
-        <div class="text-center mt-5">
-            <h5 class="text-muted">Belum ada riwayat order</h5>
-            <a href="/order" class="btn btn-success mt-2">Buat Order</a>
+
+        <div class="alert alert-warning text-center">
+            Belum ada riwayat order
         </div>
+
     @else
 
-    <div class="row">
-        @foreach($orders as $order)
-        <div class="col-md-6 mb-4">
+    <div class="table-responsive table-custom">
 
-            <div class="card border-0 shadow-sm order-card p-3">
+        <table class="table mb-0 align-middle">
 
-                <!-- HEADER -->
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <h5 class="fw-bold mb-0">
-                        {{ $order->kategori->nama_kategori ?? '-' }}
-                    </h5>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kategori</th>
+                    <th>Tanggal</th>
+                    <th>Waktu</th>
+                    <th>Alamat</th>
+                    <th>Catatan</th>
+                    <th>Total</th>
+                    <th>Status Order</th>
+                    <th>Status Pembayaran</th>
+                </tr>
+            </thead>
 
-                    <span class="badge 
-                        {{ $order->status == 'completed' ? 'bg-success' : 'bg-warning' }}">
-                        {{ ucfirst($order->status) }}
-                    </span>
-                </div>
+            <tbody>
 
-                <!-- TANGGAL -->
-                <small class="text-muted">
-                    {{ \Carbon\Carbon::parse($order->tanggal)->format('d M Y') }} 
-                    • {{ $order->waktu }}
-                </small>
+                @foreach($orders as $index => $order)
 
-                <hr class="my-2">
+                <tr>
 
-                <!-- DETAIL -->
-                <p class="mb-1">📍 {{ $order->lokasi }}</p>
+                    <td>{{ $orders->firstItem() + $index }}</td>
 
-                <p class="mb-1">
-                    💳 {{ $order->pembayaran->metode_pembayaran ?? '-' }}
-                </p>
+                    <td>{{ $order->kategori->nama_kategori ?? '-' }}</td>
 
-                <!-- FOOTER -->
-                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <td>{{ $order->tanggal }}</td>
 
-                    <span class="fw-bold text-success">
-                        Rp {{ number_format($order->total_harga) }}
-                    </span>
+                    <td>{{ $order->waktu }}</td>
 
-                    <span class="badge 
-                        {{ ($order->pembayaran->status_pembayaran ?? '') == 'lunas' 
-                            ? 'bg-success' 
-                            : 'bg-danger' }}">
-                        {{ $order->pembayaran->status_pembayaran ?? 'Belum Bayar' }}
-                    </span>
+                    <td>{{ $order->lokasi }}</td>
 
-                </div>
+                    <td class="catatan">
+                        {{ \Illuminate\Support\Str::limit($order->catatan, 40) ?? '-' }}
+                    </td>
 
-            </div>
+                    <td>
+                        Rp {{ number_format($order->total_harga,0,',','.') }}
+                    </td>
 
-        </div>
-        @endforeach
+                    {{-- STATUS ORDER --}}
+                    <td>
+                        @if($order->status == 'pending')
+                            <span class="status-pending">pending</span>
+                        @elseif($order->status == 'pickup')
+                            <span class="status-pickup">pickup</span>
+                        @elseif($order->status == 'selesai')
+                            <span class="status-selesai">selesai</span>
+                        @else
+                            <span>{{ $order->status }}</span>
+                        @endif
+                    </td>
+
+                    {{-- STATUS PEMBAYARAN --}}
+                    <td>
+                        @if(optional($order->pembayaran)->status == 'pending')
+                            <span class="pay-pending">pending</span>
+                        @elseif(optional($order->pembayaran)->status == 'menunggu_konfirmasi')
+                            <span class="pay-konfirmasi">menunggu_konfirmasi</span>
+                        @elseif(optional($order->pembayaran)->status == 'paid')
+                            <span class="pay-paid">paid</span>
+                        @elseif(optional($order->pembayaran)->status == 'failed')
+                            <span class="pay-failed">failed</span>
+                        @else
+                            <span>-</span>
+                        @endif
+                    </td>
+
+                </tr>
+
+                @endforeach
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {{-- PAGINATION --}}
+    <div class="d-flex justify-content-center mt-4">
+        {{ $orders->links() }}
     </div>
 
     @endif
+
 </div>
-
-<style>
-.order-card {
-    border-radius: 16px;
-    transition: 0.2s ease;
-}
-
-.order-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-</style>
 
 @endsection

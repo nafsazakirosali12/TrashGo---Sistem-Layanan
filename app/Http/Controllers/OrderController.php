@@ -83,13 +83,13 @@ class OrderController extends Controller
 
     public function history()
     {
-        $orders = Order::where('masyarakat_id', auth('masyarakat')->id())
+        $orders = Order::with(['kategori', 'pembayaran'])
+            ->where('masyarakat_id', auth('masyarakat')->id())
             ->latest()
-            ->get();
+            ->paginate(12); 
 
         return view('masyarakat.pages.riwayat_order', compact('orders'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -131,17 +131,5 @@ class OrderController extends Controller
         }
         
         return redirect()->back()->with('success', 'Order berstatus completed dan 10 Poin telah diberikan!');
-    }
-
-    public function history()
-    {
-        $user = auth()->guard('masyarakat')->user();
-
-        $orders = Order::with(['kategori', 'pembayaran'])
-            ->where('masyarakat_id', $user->id)
-            ->latest()
-            ->get();
-
-        return view('masyarakat.pages.riwayat_order', compact('orders'));
     }
 }
