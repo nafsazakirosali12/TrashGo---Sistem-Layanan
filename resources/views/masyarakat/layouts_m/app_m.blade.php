@@ -40,26 +40,19 @@
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- NAVBAR -->
    @include('masyarakat.layouts_m.navbar_m')
     <!-- End Main Top -->
 
     <!-- HOME -->
-    @yield('content')
-
+    <main class="flex-grow-1">
+        @yield('content')
+    </main>
+    
     <!-- FOOTER -->
     @include('masyarakat.layouts_m.footer_m')
-
-
-    <!-- Start copyright  -->
-    <div class="footer-copyright">
-        <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
-            <a href="https://html.design/">html design</a></p>
-    </div>
-    <!-- End copyright  -->
-
-    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+    <!-- END FOOTER -->
 
     <!-- ALL JS FILES -->
     <script src="{{ asset('assets_pengguna/js/jquery-3.2.1.min.js') }}"></script>
