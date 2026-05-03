@@ -17,8 +17,9 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.home_masyarakat') }}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.about_us') }}">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.order') }}">Order</a></li>
 
                         <!-- ICON POINT, NOTIFIKASI, DROPDOWN -->
                         <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.point') }}"><i class="fa fa-coins"></i></a></li>

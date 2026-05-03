@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasyarakatAuthController;
@@ -39,10 +40,11 @@ Route::middleware('masyarakat.auth')->group(function () {
    Route::get('/masyarakat/profile', [MasyarakatController::class, 'profile'])->name('masyarakat.profile_m');
    Route::get('/masyarakat/profile/edit', [MasyarakatController::class, 'editProfile'])->name('masyarakat.profile_m.edit_m');
    Route::post('/masyarakat/profile/update', [MasyarakatController::class, 'updateProfile'])->name('masyarakat.profile_m.update');
-   Route::get('point', [PointController::class, 'index'])->name('masyarakat.pages.point');
+   Route::get('/point', [PointController::class, 'index'])->name('masyarakat.pages.point');
    Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('masyarakat.pages.notifikasi');
-    Route::get('/riwayat_order', [OrderController::class, 'history'])->name('masyarakat.pages.riwayat_order');
-    
+   Route::get('/riwayat_order', [OrderController::class, 'history'])->name('masyarakat.pages.riwayat_order');
+   Route::get('/about_us', [AboutController::class, 'about_us'])->name('masyarakat.pages.about_us');
+   Route::get('/order', [OrderController::class, 'order'])->name('masyarakat.pages.order');
 });
 
 Route::middleware('petugas.auth')->group(function () {
