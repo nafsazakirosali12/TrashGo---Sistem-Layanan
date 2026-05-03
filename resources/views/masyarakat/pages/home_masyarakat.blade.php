@@ -90,7 +90,8 @@
                 
                 <!-- Organik -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="text-center p-4 border rounded h-100 shadow-sm">
+                    <div class="text-center p-4 border rounded h-100 shadow-sm"
+                        style="background-color: #e8f5e9; transition: 0.3s;">
                         <img class="img-fluid mb-3 rounded" src="{{ asset('assets_pengguna/images/j1.jpeg') }}" alt="Organik" />
                         
                         <h4 class="fw-semibold" style="font-size: 20px; color:#93a267;">Organik</h4>
@@ -105,7 +106,8 @@
 
                 <!-- Anorganik -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="text-center p-4 border rounded h-100 shadow-sm">
+                    <div class="text-center p-4 border rounded h-100 shadow-sm"
+                        style="background-color: #e8f5e9; transition: 0.3s;">
                         <img class="img-fluid mb-3 rounded" src="{{ asset('assets_pengguna/images/j2.jpeg') }}" alt="Anorganik" />
                         
                         <h4 class="fw-semibold" style="font-size: 20px; color:#93a267;">Anorganik</h4>
@@ -120,7 +122,8 @@
 
                 <!-- B3 -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="text-center p-4 border rounded h-100 shadow-sm">
+                    <div class="text-center p-4 border rounded h-100 shadow-sm"
+                        style="background-color: #e8f5e9; transition: 0.3s;">
                         <img class="img-fluid mb-3 rounded" src="{{ asset('assets_pengguna/images/j3.jpeg') }}" alt="B3" />
                         
                         <h4 class="fw-semibold" style="font-size: 20px; color:#93a267;">B3</h4>
