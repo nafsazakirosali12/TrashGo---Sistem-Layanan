@@ -62,3 +62,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// ============== REGISTER ================
+Route::get('/register', [AuthController::class, 'showRegister'])
+    ->middleware('guest:admin,masyarakat,petugas');
+
+Route::post('/register', [AuthController::class, 'register']);
