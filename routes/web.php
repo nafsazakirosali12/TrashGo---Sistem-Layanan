@@ -4,15 +4,14 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasyarakatAuthController;
 use App\Http\Controllers\MasyarakatController;
-use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PetugasAuthController;
-use App\Http\Controllers\PointController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\NotifikasiController;
 
 Route::get('/', function () {
     return view('masyarakat.pages.home_masyarakat');
@@ -39,10 +38,6 @@ Route::middleware('masyarakat.auth')->group(function () {
    Route::get('/masyarakat/profile', [MasyarakatController::class, 'profile'])->name('masyarakat.profile_m');
    Route::get('/masyarakat/profile/edit', [MasyarakatController::class, 'editProfile'])->name('masyarakat.profile_m.edit_m');
    Route::post('/masyarakat/profile/update', [MasyarakatController::class, 'updateProfile'])->name('masyarakat.profile_m.update');
-   Route::get('point', [PointController::class, 'index'])->name('masyarakat.pages.point');
-   Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('masyarakat.pages.notifikasi');
-    Route::get('/riwayat_order', [OrderController::class, 'history'])->name('masyarakat.pages.riwayat_order');
-    
 });
 
 Route::middleware('petugas.auth')->group(function () {
@@ -60,3 +55,5 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Notifikasi
+Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('notifikasi');
