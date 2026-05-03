@@ -14,6 +14,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PembayaranController;
 
 Route::get('/', function () {
     return view('masyarakat.pages.home_masyarakat');
@@ -44,7 +45,10 @@ Route::middleware('masyarakat.auth')->group(function () {
    Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('masyarakat.pages.notifikasi');
    Route::get('/riwayat_order', [OrderController::class, 'history'])->name('masyarakat.pages.riwayat_order');
    Route::get('/about_us', [AboutController::class, 'about_us'])->name('masyarakat.pages.about_us');
-   Route::get('/order', [OrderController::class, 'order'])->name('masyarakat.pages.order');
+   Route::get('/order', [OrderController::class, 'index'])->name('masyarakat.pages.order');
+   Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+   Route::get('/pembayaran/{order}', [PembayaranController::class, 'show'])->name('pembayaran.show');
+   Route::post('/pembayaran/{order}', [PembayaranController::class, 'store'])->name('pembayaran.store');
 });
 
 Route::middleware('petugas.auth')->group(function () {
