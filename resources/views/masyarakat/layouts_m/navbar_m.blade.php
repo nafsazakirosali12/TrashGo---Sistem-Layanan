@@ -26,14 +26,12 @@
                         <li class="nav-item">
                             <a class="nav-link position-relative" href="{{ route ('masyarakat.pages.notifikasi') }}">
                                 <i class="fa fa-bell"></i>
-
                                 @php
                                     $orders = $orders ?? collect();
                                     $pembayarans = $pembayarans ?? collect();
 
                                     $totalNotif = $orders->count() + $pembayarans->count();
                                 @endphp
-
                                 @if($totalNotif > 0)
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         {{ $totalNotif }}
