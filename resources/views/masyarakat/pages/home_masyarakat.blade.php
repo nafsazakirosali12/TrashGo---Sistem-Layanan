@@ -4,37 +4,37 @@
 <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
             <li class="text-center">
-                <img src="assets_pengguna/images/banner-01.jpg" alt="">
+                <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                            <h1 class="m-b-20"><strong>Welcome To <br> TrashGo!</strong></h1>
+                            <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
+                            <p><a class="btn hvr-hover" href="#">Lihat Layanan</a></p>
                         </div>
                     </div>
                 </div>
             </li>
             <li class="text-center">
-                <img src="assets_pengguna/images/banner-02.jpg" alt="">
+                <img src="{{ asset('assets_pengguna/images/db2.jpeg') }}" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                            <h1 class="m-b-20"><strong>Welcome To <br> TrashGo!</strong></h1>
+                            <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
+                            <p><a class="btn hvr-hover" href="#">Lihat Layanan</a></p>
                         </div>
                     </div>
                 </div>
             </li>
             <li class="text-center">
-                <img src="assets_pengguna/images/banner-03.jpg" alt="">
+                <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Freshshop</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                            <h1 class="m-b-20"><strong>Welcome To <br> TrashGo!</strong></h1>
+                            <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
+                            <p><a class="btn hvr-hover" href="#">Lihat Layanan</a></p>
                         </div>
                     </div>
                 </div>
@@ -47,49 +47,95 @@
     </div>
     <!-- End Slider -->
 
-    <!-- Start Categories  -->
+    <!-- Start Keungggulan  -->
     <div class="categories-shop">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/categories_img_01.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Lorem ipsum dolor</a>
+                        <img class="img-fluid" src="{{ asset('assets_pengguna/images/keunggulan1.jpeg') }}" alt="">
+                        <a class="btn hvr-hover" href="#">Praktis & Mudah Digunakan</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/categories_img_02.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Lorem ipsum dolor</a>
+                        <img class="img-fluid" src="{{ asset('assets_pengguna/images/keunggulan2.jpeg') }}" alt="">
+                        <a class="btn hvr-hover" href="#">Layanan Cepat & Tepat Waktu</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/categories_img_03.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Lorem ipsum dolor</a>
+                        <img class="img-fluid" src="{{ asset('assets_pengguna/images/keunggulan3.jpeg') }}" alt="">
+                        <a class="btn hvr-hover" href="#">Pembayaran Fleksibel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Keunggulan -->
+	
+    <!-- Start Categories -->
+    <div class="box-add-products py-5">
+        <div class="container">
+
+            <!-- Judul Section -->
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="font-size: 32px;">Kategori Layanan</h2>
+                <p class="text-muted" style="font-size: 16px;">
+                    Pilih jenis layanan pengangkutan sampah sesuai kebutuhan Anda dengan mudah dan praktis.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                
+                <!-- Organik -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="text-center p-4 border rounded h-100 shadow-sm">
+                        <img class="img-fluid mb-3 rounded" src="{{ asset('assets_pengguna/images/j1.jpeg') }}" alt="Organik" />
+                        
+                        <h4 class="fw-semibold" style="font-size: 20px; color:#93a267;">Organik</h4>
+                        
+                        <p class="text-muted" style="font-size: 15px; line-height: 1.6;">
+                            Layanan pengangkutan sampah organik seperti sisa makanan, daun, dan limbah dapur 
+                            yang mudah terurai secara alami serta dapat diangkut oleh petugas sesuai dengan jadwal
+                            yang di inginkan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Anorganik -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="text-center p-4 border rounded h-100 shadow-sm">
+                        <img class="img-fluid mb-3 rounded" src="{{ asset('assets_pengguna/images/j2.jpeg') }}" alt="Anorganik" />
+                        
+                        <h4 class="fw-semibold" style="font-size: 20px; color:#93a267;">Anorganik</h4>
+                        
+                        <p class="text-muted" style="font-size: 15px; line-height: 1.6;">
+                            Layanan pengangkutan untuk sampah anorganik seperti plastik, kaca, kaleng, dan logam yang 
+                            sulit terurai. Sampah akan dipilah dan didaur ulang agar dapat digunakan kembali 
+                            serta mengurangi pencemaran lingkungan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- B3 -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="text-center p-4 border rounded h-100 shadow-sm">
+                        <img class="img-fluid mb-3 rounded" src="{{ asset('assets_pengguna/images/j3.jpeg') }}" alt="B3" />
+                        
+                        <h4 class="fw-semibold" style="font-size: 20px; color:#93a267;">B3</h4>
+                        
+                        <p class="text-muted" style="font-size: 15px; line-height: 1.6;">
+                            Layanan pengangkutan khusus untuk limbah B3 (Bahan Berbahaya dan Beracun) seperti baterai, 
+                            bahan kimia, dan limbah berbahaya lainnya. Pengelolaan dilakukan dengan standar 
+                            keamanan tinggi untuk melindungi kesehatan dan lingkungan.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- End Categories -->
-	
-	<div class="box-add-products">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-12">
-					<div class="offer-box-products">
-						<img class="img-fluid" src="images/add-img-01.jpg" alt="" />
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-12">
-					<div class="offer-box-products">
-						<img class="img-fluid" src="images/add-img-02.jpg" alt="" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
     <!-- Start Products  -->
     <div class="products-box">
