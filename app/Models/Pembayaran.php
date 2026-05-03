@@ -11,8 +11,9 @@ class Pembayaran extends Model
     protected $fillable = [
         'masyarakat_id',
         'order_id',
-        'point_id',
         'metode_pembayaran',
+        'pakai_point',
+        'point_digunakan',
         'total_pembayaran',
         'bukti_pembayaran',
         'tanggal_pembayaran',
@@ -27,10 +28,5 @@ class Pembayaran extends Model
     public function masyarakat()
     {
         return $this->belongsTo(Masyarakat::class, 'masyarakat_id', 'id');
-    }
-
-    public function point()
-    {
-        return $this->belongsTo(Point::class, 'point_id');
     }
 }
