@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Point;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -62,5 +64,24 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function update_status_point($id)
+    {
+        $order = Order::findOrfail($id);
+        $order->status = 'completed';
+        $order->save();
+
+        $cek_point = Point::where('order_id', $order->id)->where('total_point', 10)->first();
+        if(!$cek_point){
+            Point::create([
+                'masyarakat_id' => $order->masyarakat_id,
+                'order_id' => $order->id,
+                'total_point' => 10,
+                'tanggal_point' => Carbon::now(),
+            ]);
+        }
+        
+        return redirect()->back()->with('success', 'Order berstatus completed dan 10 Poin telah diberikan!');
     }
 }

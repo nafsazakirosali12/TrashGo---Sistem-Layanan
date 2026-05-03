@@ -13,8 +13,8 @@ return new class extends Migration
     {
        Schema::create('points', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('masyarakat_id')->constrained('masyarakats')->cascadeOnDelete();
             $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
-            $table->foreignId('pickup_id')->constrained('pickups')->cascadeOnDelete();
             $table->integer('total_point');
             $table->dateTime('tanggal_point');
             $table->timestamps();
