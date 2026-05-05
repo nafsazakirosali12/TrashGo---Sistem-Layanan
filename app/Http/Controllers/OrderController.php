@@ -86,7 +86,7 @@ class OrderController extends Controller
         $orders = Order::with(['kategori', 'pembayaran'])
             ->where('masyarakat_id', auth('masyarakat')->id())
             ->latest()
-            ->paginate(12); 
+            ->paginate(9); 
 
         return view('masyarakat.pages.riwayat_order', compact('orders'));
     }
