@@ -83,13 +83,13 @@ class OrderController extends Controller
 
     public function history()
     {
-        $orders = Order::where('masyarakat_id', auth('masyarakat')->id())
+        $orders = Order::with(['kategori', 'pembayaran'])
+            ->where('masyarakat_id', auth('masyarakat')->id())
             ->latest()
-            ->get();
+            ->paginate(12); 
 
         return view('masyarakat.pages.riwayat_order', compact('orders'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
