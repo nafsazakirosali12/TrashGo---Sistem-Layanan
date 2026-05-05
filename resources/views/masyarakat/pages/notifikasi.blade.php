@@ -10,7 +10,7 @@
             Notifikasi
         </h1>
 
-        <a href="/" class="btn btn-outline-secondary btn-sm">
+        <a href="/" onclick="location.reload()" class="btn btn-outline-secondary btn-sm">
             <i class="fa fa-arrow-left me-1"></i> Kembali
         </a>
     </div>

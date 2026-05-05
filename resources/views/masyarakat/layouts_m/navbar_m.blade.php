@@ -29,10 +29,17 @@
                                 <i class="fa fa-bell"></i>
 
                                 @php
-                                    $orders = $orders ?? collect();
-                                    $pembayarans = $pembayarans ?? collect();
+                                    $lastRead = session('last_read_notif');
 
-                                    $totalNotif = $orders->count() + $pembayarans->count();
+                                    $newOrders = $orders->filter(function ($o) use ($lastRead) {
+                                        return !$lastRead || $o->created_at > $lastRead;
+                                    });
+
+                                    $newPembayarans = $pembayarans->filter(function ($p) use ($lastRead) {
+                                        return !$lastRead || $p->created_at > $lastRead;
+                                    });
+
+                                    $totalNotif = $newOrders->count() + $newPembayarans->count();
                                 @endphp
 
                                 @if($totalNotif > 0)
