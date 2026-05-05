@@ -2,9 +2,34 @@
 
 @section('content')
 
+<style>
+    .btn-trashgo {
+        background-color: #B7C43A;
+        border: none;
+        color: white;
+        transition: 0.3s;
+    }
+
+    .btn-trashgo:hover {
+        background-color: #9EAA2F; /* lebih gelap dikit */
+        color: white;
+    }
+</style>
+
 <div class="container mt-5 mb-5 pb-5">
 
     <h2>Halaman Pembayaran</h2>
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <div class="card p-4">
 
@@ -53,6 +78,7 @@
             <div id="inputPoint" style="display:none;">
                 <label>Masukkan Point</label>
                 <input type="number" name="point_digunakan" id="pointInput" class="form-control" placeholder="Minimal 10">
+                <small id="errorPoint" class="text-danger"></small>
             </div>
 
             <!-- TOTAL BAYAR -->
@@ -69,8 +95,7 @@
 
             <br>
 
-           <button class="btn btn-primary w-100"> Bayar Sekarang </button>
-
+           <button class="btn btn-trashgo w-100"> Bayar Sekarang </button>
         </form>
     </div>
 </div>
@@ -102,6 +127,12 @@
 
     pakaiPoint.addEventListener('change', function(){
         inputPoint.style.display = this.checked ? 'block' : 'none';
+
+        if(!this.checked){
+            pointInput.value = '';
+            document.getElementById('errorPoint').innerText = '';
+        }
+
         updateTotal();
     });
 
@@ -109,6 +140,14 @@
 
     function updateTotal(){
         let point = parseInt(pointInput.value) || 0;
+        let errorText = document.getElementById('errorPoint');
+
+        if(point > 0 && point < 10){
+            errorText.innerText = "Minimal 10 point!";
+        } else {
+            errorText.innerText = "";
+        }
+
         let diskon = point * 10;
         let hasil = total - diskon;
 
@@ -116,6 +155,16 @@
 
         totalBayar.innerText = 'Rp ' + hasil.toLocaleString('id-ID');
     }
+
+    document.querySelector("form").addEventListener("submit", function(e){
+        let point = parseInt(pointInput.value) || 0;
+
+        if(pakaiPoint.checked && point < 10){
+            e.preventDefault();
+            alert("Point minimal 10!");
+        }
+    });
 </script>
+
 
 @endsection

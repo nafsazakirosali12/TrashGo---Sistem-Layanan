@@ -52,7 +52,7 @@
                             <a href="{{ route('masyarakat.pages.home_masyarakat') }}" class="text-white text-decoration-none">Home</a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('masyarakat.pages.home_masyarakat') }}" class="text-white text-decoration-none">About Us</a>
+                            <a href="{{ route('masyarakat.pages.about_us') }}" class="text-white text-decoration-none">About Us</a>
                         </li>
                         <li class="mb-2">
                             <a href="{{ route('masyarakat.pages.order') }}" class="text-white text-decoration-none">Order</a>

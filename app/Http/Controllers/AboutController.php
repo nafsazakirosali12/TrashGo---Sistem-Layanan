@@ -10,4 +10,6 @@ class AboutController extends Controller
     {
         return view('masyarakat.pages.about_us');
     }
+
 }
+
