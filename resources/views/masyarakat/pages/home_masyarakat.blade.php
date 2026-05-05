@@ -90,8 +90,7 @@
                 
                 <!-- Organik -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="text-center p-4 border rounded h-100 shadow-sm"
-                        style="background-color: #e8f5e9; transition: 0.3s;">
+                    <div class="kategori-card text-center p-4 border rounded h-100 shadow-sm">
                         <img class="img-fluid mb-3 rounded" src="{{ asset('assets_pengguna/images/j1.jpeg') }}" alt="Organik" />
                         
                         <h4 class="fw-semibold" style="font-size: 20px; color:#93a267;">Organik</h4>
@@ -106,8 +105,7 @@
 
                 <!-- Anorganik -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="text-center p-4 border rounded h-100 shadow-sm"
-                        style="background-color: #e8f5e9; transition: 0.3s;">
+                    <div class="kategori-card text-center p-4 border rounded h-100 shadow-sm">
                         <img class="img-fluid mb-3 rounded" src="{{ asset('assets_pengguna/images/j2.jpeg') }}" alt="Anorganik" />
                         
                         <h4 class="fw-semibold" style="font-size: 20px; color:#93a267;">Anorganik</h4>
@@ -122,8 +120,7 @@
 
                 <!-- B3 -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="text-center p-4 border rounded h-100 shadow-sm"
-                        style="background-color: #e8f5e9; transition: 0.3s;">
+                    <div class="kategori-card text-center p-4 border rounded h-100 shadow-sm">
                         <img class="img-fluid mb-3 rounded" src="{{ asset('assets_pengguna/images/j3.jpeg') }}" alt="B3" />
                         
                         <h4 class="fw-semibold" style="font-size: 20px; color:#93a267;">B3</h4>
@@ -140,279 +137,190 @@
     </div>
     <!-- End Categories -->
 
-    <!-- Start Products  -->
-    <div class="products-box">
+    <!-- START FAQ -->
+     <div class="products-box">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="title-all text-center">
-                        <h1>Fruits & Vegetables</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
-                    </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>FAQ</h1>
+                    <p>Pertanyaan yang sering diajukan oleh pengguna TrashGo</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="special-menu text-center">
-                        <div class="button-group filter-button-group">
-                            <button class="active" data-filter="*">All</button>
-                            <button data-filter=".top-featured">Top featured</button>
-                            <button data-filter=".best-seller">Best seller</button>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="accordion" id="faqAccordion">
+
+                    <!-- FAQ 1 -->
+                     <div class="card mb-3">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#faq1">
+                                Apa itu TrashGo?
+                            </a>
+                        </div>
+                        <div id="faq1" class="collapse show" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                TrashGo! adalah platform digital yang membantu masyarakat dalam mengelola sampah secara lebih mudah, praktis, dan terintegrasi.
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="row special-list">
-                <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                            <img src="assets_pengguna/images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
+                    <!-- FAQ 2 -->
+                     <div class="card mb-3">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#faq2">
+                                Bagaimana cara melakukan order?
+                            </a>
                         </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $7.79</h5>
+                        <div id="faq2" class="collapse" data-parent="#faqAccordion">
+                            <ul class="card-body">
+                                Cara melakukan order:
+                                <li>1. Klik menu "Order" pada navbar.</li>
+                                <li>2. Isi formulis yang tersedia meliputi:</li>
+                                <li>- Kategori layanan</li>
+                                <li>- Lokasi Penjemputan</li>
+                                <li>- Tanggal dan waktu</li>
+                                <li>- Catatan (opsional)</li>
+                                <li>3. Setelah semua data terisi, klik tombol "Pesan Sekarang"</li>
+                                <li>4. Anda akan diarahkan ke halaman pembayaran</li>
+                                <li>5. Pilih metode pembayaran yang tersedia</li>
+                                <li>Jika menggunakan metode transfer, silakan kirim/upload bukti pembayaran</li>
+                                <li>Setelah selesai, klik tombol **Selesai** untuk menyelesaikan proses order</li>
+                            </ul>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 special-grid top-featured">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="new">New</p>
-                            </div>
-                            <img src="assets_pengguna/images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
+                    <!-- FAQ 3 -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#faq3">
+                                Apakah layanan ini berbayar?
+                            </a>
                         </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $9.79</h5>
+                        <div id="faq3" class="collapse" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Ya, layanan TrashGo! bersifat berbayar. Setiap kategori layanan memiliki tarif yang sama,
+                                yaitu sebesar Rp10.000 untuk satu kali pengangkutan.
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 special-grid top-featured">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                            <img src="assets_pengguna/images/img-pro-03.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
+                    <!-- FAQ 4 -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#faq4">
+                              Apakah saya bisa menentukan jadwal pengambilan sendiri?
+                            </a>
                         </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $10.79</h5>
+                        <div id="faq4" class="collapse" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Ya, pengguna dapat menentukan jadwal pengambilan sampah sesuai kebutuhan
+                                <p>Anda dapat memilih tanggal dan waktu yang diinginkan saat mengisi formulir order, sehingga layanan menjadi lebih fleksibel.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                            <img src="assets_pengguna/images/img-pro-04.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
+                    <!-- FAQ 5 -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#faq5">
+                              Apakah saya mendapatkan point setelah melakukan order?
+                            </a>
                         </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $15.79</h5>
+                        <div id="faq5" class="collapse" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Ya, setiap pengguna akan mendapatkan point setelah berhasil melakukan order layanan
+                                <p>Point bisa ditukar pada saat pembayaran, jika mempunyai minimal 10 point</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Products  -->
-
-    <!-- Start Blog  -->
-    <div class="latest-blog">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="title-all text-center">
-                        <h1>latest blog</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img class="img-fluid" src="assets_pengguna/images/blog-img.jpg" alt="" />
-                        </div>
-                        <div class="blog-content">
-                            <div class="title-blog">
-                                <h3>Fusce in augue non nisi fringilla</h3>
-                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                            </div>
-                            <ul class="option-blog">
-                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#"><i class="far fa-comments"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img class="img-fluid" src="assets_pengguna/images/blog-img-01.jpg" alt="" />
-                        </div>
-                        <div class="blog-content">
-                            <div class="title-blog">
-                                <h3>Fusce in augue non nisi fringilla</h3>
-                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                            </div>
-                            <ul class="option-blog">
-                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#"><i class="far fa-comments"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img class="img-fluid" src="assets_pengguna/images/blog-img-02.jpg" alt="" />
-                        </div>
-                        <div class="blog-content">
-                            <div class="title-blog">
-                                <h3>Fusce in augue non nisi fringilla</h3>
-                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                            </div>
-                            <ul class="option-blog">
-                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#"><i class="far fa-comments"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-    <!-- End Blog  -->
-    <!-- Start Instagram Feed  -->
-    <div class="instagram-box">
+        </div>
+
+     <!-- END FAQ -->
+
+    <!-- Start Galeri  -->
+    <div style="background-color: #f8f9fa; width:100vw; margin-left:calc(-50vw + 50%);" class="py-5">
+    <div class="container">
+        <!-- judul -->
+         <div class="text-center mb-5">
+                <h2 class="fw-bold" style="font-size: 32px;">Galeri TrashGo!</h2>
+                <p class="text-muted" style="font-size: 16px;">
+                    Dokumentasi kegiatan layanan pengelolaan sampah
+            </div>
+
+        <!-- slide -->
         <div class="main-instagram owl-carousel owl-theme">
-            <div class="item">
+            <div class="item px-2">
                 <div class="ins-inner-box">
-                    <img src="assets_pengguna/images/instagram-img-01.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="{{ asset('assets_pengguna/images/g1.jpeg') }}" alt="">
                 </div>
             </div>
             <div class="item">
                 <div class="ins-inner-box">
-                    <img src="assets_pengguna/images/instagram-img-02.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="{{ asset('assets_pengguna/images/g2.jpeg') }}" alt="">
                 </div>
             </div>
-            <div class="item">
+            <div class="item px-2">
                 <div class="ins-inner-box">
-                    <img src="assets_pengguna/images/instagram-img-03.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="{{ asset('assets_pengguna/images/g3.jpeg') }}" alt="">
                 </div>
             </div>
-            <div class="item">
+            <div class="item px-2">
                 <div class="ins-inner-box">
-                    <img src="assets_pengguna/images/instagram-img-04.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
-            <div class="item">
+            <div class="item px-2">
                 <div class="ins-inner-box">
-                    <img src="assets_pengguna/images/instagram-img-05.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="{{ asset('assets_pengguna/images/db2.jpeg') }}" alt="">
                 </div>
             </div>
-            <div class="item">
+            <div class="item px-2">
                 <div class="ins-inner-box">
-                    <img src="assets_pengguna/images/instagram-img-06.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
-            <div class="item">
+            <div class="item px-2">
                 <div class="ins-inner-box">
-                    <img src="assets_pengguna/images/instagram-img-07.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
-            <div class="item">
+            <div class="item px-2">
                 <div class="ins-inner-box">
-                    <img src="assets_pengguna/images/instagram-img-08.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
-            <div class="item">
+            <div class="item px-2">
                 <div class="ins-inner-box">
-                    <img src="assets_pengguna/images/instagram-img-09.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
-            <div class="item">
+            <div class="item px-2">
                 <div class="ins-inner-box">
-                    <img src="assets_pengguna/images/instagram-img-05.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+    $(document).ready(function(){
+        $('#faqAccordion .collapse').on('show.bs.collapse', function () {
+            // $('.card-header').removeClass('active');
+            // $(this).prev('.card-header').addClass('active');
+    // $('#faqAccordion .collapse').on('hide.bs.collapse', function () {
+    // 
+    $('#faqAccordion .card-header').removeClass('active');
+        $(this).prev('.card-header').removeClass('active');
+    });
+
+});
+</script>
 @endsection
