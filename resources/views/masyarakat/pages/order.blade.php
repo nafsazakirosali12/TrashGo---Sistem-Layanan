@@ -2,6 +2,20 @@
 
 @section('content')
 
+<style>
+    .btn-trashgo {
+        background-color: #B7C43A;
+        border: none;
+        color: white;
+        transition: 0.3s;
+    }
+
+    .btn-trashgo:hover {
+        background-color: #9EAA2F; /* lebih gelap dikit */
+        color: white;
+    }
+</style>
+
 <div class="container py-5 mb-5 pb-5">
 
     <div class="row justify-content-center">
@@ -12,7 +26,7 @@
             <div class="card shadow-sm border-0 rounded-3">
 
                 <div class="card-header bg-white border-0">
-                    <h3 class="mb-0">Buat Pesanan</h3>
+                    <h3 class="mb-0">Pesanan Layanan TrashGo!</h
                     <small class="text-muted">Isi data dengan benar sebelum checkout</small>
                 </div>
 
@@ -71,7 +85,7 @@
                         </div>
 
                         <!-- BUTTON -->
-                        <button type="submit" class="btn btn-success w-100 py-2">
+                        <button type="submit" class="btn btn-trashgo w-100 py-2">
                             Pesan Sekarang
                         </button>
 
