@@ -67,8 +67,6 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Notifikasi
-Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('masyarakat.pages.notifikasi')->middleware('auth');
 
 Route::get('/order', [OrderController::class, 'index'])->name('masyarakat.pages.order');
 
