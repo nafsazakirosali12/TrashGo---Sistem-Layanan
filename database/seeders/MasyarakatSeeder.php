@@ -14,9 +14,15 @@ class MasyarakatSeeder extends Seeder
     public function run(): void
     {
         Masyarakat::create([
-        'nama_masyarakat' => 'Rizkania',
-        'email' => 'rizka@gmail.com',
-        'password' => 'rizka123',
-    ]);
+            'nama_masyarakat' => 'Rizkania',
+            'email' => 'rizka@gmail.com',
+            'password' => 'rizka123',
+        ]);
+
+        // Masyarakat::create([
+        //     'nama_masyarakat' => 'Ananda',
+        //     'email' => 'nana@gmail.com',
+        //     'password' => 'nana123',
+        // ]);
     }
 }
