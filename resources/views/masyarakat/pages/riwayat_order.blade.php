@@ -3,147 +3,217 @@
 @section('content')
 
 <style>
-.table-custom {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+body {
+    background: #f4f7f6;
 }
 
-.table-custom th {
-    font-size: 13px;
-    background: #f8f9fa;
+.order-card {
     border: none;
+    border-radius: 16px;
+    padding: 16px;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    transition: 0.25s;
+    position: relative;
+    height: 100%;
 }
 
-.table-custom td {
-    font-size: 13px;
-    border-top: 1px solid #eee;
+.order-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #28a745;
 }
 
-/* STATUS WARNA (SOFT, GAK NORAK) */
-.status-pending {
-    color: #6c757d;
+.order-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+.badge-status {
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 20px;
     font-weight: 500;
-}
-
-.status-pickup {
-    color: #b08900;
-    font-weight: 500;
-}
-
-.status-selesai {
-    color: #198754;
-    font-weight: 500;
-}
-
-/* PEMBAYARAN */
-.pay-pending { color: #6c757d; }
-.pay-konfirmasi { color: #b08900; }
-.pay-paid { color: #198754; }
-.pay-failed { color: #dc3545; }
-
-.catatan {
-    max-width: 200px;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+}
+
+.badge-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.badge-processing {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.badge-completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-failed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.small-text {
+    font-size: 13px;
+    color: #555;
+}
+
+.label {
+    font-weight: 600;
+    color: #333;
+}
+
+.text-box {
+    min-height: 40px;
+}
+
+hr {
+    margin: 10px 0;
+}
+
+.info-grid,
+.payment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.info-grid div,
+.payment-grid div {
+    display: flex;
+    flex-direction: column;
 }
 </style>
 
+<!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Riwayat Order</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="nav-link" href="{{ route('masyarakat.pages.order') }}">Order</a></li>
+                        <li class="breadcrumb-item active">Riwayat Order</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- End All Title Box -->
+
 <div class="container mt-4 mb-5 pb-5">
-
-    <h1 class="mb-3 fw-bold">Riwayat Order</h1>
-
+    <br><br>
     @if($orders->isEmpty())
-
         <div class="alert alert-warning text-center">
             Belum ada riwayat order
         </div>
-
     @else
 
-    <div class="table-responsive table-custom">
+    <div class="row g-3">
 
-        <table class="table mb-0 align-middle">
+        @foreach($orders as $order)
 
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Kategori</th>
-                    <th>Tanggal</th>
-                    <th>Waktu</th>
-                    <th>Alamat</th>
-                    <th>Catatan</th>
-                    <th>Total</th>
-                    <th>Status Order</th>
-                    <th>Status Pembayaran</th>
-                </tr>
-            </thead>
+        @php
+            $status = strtolower($order->status);
+            $payStatus = strtolower(optional($order->pembayaran)->status ?? '');
+        @endphp
 
-            <tbody>
+        <div class="col-md-4">
 
-                @foreach($orders as $index => $order)
+            <div class="order-card h-100">
 
-                <tr>
+                <!-- HEADER -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <b class="small-text">
+                        {{ $order->kategori->nama_kategori ?? '-' }}
+                    </b>
 
-                    <td>{{ $orders->firstItem() + $index }}</td>
+                    <span class="badge-status
+                        {{ $status == 'pending' ? 'badge-pending' : '' }}
+                        {{ $status == 'processing' ? 'badge-processing' : '' }}
+                        {{ $status == 'completed' ? 'badge-completed' : '' }}
+                    ">
+                        {{ $order->status }}
+                    </span>
+                </div>
 
-                    <td>{{ $order->kategori->nama_kategori ?? '-' }}</td>
+                <small class="text-muted">
+                    {{ $order->tanggal }} • {{ $order->waktu }}
+                </small>
 
-                    <td>{{ $order->tanggal }}</td>
+                <hr>
 
-                    <td>{{ $order->waktu }}</td>
+                <!-- INFO -->
+                <div class="info-grid small-text">
+                    <div>
+                        <span class="label">Alamat:</span>
+                        <span>{{ $order->lokasi }}</span>
+                    </div>
 
-                    <td>{{ $order->lokasi }}</td>
+                    <div>
+                        <span class="label">Catatan:</span>
+                        <span>{{ $order->catatan ?? '-' }}</span>
+                    </div>
 
-                    <td class="catatan">
-                        {{ \Illuminate\Support\Str::limit($order->catatan, 40) ?? '-' }}
-                    </td>
+                </div>
 
-                    <td>
-                        Rp {{ number_format($order->total_harga,0,',','.') }}
-                    </td>
+                <hr>
 
-                    {{-- STATUS ORDER --}}
-                    <td>
-                        @if($order->status == 'pending')
-                            <span class="status-pending">pending</span>
-                        @elseif($order->status == 'pickup')
-                            <span class="status-pickup">pickup</span>
-                        @elseif($order->status == 'selesai')
-                            <span class="status-selesai">selesai</span>
-                        @else
-                            <span>{{ $order->status }}</span>
-                        @endif
-                    </td>
+                <!-- HEADER PEMBAYARAN -->
+                <div class="d-flex justify-content-between align-items-center mb-1 small-text">
+                    
+                    <span class="label">Pembayaran</span>
 
-                    {{-- STATUS PEMBAYARAN --}}
-                    <td>
-                        @if(optional($order->pembayaran)->status == 'pending')
-                            <span class="pay-pending">pending</span>
-                        @elseif(optional($order->pembayaran)->status == 'menunggu_konfirmasi')
-                            <span class="pay-konfirmasi">menunggu_konfirmasi</span>
-                        @elseif(optional($order->pembayaran)->status == 'paid')
-                            <span class="pay-paid">paid</span>
-                        @elseif(optional($order->pembayaran)->status == 'failed')
-                            <span class="pay-failed">failed</span>
-                        @else
-                            <span>-</span>
-                        @endif
-                    </td>
+                    <span class="badge-status
+                        {{ $payStatus == 'pending' ? 'badge-pending' : '' }}
+                        {{ $payStatus == 'success' ? 'badge-success' : '' }}
+                        {{ $payStatus == 'failed' ? 'badge-failed' : '' }}
+                    ">
+                        {{ optional($order->pembayaran)->status ?? '-' }}
+                    </span>
 
-                </tr>
+                </div>
 
-                @endforeach
+                <!-- PEMBAYARAN -->
+                <div class="payment-grid small-text">
+                    <div>
+                        <span class="label">Metode:</span>
+                        <span>{{ strtoupper(optional($order->pembayaran)->metode_pembayaran ?? '-') }}</span>
+                    </div>
 
-            </tbody>
+                    <div>
+                        <span class="label">Total:</span>
+                        <span>
+                            <b style="color:#28a745;">
+                                Rp {{ number_format($order->total_harga,0,',','.') }}
+                            </b>
+                        </span>
+                    </div>
 
-        </table>
+                </div>
+
+            </div>
+
+        </div>
+
+        @endforeach
 
     </div>
 
-    {{-- PAGINATION --}}
+    <!-- PAGINATION -->
     <div class="d-flex justify-content-center mt-4">
         {{ $orders->links() }}
     </div>
