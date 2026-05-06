@@ -2748,7 +2748,7 @@ ul.cart-list > li.total > .btn:hover {
 
 /* ===== KATEGORI CARD ===== */
 .kategori-card {
-    background-color: #f8f9fa; /* abu tema */
+    background-color: #f8f9fa;
     transition: all 0.3s ease;
     cursor: pointer;
 }
