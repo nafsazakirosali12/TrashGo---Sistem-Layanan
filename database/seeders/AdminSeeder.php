@@ -19,5 +19,10 @@ class AdminSeeder extends Seeder
         'email' => 'recycode@gmail.com',
         'password' => 'layanan222',
     ]);
+        Admin::create([
+            'nama_admin' => 'lia',
+            'email' => 'lia@gmail.com',
+            'password' => 'liaimut18',
+        ]);
     }
 }

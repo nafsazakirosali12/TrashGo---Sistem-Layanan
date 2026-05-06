@@ -29,11 +29,18 @@ class AppServiceProvider extends ServiceProvider
     {
 
          View::composer('*', function ($view) {
-        $orders = Order::all();
-        $pembayarans = Pembayaran::all();
+            if (auth('masyarakat')->check()) {
+                $user = auth('masyarakat')->user();
+
+                $orders = Order::where('masyarakat_id', $user->id)->get();
+                $pembayarans = Pembayaran::where('masyarakat_id', $user->id)->get();
+            } else {
+                $orders = collect();
+                $pembayarans = collect();
+            }
 
         $view->with('orders', $orders)
-             ->with('pembayarans', $pembayarans);
+            ->with('pembayarans', $pembayarans);
     });
 
         Paginator::useBootstrap();

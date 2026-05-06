@@ -9,17 +9,23 @@ use App\Models\Pembayaran;
 class NotifikasiController extends Controller
 {
     public function index()
-    {
-        $lastTimeOrder = Order::latest()->first()?->created_at;
-        $lastTimePembayaran = Pembayaran::latest()->first()?->created_at;
+        {
+            $user = auth('masyarakat')->user();
 
-        $lastTime = collect([$lastTimeOrder, $lastTimePembayaran])->max();
+            $orders = Order::where('masyarakat_id', $user->id)->latest()->get();
+            $pembayarans = Pembayaran::where('masyarakat_id', $user->id)->latest()->get();
 
-        session(['last_read_notif' => $lastTime]);
+            // simpan waktu terakhir baca
+            $lastTimeOrder = $orders->first()?->created_at;
+            $lastTimePembayaran = $pembayarans->first()?->created_at;
 
-        $orders = Order::latest()->get();
-        $pembayarans = Pembayaran::latest()->get();
+            $lastTime = collect([$lastTimeOrder, $lastTimePembayaran])->max();
 
-        return view('masyarakat.pages.notifikasi', compact('orders', 'pembayarans'));
-    }
+            $user = auth('masyarakat')->user();
+
+            $user->last_read_notif = $lastTime; 
+            $user->save();
+
+            return view('masyarakat.pages.notifikasi', compact('orders', 'pembayarans'));
+        }
 }
