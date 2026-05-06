@@ -35,7 +35,7 @@
      @include('layouts.navbar')
     <!-- End Navbar -->
 
-    <div class="flex-fill">
+    <div class="flex-fill mt-4">
     <!-- dashboard -->
      @yield('content')
     <!-- end dashboard -->
