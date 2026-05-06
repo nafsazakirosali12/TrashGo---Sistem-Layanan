@@ -21,20 +21,24 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.about_us') }}">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.order') }}">Order</a></li>
                         
-
                         <!-- ICON POINT, NOTIFIKASI, DROPDOWN -->
                         <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.point') }}"><i class="fa fa-coins"></i></a></li>
                         <li class="nav-item">
                             <a class="nav-link position-relative" href="{{ route ('masyarakat.pages.notifikasi') }}">
                                 <i class="fa fa-bell"></i>
-
                                 @php
-                                    $orders = $orders ?? collect();
-                                    $pembayarans = $pembayarans ?? collect();
+                                    $lastRead = session('last_read_notif');
 
-                                    $totalNotif = $orders->count() + $pembayarans->count();
+                                    $newOrders = $orders->filter(function ($o) use ($lastRead) {
+                                        return !$lastRead || $o->created_at > $lastRead;
+                                    });
+
+                                    $newPembayarans = $pembayarans->filter(function ($p) use ($lastRead) {
+                                        return !$lastRead || $p->created_at > $lastRead;
+                                    });
+
+                                    $totalNotif = $newOrders->count() + $newPembayarans->count();
                                 @endphp
-
                                 @if($totalNotif > 0)
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                         {{ $totalNotif }}

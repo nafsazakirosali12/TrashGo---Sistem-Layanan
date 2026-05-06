@@ -10,7 +10,7 @@
             Notifikasi
         </h1>
 
-        <a href="/" class="btn btn-outline-secondary btn-sm">
+        <a href="/" onclick="location.reload()" class="btn btn-outline-secondary btn-sm">
             <i class="fa fa-arrow-left me-1"></i> Kembali
         </a>
     </div>
@@ -26,14 +26,15 @@
 
         {{-- ICON --}}
         <div class="p-3 rounded-circle 
-            @if($order->status == 'dikirim') bg-warning-subtle
-            @elseif($order->status == 'selesai') bg-success-subtle
-            @else bg-secondary-subtle
+            @if($order->status == 'pending') bg-secondary-subtle
+            @elseif($order->status == 'processing') bg-warning-subtle
+            @elseif($order->status == 'completed') bg-success-subtle
             @endif">
-            <i class="fa fa-truck 
-                @if($order->status == 'dikirim') text-warning
-                @elseif($order->status == 'selesai') text-success
-                @else text-secondary
+
+            <i class="fa 
+                @if($order->status == 'pending') fa-clock text-secondary
+                @elseif($order->status == 'processing') fa-truck text-warning
+                @elseif($order->status == 'completed') fa-check-circle text-success
                 @endif">
             </i>
         </div>
@@ -47,6 +48,17 @@
 
             <p class="mb-1 text-muted">
                 Status: {{ ucfirst($order->status) }}
+            </p>
+
+            {{-- NARASI --}}
+            <p class="mb-0 text-muted small">
+                @if($order->status == 'pending')
+                    Your order is waiting for confirmation.
+                @elseif($order->status == 'processing')
+                    Your order is currently being processed.
+                @elseif($order->status == 'completed')
+                    Your order has been completed successfully.
+                @endif
             </p>
         </div>
 
@@ -70,14 +82,15 @@
 
         {{-- ICON --}}
         <div class="p-3 rounded-circle 
-            @if($p->status == 'lunas') bg-success-subtle
-            @elseif($p->status == 'pending') bg-warning-subtle
-            @else bg-danger-subtle
+            @if($p->status == 'pending') bg-warning-subtle
+            @elseif($p->status == 'success') bg-success-subtle
+            @elseif($p->status == 'failed') bg-danger-subtle
             @endif">
-            <i class="fa fa-credit-card 
-                @if($p->status == 'lunas') text-success
-                @elseif($p->status == 'pending') text-warning
-                @else text-danger
+
+            <i class="fa 
+                @if($p->status == 'pending') fa-hourglass-half text-warning
+                @elseif($p->status == 'success') fa-check text-success
+                @elseif($p->status == 'failed') fa-times text-danger
                 @endif">
             </i>
         </div>
@@ -92,6 +105,17 @@
             <p class="mb-1 text-muted">
                 Status: {{ ucfirst($p->status) }}
             </p>
+
+            {{-- NARASI --}}
+            <p class="mb-0 text-muted small">
+                @if($p->status == 'pending')
+                    Your payment is waiting to be completed.
+                @elseif($p->status == 'success')
+                    Your payment was successful.
+                @elseif($p->status == 'failed')
+                    Your payment failed. Please try again.
+                @endif
+            </p>
         </div>
 
     </div>
@@ -102,6 +126,6 @@
     </div>
     @endforelse
 
-    </div>
+</div>
 
-@endsection 
+@endsection

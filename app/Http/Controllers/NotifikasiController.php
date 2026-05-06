@@ -10,6 +10,13 @@ class NotifikasiController extends Controller
 {
     public function index()
     {
+        $lastTimeOrder = Order::latest()->first()?->created_at;
+        $lastTimePembayaran = Pembayaran::latest()->first()?->created_at;
+
+        $lastTime = collect([$lastTimeOrder, $lastTimePembayaran])->max();
+
+        session(['last_read_notif' => $lastTime]);
+
         $orders = Order::latest()->get();
         $pembayarans = Pembayaran::latest()->get();
 
