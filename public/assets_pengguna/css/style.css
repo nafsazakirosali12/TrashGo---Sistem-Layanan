@@ -2721,3 +2721,161 @@ ul.cart-list > li.total > .btn:hover {
     padding: 12px 25px;
     border: none;
 }
+
+/* ===== FAQ HOVER ===== */
+#faqAccordion .card-header {
+    background-color: #f1f1f1;
+    transition: all 0.3s ease;
+}
+#faqAccordion .card-header a {
+    color: #333;
+    display: block;
+}
+/* Hover */
+#faqAccordion .card-header:hover {
+    background-color: #b0b435;
+}
+#faqAccordion .card-header:hover a {
+    color: #fff !important;
+}
+/* Active (dibuka) */
+#faqAccordion .card-header.active {
+    background-color: #b0b435 !important;
+}
+#faqAccordion .card-header.active a {
+    color: #fff !important;
+}
+
+/* ===== KATEGORI CARD ===== */
+.kategori-card {
+    background-color: #f8f9fa; /* abu tema */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+/* hover jadi hijau */
+.kategori-card:hover {
+    background-color: #b0b435;
+    transform: translateY(-5px);
+}
+/* text berubah putih saat hover */
+.kategori-card:hover h4,
+.kategori-card:hover p {
+    color: #fff !important;
+  
+.order-card {
+    border: none;
+    border-radius: 16px;
+    padding: 16px;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    transition: 0.25s;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.order-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #28a745;
+}
+
+.order-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.badge-status {
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.badge-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.badge-processing {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.badge-completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-failed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.small-text {
+    font-size: 13px;
+    color: #555;
+}
+
+.label {
+    font-weight: 600;
+    color: #333;
+}
+
+.text-box {
+    min-height: 40px;
+}
+
+hr {
+    margin: 10px 0;
+}
+
+.info-grid,
+.payment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.info-grid div,
+.payment-grid div {
+    display: flex;
+    flex-direction: column;
+}
+
+.riwayat-order-page .pagination {
+    justify-content: center;
+}
+
+.riwayat-order-page .page-link {
+    color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 8px;
+    margin: 0 3px;
+}
+
+.riwayat-order-page .page-link:hover {
+    background: #28a745;
+    color: #fff;
+}
+
+.riwayat-order-page .page-item.active .page-link {
+    background: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+
+.riwayat-order-page .page-item.disabled .page-link {
+    color: #ccc;
+    border-color: #ddd;
+}

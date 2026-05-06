@@ -49,7 +49,12 @@ class PembayaranController extends Controller
 
         if ($total < 0) $total = 0;
 
-        Point::where('masyarakat_id', $order->masyarakat_id)->decrement('total_point', $pointDigunakan);
+        Point::create([
+            'masyarakat_id' => $order->masyarakat_id,
+            'order_id' => $order->id,
+            'total_point' => -$pointDigunakan,
+            'tanggal_point' => Carbon::now(),
+        ]);
     }
 
         // 4. UPLOAD BUKTI
