@@ -179,6 +179,11 @@
                             <ul class="card-body">
                                 Cara melakukan order:
                                 <li>1. Klik menu "Order" pada navbar.</li>
+                                <li>2. Isi formulir yang tersedia meliputi:</li>
+                                <li>- Kategori layanan</li>
+                                <li>- Lokasi Penjemputan</li>
+                                <li>- Tanggal dan waktu</li>
+                                <li>- Catatan</li>
                                 <li>2. Isi formulis yang tersedia meliputi:</li>
                                 <li>- Kategori layanan</li>
                                 <li>- Lokasi Penjemputan</li>
@@ -274,36 +279,44 @@
             </div>
             <div class="item px-2">
                 <div class="ins-inner-box">
+                    <img src="{{ asset('assets_pengguna/images/g4.jpeg') }}" alt="">
                     <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
             <div class="item px-2">
                 <div class="ins-inner-box">
+                    <img src="{{ asset('assets_pengguna/images/g5.jpeg') }}" alt="">
+
                     <img src="{{ asset('assets_pengguna/images/db2.jpeg') }}" alt="">
                 </div>
             </div>
             <div class="item px-2">
                 <div class="ins-inner-box">
+                    <img src="{{ asset('assets_pengguna/images/g6.jpeg') }}" alt="">
                     <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
             <div class="item px-2">
                 <div class="ins-inner-box">
+                    <img src="{{ asset('assets_pengguna/images/g7.jpeg') }}" alt="">
                     <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
             <div class="item px-2">
                 <div class="ins-inner-box">
+                    <img src="{{ asset('assets_pengguna/images/g8.jpeg') }}" alt="">
                     <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
             <div class="item px-2">
                 <div class="ins-inner-box">
+                    <img src="{{ asset('assets_pengguna/images/g9.jpeg') }}" alt="">
                     <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
             <div class="item px-2">
                 <div class="ins-inner-box">
+                    <img src="{{ asset('assets_pengguna/images/g10.jpeg') }}" alt="">
                     <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
                 </div>
             </div>
