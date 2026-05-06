@@ -26,7 +26,7 @@ body {
 
 <div class="riwayat-order-page container mt-4 mb-5 pb-5">
     <br><br>
-    @if($orders->isEmpty())
+    @if($riwayatOrders->isEmpty())
         <div class="alert alert-warning text-center">
             Belum ada riwayat order
         </div>
@@ -34,7 +34,7 @@ body {
 
     <div class="row g-3">
 
-        @foreach($orders as $order)
+        @foreach($riwayatOrders as $order)
 
         @php
             $status = strtolower($order->status);
@@ -125,10 +125,8 @@ body {
 
     <!-- PAGINATION -->
     <div class="mt-4 d-flex justify-content-center">
-    <div>
-        {{ $orders->links() }}
+        {{ $riwayatOrders->links() }}
     </div>
-</div>
 
     @endif
 

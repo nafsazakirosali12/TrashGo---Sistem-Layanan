@@ -52,7 +52,7 @@
                 name="deskripsi" 
                 class="form-control"
                 rows="3"
-                placeholder="Masukkan deskripsi (opsional)"
+                placeholder="Masukkan deskripsi kategori"
               >{{ old('deskripsi') }}</textarea>
             </div>
 
