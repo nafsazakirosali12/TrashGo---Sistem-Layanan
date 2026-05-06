@@ -232,13 +232,10 @@
           </div>
         </div>
       </div>
-      <div class="">
-      </div>
-    </div>
-  </div>
+
   <!--   Core JS Files   -->
-  <!-- <script src="../assets_admin/js/core/popper.min.js"></script>
-  <script src="../assets_admin/js/core/bootstrap.min.js"></script> -->
+  <script src="../assets_admin/js/core/popper.min.js"></script>
+  <script src="../assets_admin/js/core/bootstrap.min.js"></script>
   <script src="../assets_admin/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets_admin/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets_admin/js/plugins/chartjs.min.js"></script>

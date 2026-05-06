@@ -6,96 +6,6 @@
 body {
     background: #f4f7f6;
 }
-
-.order-card {
-    border: none;
-    border-radius: 16px;
-    padding: 16px;
-    background: #fff;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-    transition: 0.25s;
-    position: relative;
-    height: 100%;
-}
-
-.order-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: #28a745;
-}
-
-.order-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.12);
-}
-
-.badge-status {
-    font-size: 11px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.badge-pending {
-    background: #fff3cd;
-    color: #856404;
-}
-
-.badge-processing {
-    background: #d1ecf1;
-    color: #0c5460;
-}
-
-.badge-completed {
-    background: #d4edda;
-    color: #155724;
-}
-
-.badge-success {
-    background: #d4edda;
-    color: #155724;
-}
-
-.badge-failed {
-    background: #f8d7da;
-    color: #721c24;
-}
-
-.small-text {
-    font-size: 13px;
-    color: #555;
-}
-
-.label {
-    font-weight: 600;
-    color: #333;
-}
-
-.text-box {
-    min-height: 40px;
-}
-
-hr {
-    margin: 10px 0;
-}
-
-.info-grid,
-.payment-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.info-grid div,
-.payment-grid div {
-    display: flex;
-    flex-direction: column;
-}
 </style>
 
 <!-- Start All Title Box -->
@@ -114,7 +24,7 @@ hr {
     </div>
 <!-- End All Title Box -->
 
-<div class="container mt-4 mb-5 pb-5">
+<div class="riwayat-order-page container mt-4 mb-5 pb-5">
     <br><br>
     @if($orders->isEmpty())
         <div class="alert alert-warning text-center">
@@ -131,7 +41,7 @@ hr {
             $payStatus = strtolower(optional($order->pembayaran)->status ?? '');
         @endphp
 
-        <div class="col-md-4">
+        <div class="col-md-4 mb-5">
 
             <div class="order-card h-100">
 
@@ -214,9 +124,11 @@ hr {
     </div>
 
     <!-- PAGINATION -->
-    <div class="d-flex justify-content-center mt-4">
+    <div class="mt-4 d-flex justify-content-center">
+    <div>
         {{ $orders->links() }}
     </div>
+</div>
 
     @endif
 
