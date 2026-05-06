@@ -26,23 +26,26 @@
                         <li class="nav-item">
                             <a class="nav-link position-relative" href="{{ route ('masyarakat.pages.notifikasi') }}">
                                 <i class="fa fa-bell"></i>
-                                @php
-                                    $lastRead = session('last_read_notif');
+                                @if(auth('masyarakat')->check())
+                                    @php
+                                        $lastRead = auth('masyarakat')->user()->last_read_notif;
 
-                                    $newOrders = $orders->filter(function ($o) use ($lastRead) {
-                                        return !$lastRead || $o->created_at > $lastRead;
-                                    });
+                                        $newOrders = $orders->filter(function ($o) use ($lastRead) {
+                                            return !$lastRead || $o->created_at->gt($lastRead);
+                                        });
 
-                                    $newPembayarans = $pembayarans->filter(function ($p) use ($lastRead) {
-                                        return !$lastRead || $p->created_at > $lastRead;
-                                    });
+                                        $newPembayarans = $pembayarans->filter(function ($p) use ($lastRead) {
+                                            return !$lastRead || $p->created_at->gt($lastRead);
+                                        });
 
-                                    $totalNotif = $newOrders->count() + $newPembayarans->count();
-                                @endphp
-                                @if($totalNotif > 0)
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        {{ $totalNotif }}
-                                    </span>
+                                        $totalNotif = $newOrders->count() + $newPembayarans->count();
+                                    @endphp
+
+                                    @if($totalNotif > 0)
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            {{ $totalNotif }}
+                                        </span>
+                                    @endif
                                 @endif
                             </a>
                         </li>
