@@ -34,7 +34,6 @@
             </div>
           </div>
         </div>
-<<<<<<< HEAD
       </footer> -->
 
       <footer class="footer pt-3 mt-auto">
