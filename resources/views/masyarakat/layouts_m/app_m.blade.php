@@ -72,5 +72,13 @@
     <script src="{{ asset('assets_pengguna/js/contact-form-script.js') }}"></script>
     <script src="{{ asset('assets_pengguna/js/custom.js') }}"></script>
 
+    <script>
+        window.addEventListener("pageshow", function (event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+    </script>
+    
 </body>
 </html>
