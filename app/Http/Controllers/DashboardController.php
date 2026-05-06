@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $total_pembayaran = Pembayaran::where('status', 'successed')->sum('total_pembayaran');
+        $total_pembayaran = Pembayaran::where('status', 'success')->sum('total_pembayaran');
 
         $total_kategori = Kategori::count();
 

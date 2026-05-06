@@ -32,7 +32,10 @@ class KategoriController extends Controller
     {
         $request->validate([
         'nama_kategori' => 'required',
-        'deskripsi' => 'nullable'
+        'deskripsi' => 'required'
+        ], [
+            'nama_kategori.required' => 'Nama kategori wajib diisi',
+            'deskripsi.required' => 'Deskripsi wajib diisi',
         ]);
 
         Kategori::create([
@@ -69,7 +72,10 @@ class KategoriController extends Controller
     {
         $request->validate([
         'nama_kategori' => 'required',
-        'deskripsi' => 'nullable'
+        'deskripsi' => 'required'
+        ], [
+            'nama_kategori.required' => 'Nama kategori wajib diisi',
+            'deskripsi.required' => 'Deskripsi wajib diisi',
         ]);
 
         $kategori->update([

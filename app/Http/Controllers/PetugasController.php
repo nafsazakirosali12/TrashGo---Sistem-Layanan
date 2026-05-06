@@ -42,8 +42,6 @@ class PetugasController extends Controller
             'status' => 'required|in:acctive,inacctive', 
         ]);
 
-        $validated['password'] = Hash::make($validated['password']);
-
         Petugas::create($validated);
 
         return redirect()->route('tambah-akun')
@@ -101,9 +99,7 @@ class PetugasController extends Controller
             'status' => 'required|in:acctive,inacctive',
         ]);
 
-        if (!empty($request->password)) {
-            $validated['password'] = Hash::make($request->password);
-        } else {
+        if (empty($request->password)) {
             unset($validated['password']);
         }
 
