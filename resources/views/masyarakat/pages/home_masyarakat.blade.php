@@ -34,7 +34,6 @@
                         <div class="col-md-12">
                             <h1 class="m-b-20"><strong>Welcome To <br> TrashGo!</strong></h1>
                             <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
-                            <p><a class="btn hvr-hover" href="#">Lihat Layanan</a></p>
                         </div>
                     </div>
                 </div>
