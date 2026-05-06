@@ -69,15 +69,11 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
-Route::get('/order', [OrderController::class, 'index'])->name('masyarakat.pages.order');
-
-Route::get('/point', [PointController::class, 'index'])->name('masyarakat.pages.point');
-
-Route::get('/riwayat-order', [OrderController::class, 'riwayat'])->name('masyarakat.pages.riwayat_order');
-
 // ============== REGISTER ================
 Route::get('/register', [AuthController::class, 'showRegister'])
     ->middleware('guest:admin,masyarakat,petugas');
 
 Route::post('/register', [AuthController::class, 'register']);
+
+// ROUTE TESTING ORDER SELESAI (Hapus jika fitur petugas sudah jadi)
+Route::get('/test-selesai/{id}', [OrderController::class, 'update_status_point']);
