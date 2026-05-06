@@ -13,12 +13,3 @@
           </div>
         </div>
       </footer>
-
-<!-- <footer class="footer mt-auto">
-    <div class="footer-box text-center py-3">
-        © {{ date('Y') }},
-        made with <i class="fa fa-heart text-danger"></i> by
-        <span class="fw-bold">RecyCode Team</span>
-        for a better environment.
-    </div>
-</footer> -->
