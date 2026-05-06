@@ -22,7 +22,9 @@ class OrderController extends Controller
     public function monitoring()
     {
         $orders = Order::all(); // ambil semua data
-        return view('admin.monitoring', compact('orders'));
+        return view('admin.monitoring', [
+            'dataOrders' => Order::with(['masyarakat','kategori'])->get()
+            ]);
     }
 
     public function index()

@@ -35,7 +35,7 @@
 
                      <!-- TBODY -->
                       <tbody>
-                        @forelse($orders as $order)
+                        @forelse($dataOrders as $order)
                         <tr style="text-align: center;">
                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $order->id }}</td>
@@ -43,7 +43,7 @@
                             <td>{{ $order->kategori->nama_kategori ?? '-'}}</td>
                             <td>{{ $order->status }}</td>
                             <td>{{ $order->total_harga }}</td>
-                            <td style="white-space: normal; word-wrap: break-word; max-width: 200px;">{{ $order->tanggal_order }}</td>
+                            <td style="white-space: normal; word-wrap: break-word; max-width: 200px;">{{ $order->tanggal}}</td>
                             <td style="white-space: normal; word-wrap: break-word; max-width: 200px;">
                             {{ $order->catatan ?? '-' }}</td>
                         </tr>
@@ -63,8 +63,3 @@
     </div>
 </div>
 @endsection
-
-
-    
-
-    
