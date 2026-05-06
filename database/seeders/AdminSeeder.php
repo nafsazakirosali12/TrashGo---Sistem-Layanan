@@ -15,9 +15,15 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         Admin::create([
-        'nama_admin' => 'RecyCode',
-        'email' => 'recycode@gmail.com',
-        'password' => 'layanan222',
-    ]);
+            'nama_admin' => 'RecyCode',
+            'email' => 'recycode@gmail.com',
+            'password' => Hash::make('layanan222'),
+        ]);
+
+        Admin::create([
+            'nama_admin' => 'lia',
+            'email' => 'lia@gmail.com',
+            'password' => Hash::make('liaimut18'),
+        ]);
     }
 }

@@ -21,6 +21,18 @@ Route::get('/', function () {
     return view('masyarakat.pages.home_masyarakat');
 });
 
+
+Route::get('/dashboard', function () {
+    return view('pages.dashboard');
+})->name('dashboard');
+
+Route::get('/tambah-akun', [PetugasController::class, 'index'])->name('tambah-akun');
+Route::get('/tambah-akun/create', [PetugasController::class, 'create'])->name('tambah-akun.create');
+Route::post('/tambah-akun', [PetugasController::class, 'store'])->name('tambah-akun.store');
+Route::get('/tambah-akun/{id}', [PetugasController::class, 'edit'])->name('tambah-akun.edit');
+Route::put('/tambah-akun/{id}', [PetugasController::class, 'update'])->name('tambah-akun.update');
+Route::delete('/tambah-akun/{id}', [PetugasController::class, 'destroy'])->name('tambah-akun.delete');
+
 Route::middleware('admin.auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // PROFIL ADMIN
@@ -64,6 +76,11 @@ Route::get('/home_masyarakat', [MasyarakatController::class, 'index'])->name('ma
 Route::get('/about_us', [AboutController::class, 'about_us'])->name('masyarakat.pages.about_us');
 
 // ============== LOGIN & LOGOUT ================
+
+Route::get('/admin/login', [AuthController::class, 'showLogin'])->middleware('guest:admin');
+Route::post('/admin/login', [AuthController::class, 'login']);
+Route::post('/admin/logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login')->middleware('guest:admin,masyarakat,petugas');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -77,3 +94,4 @@ Route::post('/register', [AuthController::class, 'register']);
 
 // ROUTE TESTING ORDER SELESAI (Hapus jika fitur petugas sudah jadi)
 Route::get('/test-selesai/{id}', [OrderController::class, 'update_status_point']);
+
