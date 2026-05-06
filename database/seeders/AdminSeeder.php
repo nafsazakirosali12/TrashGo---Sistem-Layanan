@@ -17,13 +17,13 @@ class AdminSeeder extends Seeder
         Admin::create([
             'nama_admin' => 'RecyCode',
             'email' => 'recycode@gmail.com',
-            'password' => Hash::make('layanan222'),
+            'password' => 'layanan222',
         ]);
 
         Admin::create([
             'nama_admin' => 'lia',
             'email' => 'lia@gmail.com',
-            'password' => Hash::make('liaimut18'),
+            'password' => 'liaimut18',
         ]);
     }
 }
