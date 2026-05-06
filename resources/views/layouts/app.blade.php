@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,9 +8,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets_admin/img/apple-icon.png') }}">
-  <link rel="icon" type="image/png" href="{{ asset('assets_admin/img/favicon.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('assets_admin/img/logo.png') }}">
   <title>
-    TrashGo! - Dashboard
+    TrashGo!
   </title>
   <!-- Bootstrap Icon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -23,21 +26,23 @@
   <link id="pagestyle" href="{{ asset('assets_admin/css/soft-ui-dashboard.css?v=1.0.3') }}" rel="stylesheet" />
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
+<body class="g-sidenav-show  bg-gray-100 d-flex flex-column min-vh-100">
 
   <!-- sidebar -->
     @include('layouts.sidebar')
   <!-- end sidebar -->
 
-  <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+  <main class="main-content d-flex flex-column min-vh-100">
 
     <!-- Navbar -->
      @include('layouts.navbar')
     <!-- End Navbar -->
 
+    <div class="flex-fill mt-4">
     <!-- dashboard -->
      @yield('content')
     <!-- end dashboard -->
+    </div>
 
     <div>
     <!-- footer  -->
