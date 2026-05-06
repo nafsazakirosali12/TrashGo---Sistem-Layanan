@@ -120,7 +120,7 @@ class OrderController extends Controller
         $order->status = 'completed';
         $order->save();
 
-        $cek_point = Point::where('order_id', $order->id)->where('total_point', 10)->first();
+        $cek_point = Point::where('order_id', $order->id)->where('total_point', '>', 0)->first();
         if(!$cek_point){
             Point::create([
                 'masyarakat_id' => $order->masyarakat_id,
