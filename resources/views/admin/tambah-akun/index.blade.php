@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('page', 'Akun Petugas')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1813c18af98eedf0de7700140050ae9fe2ae2bbd
 @section('content')
 
 <div class="container-fluid py-4">

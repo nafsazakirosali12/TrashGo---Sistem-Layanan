@@ -1,14 +1,22 @@
 .footer {
-  .nav-link {
-    color: $dark;
-    font-weight: $font-weight-normal;
-    font-size: $font-size-sm;
-    padding-top: 0;
-    padding-bottom: $nav-link-footer-padding;
+    .nav-link {
+        color: $dark;
+        font-weight: $font-weight-normal;
+        font-size: $font-size-sm;
+        padding-top: 0;
+        padding-bottom: $nav-link-footer-padding;
 
-    &:hover {
-      opacity: 1 !important;
-      transition: $footer-link-animation;
+        &:hover {
+            opacity: 1 !important;
+            transition: $footer-link-animation;
+        }
     }
-  }
+    .footer-box {
+        background: #8e8989;
+        border-radius: 8 Spx;
+        padding: 12px 16px;
+        font-size: $font-size-sm;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
 }

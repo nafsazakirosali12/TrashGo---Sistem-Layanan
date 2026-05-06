@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page', 'Edit')
+
 @section('content')
     <div class="container">
     <h4>Edit Akun Petugas</h4>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  <!-- <footer class="footer pt-3  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
@@ -17,6 +18,11 @@
       </footer> -->
       <!-- <footer class="footer pt-3 mt-auto">
         <div class="container-fluid fixed-bottom" style="bottom:10 px">
+=======
+
+      <footer class="footer pt-3 mt-auto">
+        <div class="container-fluid" style="bottom:10px">
+
           <div class="row">
             <div class="col-12 text-center">
               <div class="text-center text-sm text-muted">
@@ -28,6 +34,7 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </footer> -->
 
       <footer class="footer pt-3 mt-auto">
@@ -44,3 +51,4 @@
           </div>
         </div>
       </footer>
+

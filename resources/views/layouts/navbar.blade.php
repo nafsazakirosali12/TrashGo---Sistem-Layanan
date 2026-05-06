@@ -1,3 +1,4 @@
+
 <!-- <nav class="navbar navbar-expand-lg px-3 navbar-light bg-transparent shadow-none">
     
  
@@ -37,6 +38,23 @@
         </ul>
     </div>
 </nav> -->
+
+<!-- <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 mt-3 border-radius-xl">
+  <div class="container-fluid py-1 px-3">
+
+  
+    <div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0">
+          <li class="breadcrumb-item text-sm">Pages</li>
+          <li class="breadcrumb-item text-sm text-dark active">
+            @yield('page')
+          </li>
+        </ol>
+      </nav>
+      <h6 class="font-weight-bolder mb-0">@yield('page')</h6>
+    </div> -->
+
 
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 mt-3 border-radius-xl">
   <div class="container-fluid py-1 px-3">

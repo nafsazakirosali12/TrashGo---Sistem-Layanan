@@ -10,9 +10,14 @@ class AdminAuth
 {
     public function handle(Request $request, Closure $next)
     {
-        // kalau belum login admin
         if (!Auth::guard('admin')->check()) {
-            return redirect('/admin/login');
+            if (Auth::guard('masyarakat')->check()) {
+                return redirect('/home_masyarakat')->with('error', 'Anda tidak memiliki akses ke halaman Admin.');
+            }
+            if (Auth::guard('petugas')->check()) {
+                return redirect('/home_petugas')->with('error', 'Anda tidak memiliki akses ke halaman Admin.');
+            }
+            return redirect('/login');
         }
 
         return $next($request);
