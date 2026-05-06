@@ -22,20 +22,20 @@
                     <!-- THEAD -->
                      <thead>
                         <tr  style="text-align: center;">
-                            <th>No</th>
-                            <th>ID</th>
-                            <th>Masyarakat</th>
-                            <th>Kategori</th>
-                            <th>Status</th>
-                            <th>Total Harga</th>
-                            <th>Tanggal</th>
-                            <th>Catatan</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">ID</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masyarakat</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Kategori</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Status</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Total Harga</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Tanggal</th>
+                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Catatan</th>
                         </tr>
                      </thead>
 
                      <!-- TBODY -->
                       <tbody>
-                        @forelse($orders as $order)
+                        @forelse($dataOrders as $order)
                         <tr style="text-align: center;">
                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $order->id }}</td>
@@ -43,7 +43,7 @@
                             <td>{{ $order->kategori->nama_kategori ?? '-'}}</td>
                             <td>{{ $order->status }}</td>
                             <td>{{ $order->total_harga }}</td>
-                            <td style="white-space: normal; word-wrap: break-word; max-width: 200px;">{{ $order->tanggal_order }}</td>
+                            <td style="white-space: normal; word-wrap: break-word; max-width: 200px;">{{ $order->tanggal}}</td>
                             <td style="white-space: normal; word-wrap: break-word; max-width: 200px;">
                             {{ $order->catatan ?? '-' }}</td>
                         </tr>
@@ -63,8 +63,3 @@
     </div>
 </div>
 @endsection
-
-
-    
-
-    
