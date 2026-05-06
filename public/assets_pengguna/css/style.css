@@ -287,8 +287,9 @@ p {
     color: #ffffff;
     opacity: 1;
 }
->>>>>>> 9a30cf33803b35507db5850d337022c62d938fac
-.bootstrap-select .dropdown-toggle:focus {
+>>>>>>>9a30cf33803b35507db5850d337022c62d938fac
+    .bootstrap-select
+    .dropdown-toggle:focus {
     box-shadow: none !important;
 }
 /*------------------------------------------------------------------ LOADER -------------------------------------------------------------------*/
@@ -2849,42 +2850,33 @@ ul.cart-list > li.total > .btn:hover {
 }
 
 /* ===== FAQ HOVER ===== */
-#faqAccordion .card-header {
 
+#faqAccordion .card-header {
     background-color: #b0b435;
     transition: all 0.3s ease;
 }
+
 #faqAccordion .card-header a {
     color: #fff;
-
-    background-color: #f1f1f1;
-    transition: all 0.3s ease;
-}
-#faqAccordion .card-header a {
-    color: #333;
     display: block;
 }
+
 /* Hover */
 #faqAccordion .card-header:hover {
     background-color: #f1f1f1;
 }
+
 #faqAccordion .card-header:hover a {
     color: #333 !important;
+}
 
-    background-color: #b0b435;
-}
-#faqAccordion .card-header:hover a {
-    color: #fff !important;
-}
 /* Active (dibuka) */
 #faqAccordion .card-header.active {
-    background-color: #b0b435 !important;
+    background-color: #f1f1f1;
 }
+
 #faqAccordion .card-header.active a {
-
     color: #333 !important;
-
-    color: #fff !important;
 }
 
 /* ===== KATEGORI CARD ===== */
@@ -3020,5 +3012,4 @@ hr {
 .riwayat-order-page .page-item.disabled .page-link {
     color: #ccc;
     border-color: #ddd;
-
 }
