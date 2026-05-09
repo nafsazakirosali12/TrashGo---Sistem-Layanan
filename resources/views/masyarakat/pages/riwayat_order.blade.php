@@ -25,7 +25,13 @@ body {
 <!-- End All Title Box -->
 
 <div class="riwayat-order-page container mt-4 mb-5 pb-5">
-    <br><br>
+    <br>
+        <div class="mb-3">
+            <a href="{{ url('/') }}" class="btn btn-outline-success" style="border-radius: 10px;">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+        </div>
+    <br>
     @if($riwayatOrders->isEmpty())
         <div class="alert alert-warning text-center">
             Belum ada riwayat order
@@ -61,7 +67,13 @@ body {
                 </div>
 
                 <small class="text-muted">
-                    {{ $order->tanggal }} • {{ $order->waktu }}
+                    @php
+                        \Carbon\Carbon::setLocale('id');
+                    @endphp
+
+                    {{ \Carbon\Carbon::parse($order->tanggal)->translatedFormat('l, d F Y') }}
+                    •
+                    {{ \Carbon\Carbon::parse($order->waktu)->format('H:i') }} WIB
                 </small>
 
                 <hr>
@@ -101,7 +113,7 @@ body {
                 <div class="payment-grid small-text">
                     <div>
                         <span class="label">Metode:</span>
-                        <span>{{ strtoupper(optional($order->pembayaran)->metode_pembayaran ?? '-') }}</span>
+                        <span>{{ ucfirst(optional($order->pembayaran)->metode_pembayaran ?? '-') }}</span>
                     </div>
 
                     <div>
