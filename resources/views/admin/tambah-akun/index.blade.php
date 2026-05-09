@@ -40,7 +40,7 @@
                     <td>{{ $p->alamat }}</td>
                     <td class="text-center">
                       <a href="{{ route('tambah-akun.edit', $p->id) }}" class="btn bg-gradient-primary">
-                        Edit
+                        Ubah
                       </a>
                       <form action="{{ route('tambah-akun.delete', $p->id) }}" method="POST" style="display:inline;">
                         @csrf
