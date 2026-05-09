@@ -29,6 +29,8 @@
                             @else
                                 <h1 class="m-b-20"><strong>Selamat datang<br>di TrashGo!</strong></h1>
                             @endauth
+                            <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
+                            <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Order Layanan</a></p>
                         </div>
                     </div>
                 </div>     
