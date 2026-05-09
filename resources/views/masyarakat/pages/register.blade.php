@@ -53,7 +53,7 @@
           <div class="card card-plain login-card bg-white shadow-sm">
             
             <div class="card-header pb-0 text-center bg-transparent mt-4 border-0">
-              <h3 class="font-weight-bolder" style="color: #b0b435;">Buat Akun</h3>
+              <h3 class="font-weight-bolder" style="color: #b0b435;">Selamat Datang</h3>
               <p class="mb-0 text-muted" style="font-size: 14px;">Masukkan data Anda untuk mendaftar</p>
             </div>
             
