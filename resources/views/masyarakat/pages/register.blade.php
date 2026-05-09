@@ -74,7 +74,7 @@
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn w-100 mb-0 btn-theme" style="border-radius: 8px; padding: 12px 0;">
-                    Daftar Sekarang
+                    Daftar
                   </button>
                 </div>
               </form>
