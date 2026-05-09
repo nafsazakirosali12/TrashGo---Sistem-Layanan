@@ -9,33 +9,50 @@ body {
 </style>
 
 <!-- Start All Title Box -->
-    <div class="all-title-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Riwayat Order</h2>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a class="nav-link" href="{{ route('masyarakat.pages.order') }}">Order</a></li>
-                        <li class="breadcrumb-item active">Riwayat Order</li>
-                    </ul>
-                </div>
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Riwayat Order</h2>
+
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a class="nav-link" href="{{ route('masyarakat.pages.order') }}">
+                            Order
+                        </a>
+                    </li>
+
+                    <li class="breadcrumb-item active">
+                        Riwayat Order
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 <!-- End All Title Box -->
 
 <div class="riwayat-order-page container mt-4 mb-5 pb-5">
+
     <br>
-        <div class="mb-3">
-            <a href="{{ url('/') }}" class="btn btn-outline-success" style="border-radius: 10px;">
-                <i class="fa fa-arrow-left"></i>
-            </a>
-        </div>
+
+    <!-- BUTTON KEMBALI -->
+    <div class="mb-3">
+        <a href="{{ route('masyarakat.pages.order') }}"
+           class="btn btn-outline-success"
+           style="border-radius: 10px;">
+            <i class="fa fa-arrow-left"></i>
+        </a>
+    </div>
+
     <br>
+
     @if($riwayatOrders->isEmpty())
+
         <div class="alert alert-warning text-center">
             Belum ada riwayat order
         </div>
+
     @else
 
     <div class="row g-3">
@@ -43,8 +60,24 @@ body {
         @foreach($riwayatOrders as $order)
 
         @php
+
+            \Carbon\Carbon::setLocale('id');
+
             $status = strtolower($order->status);
             $payStatus = strtolower(optional($order->pembayaran)->status ?? '');
+
+            $statusText = [
+                'pending' => 'Menunggu',
+                'processing' => 'Diproses',
+                'completed' => 'Selesai',
+            ];
+
+            $paymentText = [
+                'pending' => 'Menunggu',
+                'success' => 'Berhasil',
+                'failed' => 'Gagal',
+            ];
+
         @endphp
 
         <div class="col-md-4 mb-5">
@@ -53,6 +86,7 @@ body {
 
                 <!-- HEADER -->
                 <div class="d-flex justify-content-between align-items-center">
+
                     <b class="small-text">
                         {{ $order->kategori->nama_kategori ?? '-' }}
                     </b>
@@ -62,24 +96,27 @@ body {
                         {{ $status == 'processing' ? 'badge-processing' : '' }}
                         {{ $status == 'completed' ? 'badge-completed' : '' }}
                     ">
-                        {{ $order->status }}
+                        {{ $statusText[$status] ?? $order->status }}
                     </span>
+
                 </div>
 
+                <!-- TANGGAL -->
                 <small class="text-muted">
-                    @php
-                        \Carbon\Carbon::setLocale('id');
-                    @endphp
 
                     {{ \Carbon\Carbon::parse($order->tanggal)->translatedFormat('l, d F Y') }}
+
                     •
+
                     {{ \Carbon\Carbon::parse($order->waktu)->format('H:i') }} WIB
+
                 </small>
 
                 <hr>
 
                 <!-- INFO -->
                 <div class="info-grid small-text">
+
                     <div>
                         <span class="label">Alamat:</span>
                         <span>{{ $order->lokasi }}</span>
@@ -96,7 +133,7 @@ body {
 
                 <!-- HEADER PEMBAYARAN -->
                 <div class="d-flex justify-content-between align-items-center mb-1 small-text">
-                    
+
                     <span class="label">Pembayaran</span>
 
                     <span class="badge-status
@@ -104,20 +141,25 @@ body {
                         {{ $payStatus == 'success' ? 'badge-success' : '' }}
                         {{ $payStatus == 'failed' ? 'badge-failed' : '' }}
                     ">
-                        {{ optional($order->pembayaran)->status ?? '-' }}
+                        {{ $paymentText[$payStatus] ?? '-' }}
                     </span>
 
                 </div>
 
-                <!-- PEMBAYARAN -->
+                <!-- DETAIL PEMBAYARAN -->
                 <div class="payment-grid small-text">
+
                     <div>
                         <span class="label">Metode:</span>
-                        <span>{{ ucfirst(optional($order->pembayaran)->metode_pembayaran ?? '-') }}</span>
+
+                        <span>
+                            {{ ucfirst(optional($order->pembayaran)->metode_pembayaran ?? '-') }}
+                        </span>
                     </div>
 
                     <div>
                         <span class="label">Total:</span>
+
                         <span>
                             <b style="color:#28a745;">
                                 Rp {{ number_format($order->total_harga,0,',','.') }}
