@@ -45,7 +45,7 @@ Route::middleware('admin.auth')->group(function () {
     Route::get('/tambah-akun/{id}', [PetugasController::class, 'edit'])->name('tambah-akun.edit');
     Route::put('/tambah-akun/{id}', [PetugasController::class, 'update'])->name('tambah-akun.update');
     Route::delete('/tambah-akun/{id}', [PetugasController::class, 'destroy'])->name('tambah-akun.delete');
-    Route::resource('kategori', KategoriController::class);
+    Route::resource('/kategori', KategoriController::class);
     Route::get('/monitoring', [OrderController::class, 'monitoring'])->name('monitoring');
 });
 
