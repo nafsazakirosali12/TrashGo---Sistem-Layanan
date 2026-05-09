@@ -34,11 +34,11 @@
                                     @php
                                         $lastRead = auth('masyarakat')->user()->last_read_notif;
 
-                                        $newOrders = $navbarOrders->filter(function ($o) use ($lastRead) {
+                                        $newOrders = $Orders->filter(function ($o) use ($lastRead) {
                                             return !$lastRead || $o->created_at->gt($lastRead);
                                         });
 
-                                        $newPembayarans = $navbarPembayarans->filter(function ($p) use ($lastRead) {
+                                        $newPembayarans = $Pembayarans->filter(function ($p) use ($lastRead) {
                                             return !$lastRead || $p->created_at->gt($lastRead);
                                         });
 
