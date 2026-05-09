@@ -103,12 +103,11 @@ body {
 
                 <!-- TANGGAL -->
                 <small class="text-muted">
-
+                    <i class="fa fa-calendar me-1"></i>
                     {{ \Carbon\Carbon::parse($order->tanggal)->translatedFormat('l, d F Y') }}
-
-                    •
-
-                    {{ \Carbon\Carbon::parse($order->waktu)->format('H:i') }} WIB
+                    &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-clock me-1"></i>
+                    {{ \Carbon\Carbon::parse($order->waktu)->format('H:i') }}
 
                 </small>
 
