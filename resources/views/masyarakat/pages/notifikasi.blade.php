@@ -26,15 +26,15 @@
 
         {{-- ICON --}}
         <div class="p-3 rounded-circle 
-            @if($order->status == 'pending') bg-secondary-subtle
-            @elseif($order->status == 'processing') bg-warning-subtle
-            @elseif($order->status == 'completed') bg-success-subtle
+            @if($order->status == 'menunggu') bg-secondary-subtle
+            @elseif($order->status == 'diproses') bg-warning-subtle
+            @elseif($order->status == 'selesai') bg-success-subtle
             @endif">
 
             <i class="fa 
-                @if($order->status == 'pending') fa-clock text-secondary
-                @elseif($order->status == 'processing') fa-truck text-warning
-                @elseif($order->status == 'completed') fa-check-circle text-success
+                @if($order->status == 'menunggu') fa-clock text-secondary
+                @elseif($order->status == 'diproses') fa-truck text-warning
+                @elseif($order->status == 'selesai') fa-check-circle text-success
                 @endif">
             </i>
         </div>
@@ -47,17 +47,27 @@
             </div>
 
             <p class="mb-1 text-muted">
-                Status: {{ ucfirst($order->status) }}
+                <!-- Status: -->
+
+                @if($order->status == 'menunggu')
+                    <span class="badge bg-secondary text-white fs-8">Status: Menunggu</span>
+
+                @elseif($order->status == 'diproses')
+                    <span class="badge bg-warning text-white fs-8">Status: Diproses</span>
+
+                @elseif($order->status == 'selesai')
+                    <span class="badge bg-success text-white fs-8">Status: Selesai</span>
+                @endif
             </p>
 
-            {{-- NARASI --}}
+           <!-- Narasi -->
             <p class="mb-0 text-muted small">
-                @if($order->status == 'pending')
-                    Your order is waiting for confirmation.
-                @elseif($order->status == 'processing')
-                    Your order is currently being processed.
-                @elseif($order->status == 'completed')
-                    Your order has been completed successfully.
+                @if($order->status == 'menunggu')
+                    Pesananmu masih menunggu konfirmasi.
+                @elseif($order->status == 'diproses')
+                    Pesananmu sedang dalam proses pengolahan.
+                @elseif($order->status == 'selesai')
+                    Pesananmu telah selesai.
                 @endif
             </p>
         </div>
@@ -70,6 +80,10 @@
     </div>
     @endforelse
 
+    {{-- PAGINATION ORDER --}}
+    <div class="d-flex justify-content-center mt-3">
+        {{ $orders->links() }}
+    </div>
 
     {{-- STATUS PEMBAYARAN --}}
     <div class="bg-success-subtle text-success px-4 py-2 rounded-3 d-inline-flex align-items-center gap-2 mt-5 mb-3">
@@ -82,15 +96,15 @@
 
         {{-- ICON --}}
         <div class="p-3 rounded-circle 
-            @if($p->status == 'pending') bg-warning-subtle
-            @elseif($p->status == 'success') bg-success-subtle
-            @elseif($p->status == 'failed') bg-danger-subtle
+            @if($p->status == 'menunggu') bg-warning-subtle
+            @elseif($p->status == 'berhasil') bg-success-subtle
+            @elseif($p->status == 'gagal') bg-danger-subtle
             @endif">
 
             <i class="fa 
-                @if($p->status == 'pending') fa-hourglass-half text-warning
-                @elseif($p->status == 'success') fa-check text-success
-                @elseif($p->status == 'failed') fa-times text-danger
+                @if($p->status == 'menunggu') fa-hourglass-half text-warning
+                @elseif($p->status == 'berhasil') fa-check text-success
+                @elseif($p->status == 'gagal') fa-times text-danger
                 @endif">
             </i>
         </div>
@@ -103,17 +117,27 @@
             </div>
 
             <p class="mb-1 text-muted">
-                Status: {{ ucfirst($p->status) }}
+                <!-- Status:  -->
+
+                @if($p->status == 'menunggu')
+                    <span class="badge bg-secondary text-white fs-8">Status: Menunggu</span>
+
+                @elseif($p->status == 'berhasil')
+                    <span class="badge bg-success text-white fs-8 ">Status: Berhasil</span>
+
+                @elseif($p->status == 'gagal')
+                    <span class="badge bg-danger text-white fs-8">Status: Gagal</span>
+                @endif
             </p>
 
-            {{-- NARASI --}}
+           <!-- Narasi -->
             <p class="mb-0 text-muted small">
-                @if($p->status == 'pending')
-                    Your payment is waiting to be completed.
-                @elseif($p->status == 'success')
-                    Your payment was successful.
-                @elseif($p->status == 'failed')
-                    Your payment failed. Please try again.
+                @if($p->status == 'menunggu')
+                    Pembayaranmu masih menunggu untuk diselesaikan.
+                @elseif($p->status == 'berhasil')
+                    Pembayaranmu berhasil.
+                @elseif($p->status == 'gagal')
+                    Pembayaranmu gagal. Silakan coba lagi.
                 @endif
             </p>
         </div>
@@ -125,6 +149,11 @@
         <p class="text-muted">Belum ada notifikasi pembayaran</p>
     </div>
     @endforelse
+
+    {{-- PAGINATION PEMBAYARAN --}}
+    <div class="d-flex justify-content-center mt-3 mb-5">
+        {{ $pembayarans->links() }}
+    </div>
 
 </div>
 

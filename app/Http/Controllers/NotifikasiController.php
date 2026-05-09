@@ -12,8 +12,13 @@ class NotifikasiController extends Controller
         {
             $user = auth('masyarakat')->user();
 
-            $orders = Order::where('masyarakat_id', $user->id)->latest()->get();
-            $pembayarans = Pembayaran::where('masyarakat_id', $user->id)->latest()->get();
+            $orders = Order::where('masyarakat_id', $user->id)
+                ->latest()
+                ->paginate(5, ['*'], 'orders_page');
+
+            $pembayarans = Pembayaran::where('masyarakat_id', $user->id)
+                ->latest()
+                ->paginate(5, ['*'], 'pembayarans_page');
 
             // simpan waktu terakhir baca
             $lastTimeOrder = $orders->first()?->created_at;
