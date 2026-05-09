@@ -8,7 +8,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> TrashGo!</strong></h1>
+                            @auth('masyarakat')
+                                <h1 class="m-b-20"><strong> Haii {{ Auth::guard('masyarakat')->user()->nama_masyarakat }}<br>Selamat datang di TrashGo!</strong></h1>
+                            @else
+                                <h1 class="m-b-20"><strong>Selamat datang<br>di TrashGo!</strong></h1>
+                            @endauth
                             <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
                             <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Order Layanan</a></p>
                         </div>
@@ -20,18 +24,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> TrashGo!</strong></h1>
-                            <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
-                            <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Order Layanan</a></p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="text-center">
-                <img src="{{ asset('assets_pengguna/images/db1.jpeg') }}" alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
+                            @auth('masyarakat')
+                                <h1 class="m-b-20"><strong> Haii {{ Auth::guard('masyarakat')->user()->nama_masyarakat }}<br>Selamat datang di TrashGo!</strong></h1>
+                            @else
+                                <h1 class="m-b-20"><strong>Selamat datang<br>di TrashGo!</strong></h1>
+                            @endauth
                             <h1 class="m-b-20"><strong>Welcome To <br> TrashGo!</strong></h1>
                             <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
                             <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Order Layanan</a></p>
@@ -144,7 +141,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>FAQ</h1>
+                    <h1>Pertanyaan Umum</h1>
                     <p>Pertanyaan yang sering diajukan oleh pengguna TrashGo</p>
                 </div>
             </div>
@@ -184,11 +181,11 @@
                                 <li>- Lokasi Penjemputan</li>
                                 <li>- Tanggal dan waktu</li>
                                 <li>- Catatan</li>
-                                <li>2. Isi formulis yang tersedia meliputi:</li>
+                                <li>2. Isi formulir yang tersedia meliputi:</li>
                                 <li>- Kategori layanan</li>
                                 <li>- Lokasi Penjemputan</li>
                                 <li>- Tanggal dan waktu</li>
-                                <li>- Catatan (opsional)</li>
+                                <li>- Catatan</li>
                                 <li>3. Setelah semua data terisi, klik tombol "Pesan Sekarang"</li>
                                 <li>4. Anda akan diarahkan ke halaman pembayaran</li>
                                 <li>5. Pilih metode pembayaran yang tersedia</li>

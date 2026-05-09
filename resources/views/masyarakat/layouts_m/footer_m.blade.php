@@ -6,27 +6,25 @@
                 <!-- Business Time -->
                 <div class="col-lg-6 col-md-6 mb-4">
                     <h4 class="fw-bold text-white border-bottom border-warning pb-2 d-inline-block mb-3">
-                        Business Time
+                        Jam Operasional
                     </h4>
                     <ul class="list-unstyled">
-                        <li class="mb-2">All Day</li>
-                        <li>10.00 am - 05.00 pm</li>
+                        <li class="mb-2">Setiap Hari</li>
+                        <li>10.00 - 17.00</li>
                     </ul>
                 </div>
                 <!-- Media Sosial -->
                 <div class="col-lg-6 col-md-6 mb-4">
                     <h4 class="fw-bold text-white border-bottom border-warning pb-2 d-inline-block mb-3">
-                        Social Media
+                        Sosial Media
                     </h4>
-                    <p class="mb-3">Follow us</p>
+                    <p class="mb-2">Ikuti Kami</p>
                     <div class="d-flex justify-content-center gap-4 flex-wrap">
-                        <a href="#" class="text-white d-flex align-items-center gap-2">
-                            <i class="fab fa-facebook fs-5"></i>
-                            <span>Recycode</span>
+                        <a href="#" class="text-white d-flex align-items-center ml-2">
+                            <p><i class="fab fa-facebook"></i> Recycode</p>
                         </a>
-                        <a href="#" class="text-white d-flex align-items-center gap-2">
-                            <i class="fab fa-twitter fs-5"></i>
-                            <span>Recycode</span>
+                        <a href="#" class="text-white d-flex align-items-center ml-2">
+                            <p><i class="fab fa-twitter"></i> Recycode</p>
                         </a>
                     </div>
                 </div>
@@ -37,24 +35,24 @@
                 <!-- Information -->
                 <div class="col-lg-6 col-md-6 mb-4">
                     <h4 class="fw-bold text-white border-bottom border-warning pb-2 d-inline-block mb-3">
-                        Information
+                        Informasi
                     </h4>
                     <ul class="list-unstyled">
                         <li class="mb-2">
-                            <a href="{{ route('masyarakat.pages.home_masyarakat') }}" class="text-white text-decoration-none">Home</a>
+                            <a href="{{ route('masyarakat.pages.home_masyarakat') }}" class="text-white text-decoration-none">Beranda</a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('masyarakat.pages.about_us') }}" class="text-white text-decoration-none">About Us</a>
+                            <a href="{{ route('masyarakat.pages.about_us') }}" class="text-white text-decoration-none">Tentang Kami</a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('masyarakat.pages.order') }}" class="text-white text-decoration-none">Order</a>
+                            <a href="{{ route('masyarakat.pages.order') }}" class="text-white text-decoration-none">Pesan</a>
                         </li>
                     </ul>
                 </div>
                 <!-- Contact Us -->
                 <div class="col-lg-6 col-md-6 mb-4">
                     <h4 class="fw-bold text-white border-bottom border-warning pb-2 d-inline-block mb-3">
-                        Contact Us
+                        Kontak Kami
                     </h4>
                     <ul class="list-unstyled">
 
@@ -82,9 +80,9 @@
             <!-- COPYRIGHT -->
             <div class="text-center text-sm text-muted">
                 © {{ date('Y') }},
-                made with <i class="fa fa-heart"></i> by
-                <span class="fw-bold">RecyCode Team</span>
-                for a better environment.
+                Dibuat dengan <i class="fa fa-heart"></i> oleh
+                <span class="fw-bold">Tim RecyCode</span>
+                untuk lingkungan yang lebih baik.
             </div>
         </div>
     </div>
