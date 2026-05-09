@@ -14,7 +14,7 @@
                                 <h1 class="m-b-20"><strong>Selamat datang<br>di TrashGo!</strong></h1>
                             @endauth
                             <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
-                            <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Order Layanan</a></p>
+                            <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Pesan Layanan</a></p>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                             @endauth
                             <h1 class="m-b-20"><strong>Welcome To <br> TrashGo!</strong></h1>
                             <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
-                            <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Order Layanan</a></p>
+                            <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Pesan Layanan</a></p>
                         </div>
                     </div>
                 </div>
@@ -229,12 +229,12 @@
                     <div class="card mb-3">
                         <div class="card-header">
                             <a class="collapsed card-link" data-toggle="collapse" href="#faq5">
-                              Apakah saya mendapatkan point setelah melakukan order?
+                              Apakah saya mendapatkan point setelah melakukan pemesanan?
                             </a>
                         </div>
                         <div id="faq5" class="collapse" data-parent="#faqAccordion">
                             <div class="card-body">
-                                Ya, setiap pengguna akan mendapatkan point setelah berhasil melakukan order layanan
+                                Ya, setiap pengguna akan mendapatkan point setelah berhasil melakukan pemesanan layanan
                                 <p>Point bisa ditukar pada saat pembayaran, jika mempunyai minimal 10 point</p>
                             </div>
                         </div>

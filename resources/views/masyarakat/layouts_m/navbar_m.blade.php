@@ -34,15 +34,11 @@
                                     @php
                                         $lastRead = auth('masyarakat')->user()->last_read_notif;
 
-                                        $newOrders = $Orders->filter(function ($o) use ($lastRead) {
-                                            return !$lastRead || $o->created_at->gt($lastRead);
+                                        $newNotif = $notificationsAll->filter(function ($n) use ($lastRead) {
+                                            return !$lastRead || $n->created_at->gt($lastRead);
                                         });
 
-                                        $newPembayarans = $Pembayarans->filter(function ($p) use ($lastRead) {
-                                            return !$lastRead || $p->created_at->gt($lastRead);
-                                        });
-
-                                        $totalNotif = $newOrders->count() + $newPembayarans->count();
+                                        $totalNotif = $newNotif->count();
                                     @endphp
 
                                     @if($totalNotif > 0)
