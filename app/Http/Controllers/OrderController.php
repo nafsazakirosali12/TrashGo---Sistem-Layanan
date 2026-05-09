@@ -69,7 +69,7 @@ class OrderController extends Controller
             'waktu' => $request->waktu,
             'total_harga' => 10000,
             'catatan' => $request->catatan,
-            'status' => 'pending',
+            'status' => 'menunggu',
         ]);
 
         // 3. LANJUT KE PEMBAYARAN
