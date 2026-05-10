@@ -24,6 +24,7 @@
   <link href="{{ asset('assets_admin/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('assets_admin/css/soft-ui-dashboard.css?v=1.0.3') }}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body class="g-sidenav-show  bg-gray-100 d-flex flex-column min-vh-100">

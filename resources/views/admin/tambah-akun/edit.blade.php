@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page', 'Edit')
+@section('page', 'Ubah Akun')
 
 @section('content')
 
@@ -12,7 +12,7 @@
             <div class="card shadow-sm border-0 rounded-4">
 
                 <div class="card-header bg-white border-0 pt-4 pb-0">
-                    <h5 class="mb-0">Edit Akun Petugas</h5>
+                    <h5 class="mb-0">Ubah Akun Petugas</h5>
                 </div>
 
                 <div class="card-body pt-2">
@@ -51,8 +51,20 @@
 
                         <div class="mb-3">
                             <label class="form-label">Sandi</label>
-                            <input type="password" name="password" class="form-control"
-                                placeholder="Kosongkan jika tidak diubah">
+
+                            <div class="input-group">
+                                <input type="password"
+                                    name="password"
+                                    class="form-control"
+                                    id="password"
+                                    placeholder="Kosongkan jika tidak diubah">
+
+                                <span class="input-group-text"
+                                    onclick="togglePassword()"
+                                    style="cursor: pointer;">
+                                    <i class="fa fa-eye" id="eyeIcon"></i>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="mb-3">
@@ -115,6 +127,23 @@
             }
         });
     });
+</script>
+
+<script>
+function togglePassword() {
+    const password = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    if (password.type === 'password') {
+        password.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+    } else {
+        password.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+    }
+}
 </script>
 
 @endsection
