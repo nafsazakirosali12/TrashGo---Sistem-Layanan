@@ -14,7 +14,7 @@
                                 <h1 class="m-b-20"><strong>Selamat datang<br>di TrashGo!</strong></h1>
                             @endauth
                             <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
-                            <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Order Layanan</a></p>
+                            <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Pesan Layanan</a></p>
                         </div>
                     </div>
                 </div>
@@ -29,12 +29,11 @@
                             @else
                                 <h1 class="m-b-20"><strong>Selamat datang<br>di TrashGo!</strong></h1>
                             @endauth
-                            <h1 class="m-b-20"><strong>Welcome To <br> TrashGo!</strong></h1>
                             <p class="m-b-40">Platform pengangkutan sampah digital untuk masyarakat modern <br> Pesan layanan, pilih jadwal, dan bantu jaga kebersihan lingkungan hanya dalam satu klik </p>
-                            <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Order Layanan</a></p>
+                            <p><a class="btn hvr-hover" href="{{ route('masyarakat.pages.order') }}">Pesan Layanan</a></p>
                         </div>
                     </div>
-                </div>
+                </div>     
             </li>
         </ul>
         <div class="slides-navigation">
@@ -169,13 +168,13 @@
                      <div class="card mb-3">
                         <div class="card-header">
                             <a class="collapsed card-link" data-toggle="collapse" href="#faq2">
-                                Bagaimana cara melakukan order?
+                                Bagaimana cara melakukan pemesanan?
                             </a>
                         </div>
                         <div id="faq2" class="collapse" data-parent="#faqAccordion">
                             <ul class="card-body">
-                                Cara melakukan order:
-                                <li>1. Klik menu "Order" pada navbar.</li>
+                                Cara melakukan pemesanan:
+                                <li>1. Klik menu "Pesan" pada navbar.</li>
                                 <li>2. Isi formulir yang tersedia meliputi:</li>
                                 <li>- Kategori layanan</li>
                                 <li>- Lokasi Penjemputan</li>
@@ -190,7 +189,7 @@
                                 <li>4. Anda akan diarahkan ke halaman pembayaran</li>
                                 <li>5. Pilih metode pembayaran yang tersedia</li>
                                 <li>Jika menggunakan metode transfer, silakan kirim/upload bukti pembayaran</li>
-                                <li>Setelah selesai, klik tombol **Selesai** untuk menyelesaikan proses order</li>
+                                <li>Setelah selesai, klik tombol **Selesai** untuk menyelesaikan proses pemesanan</li>
                             </ul>
                         </div>
                     </div>
@@ -220,7 +219,7 @@
                         <div id="faq4" class="collapse" data-parent="#faqAccordion">
                             <div class="card-body">
                                 Ya, pengguna dapat menentukan jadwal pengambilan sampah sesuai kebutuhan
-                                <p>Anda dapat memilih tanggal dan waktu yang diinginkan saat mengisi formulir order, sehingga layanan menjadi lebih fleksibel.</p>
+                                <p>Anda dapat memilih tanggal dan waktu yang diinginkan saat mengisi formulir pemesanan, sehingga layanan menjadi lebih fleksibel.</p>
                             </div>
                         </div>
                     </div>
@@ -229,12 +228,12 @@
                     <div class="card mb-3">
                         <div class="card-header">
                             <a class="collapsed card-link" data-toggle="collapse" href="#faq5">
-                              Apakah saya mendapatkan point setelah melakukan order?
+                              Apakah saya mendapatkan point setelah melakukan pemesanan?
                             </a>
                         </div>
                         <div id="faq5" class="collapse" data-parent="#faqAccordion">
                             <div class="card-body">
-                                Ya, setiap pengguna akan mendapatkan point setelah berhasil melakukan order layanan
+                                Ya, setiap pengguna akan mendapatkan point setelah berhasil melakukan pemesanan layanan
                                 <p>Point bisa ditukar pada saat pembayaran, jika mempunyai minimal 10 point</p>
                             </div>
                         </div>

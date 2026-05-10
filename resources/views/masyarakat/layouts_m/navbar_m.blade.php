@@ -34,15 +34,11 @@
                                     @php
                                         $lastRead = auth('masyarakat')->user()->last_read_notif;
 
-                                        $newOrders = $orders->filter(function ($o) use ($lastRead) {
-                                            return !$lastRead || $o->created_at->gt($lastRead);
+                                        $newNotif = $notificationsAll->filter(function ($n) use ($lastRead) {
+                                            return !$lastRead || $n->created_at->gt($lastRead);
                                         });
 
-                                        $newPembayarans = $pembayarans->filter(function ($p) use ($lastRead) {
-                                            return !$lastRead || $p->created_at->gt($lastRead);
-                                        });
-
-                                        $totalNotif = $newOrders->count() + $newPembayarans->count();
+                                        $totalNotif = $newNotif->count();
                                     @endphp
 
                                     @if($totalNotif > 0)
@@ -84,12 +80,12 @@
                             </li>
                         @else
                             <li class="nav-item d-flex align-items-center me-2">
-                                <a href="/login" class="btn btn-sm mb-2 ml-2" style="border: 2px solid #b0b435; color: #b0b435; font-weight: 600; border-radius: 8px; padding: 6px 18px; background: transparent; transition: 0.3s;">
+                                <a href="/login" class="btn btn-sm mb-1 ml-2" style="border: 2px solid #b0b435; color: #b0b435; font-weight: 600; border-radius: 8px; padding: 6px 18px; background: transparent; transition: 0.3s;">
                                     Masuk
                                 </a>
                             </li>
                             <li class="nav-item d-flex align-items-center">
-                                <a href="/register" class="btn btn-sm mb-0 ml-2" style="background-color: #b0b435; color: #ffffff; font-weight: 600; border-radius: 8px; padding: 6px 18px; border: 2px solid #b0b435; transition: 0.3s;">
+                                <a href="/register" class="btn btn-sm mb-1 ml-2" style="background-color: #b0b435; color: #ffffff; font-weight: 600; border-radius: 8px; padding: 6px 18px; border: 2px solid #b0b435; transition: 0.3s;">
                                     Daftar
                                 </a>
                             </li>
@@ -99,7 +95,7 @@
                 <!-- /.navbar-collapse -->
             </div>
         </nav>
-        <!-- End Navigation -->
+        <!-- End Navigation -->zz
     </header>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

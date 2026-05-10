@@ -9,19 +9,13 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
 
-            <div class="card shadow-sm border-0">
+            <div class="card shadow-sm border-0 rounded-4">
 
-                <div class="card-header pb-0">
+                <div class="card-header bg-white border-0 pt-4 pb-0">
                     <h5 class="mb-0">Tambah Akun Petugas</h5>
                 </div>
 
-                <div class="card-body">
-
-                    @if (session('success'))
-                        <div class="alert alert-success text-white">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+                <div class="card-body pt-2">
 
                     @if ($errors->any())
                         <div class="alert alert-danger text-white">
@@ -42,7 +36,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Nama Ketua</label>
+                            <label class="form-label">Nama Ketua Tim</label>
                             <input type="text" name="nama_ketua" class="form-control">
                         </div>
 
@@ -52,7 +46,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Password</label>
+                            <label class="form-label">Sandi</label>
                             <input type="password" name="password" class="form-control">
                         </div>
 
@@ -64,8 +58,8 @@
                         <div class="mb-4">
                             <label class="form-label">Status</label>
                             <select name="status" class="form-control">
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
+                                <option value="acctive">Aktif</option>
+                                <option value="inacctive">Non-aktif</option>
                             </select>
                         </div>
 
@@ -86,7 +80,6 @@
 
         </div>
     </div>
-
 </div>
 
 <script>

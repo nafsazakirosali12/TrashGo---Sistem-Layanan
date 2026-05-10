@@ -13,12 +13,12 @@
 
                 <a href="{{ route('masyarakat.pages.home_masyarakat') }}"
                    class="btn btn-outline-secondary btn-sm">
-                    ← Kembali ke Home
+                    ← Kembali ke Beranda
                 </a>
 
                 <a href="{{ route('masyarakat.profile_m.edit_m') }}"
                    class="btn btn-sm"style="background-color:#93a267; border-color:#93a267; color:white;">
-                    Edit Profile
+                    Ubah Profil
                 </a>
 
             </div>
@@ -83,7 +83,7 @@
                                 </tr>
 
                                 <tr>
-                                    <th>Password</th>
+                                    <th>Kata Sandi</th>
                                     <td>********</td>
                                 </tr>
                             </table>

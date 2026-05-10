@@ -3,29 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\Pembayaran;
 
 class NotifikasiController extends Controller
 {
     public function index()
-        {
-            $user = auth('masyarakat')->user();
+    {
+        $user = auth('masyarakat')->user();
 
-            $orders = Order::where('masyarakat_id', $user->id)->latest()->get();
-            $pembayarans = Pembayaran::where('masyarakat_id', $user->id)->latest()->get();
+        $orders = Order::where('masyarakat_id', $user->id)
+            ->select(
+                'id',
+                'status',
+                'created_at',
+                DB::raw("'order' as type")
+            );
 
-            // simpan waktu terakhir baca
-            $lastTimeOrder = $orders->first()?->created_at;
-            $lastTimePembayaran = $pembayarans->first()?->created_at;
+        $pembayarans = Pembayaran::where('masyarakat_id', $user->id)
+            ->select(
+                'id',
+                'status',
+                'created_at',
+                DB::raw("'payment' as type")
+            );
 
-            $lastTime = collect([$lastTimeOrder, $lastTimePembayaran])->max();
+        $notifications = $orders
+            ->unionAll($pembayarans)
+            ->orderByDesc('created_at')
+            ->paginate(15);
 
-            $user = auth('masyarakat')->user();
+        // update last read
+        $lastTime = $notifications->first()?->created_at;
 
-            $user->last_read_notif = $lastTime; 
-            $user->save();
+        $user->last_read_notif = $lastTime;
+        $user->save();
 
-            return view('masyarakat.pages.notifikasi', compact('orders', 'pembayarans'));
-        }
+        return view('masyarakat.pages.notifikasi', compact('notifications'));
+    }
 }

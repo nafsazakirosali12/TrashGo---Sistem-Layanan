@@ -5,7 +5,7 @@
     <div>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0">
-          <li class="breadcrumb-item text-sm">Pages</li>
+          <li class="breadcrumb-item text-sm">Halaman</li>
           <li class="breadcrumb-item text-sm text-dark active">
             @yield('page')
           </li>

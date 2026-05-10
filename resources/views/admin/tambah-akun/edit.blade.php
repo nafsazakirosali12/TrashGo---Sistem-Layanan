@@ -9,13 +9,13 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
 
-            <div class="card shadow-sm border-0">
+            <div class="card shadow-sm border-0 rounded-4">
 
-                <div class="card-header pb-0">
+                <div class="card-header bg-white border-0 pt-4 pb-0">
                     <h5 class="mb-0">Edit Akun Petugas</h5>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body pt-2">
 
                     @if ($errors->any())
                         <div class="alert alert-danger text-white">
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Nama Ketua</label>
+                            <label class="form-label">Nama Ketua Tim</label>
                             <input type="text" name="nama_ketua" class="form-control"
                                 value="{{ $petugas->nama_ketua }}">
                         </div>
@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Password</label>
+                            <label class="form-label">Sandi</label>
                             <input type="password" name="password" class="form-control"
                                 placeholder="Kosongkan jika tidak diubah">
                         </div>
@@ -63,14 +63,14 @@
                         <div class="mb-4">
                             <label class="form-label">Status</label>
                             <select name="status" class="form-control">
-                                <option value="active"
-                                    {{ $petugas->status == 'active' ? 'selected' : '' }}>
-                                    Active
+                                <option value="acctive"
+                                    {{ $petugas->status == 'acctive' ? 'selected' : '' }}>
+                                    Aktif
                                 </option>
 
-                                <option value="inactive"
-                                    {{ $petugas->status == 'inactive' ? 'selected' : '' }}>
-                                    Inactive
+                                <option value="inacctive"
+                                    {{ $petugas->status == 'inacctive' ? 'selected' : '' }}>
+                                    Non-aktif
                                 </option>
                             </select>
                         </div>
@@ -81,7 +81,7 @@
                             </a>
 
                             <button type="submit" class="btn bg-gradient-primary">
-                                Update
+                                Simpan
                             </button>
                         </div>
 
@@ -91,6 +91,7 @@
             </div>
 
         </div>
+
     </div>
 
 </div>
@@ -100,13 +101,13 @@
         e.preventDefault();
 
         Swal.fire({
-            title: 'Update akun?',
+            title: 'Simpan perubahan?',
             text: "Perubahan data petugas akan disimpan",
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#6b8e23',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, update!',
+            confirmButtonText: 'Ya, simpan!',
             cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {
