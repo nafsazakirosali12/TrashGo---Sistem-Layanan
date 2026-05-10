@@ -99,7 +99,9 @@ class PetugasController extends Controller
             'status' => 'required|in:acctive,inacctive',
         ]);
 
-        if (empty($request->password)) {
+        if (!empty($request->password)) {
+            $validated['password'] = Hash::make($request->password);
+        } else {
             unset($validated['password']);
         }
 

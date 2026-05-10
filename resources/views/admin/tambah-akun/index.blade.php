@@ -20,10 +20,10 @@
               <thead class="text-center">
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Tim</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Ketua</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Ketua Tim</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Password</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sandi</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                   <th class="text-secondary opacity-7"></th>
@@ -42,19 +42,19 @@
                       <a href="{{ route('tambah-akun.edit', $p->id) }}" class="btn bg-gradient-primary">
                         Ubah
                       </a>
-                      <form action="{{ route('tambah-akun.delete', $p->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm"
-                          onclick="return confirm('Yakin mau hapus data ini?')">
-                          Hapus
-                        </button>
+                      <form id="deleteForm-{{ $p->id }}" action="{{ route('tambah-akun.delete', $p->id) }}" method="POST" style="display:inline;">
+                          @csrf
+                          @method('DELETE')
+                          <button type="button" class="btn btn-danger btn-sm"
+                              onclick="confirmDelete({{ $p->id }})">
+                              Hapus
+                          </button>
                       </form>
                     </td>
                   </tr>
                 @empty
                   <tr>
-                    <td colspan="6" class="text-center">Data tidak ada</td>
+                    <td colspan="7" class="text-center">Data tidak ada</td>
                   </tr>
                 @endforelse
               </tbody>
@@ -65,5 +65,42 @@
     </div>
   </div>
 </div>
+
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: @json(session('success')),
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true
+    });
+</script>
+@endif
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Yakin hapus data?',
+            text: "Data yang dihapus tidak bisa dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#6b8e23',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('deleteForm-' + id).submit();
+            }
+        });
+    }
+
+    window.confirmDelete = confirmDelete;
+});
+</script>
 
 @endsection
