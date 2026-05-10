@@ -66,7 +66,11 @@ class PembayaranController extends Controller
         }
 
         // 5. SIMPAN PEMBAYARAN
-        Pembayaran::create([
+        $statusPembayaran = $request->metode_pembayaran == 'transfer'
+            ? 'success'
+            : 'pending';
+            
+        $pembayaran = Pembayaran::create([
             'masyarakat_id' => $order->masyarakat_id,
             'order_id' => $order->id,
             'metode_pembayaran' => $request->metode_pembayaran,
@@ -75,7 +79,7 @@ class PembayaranController extends Controller
             'total_pembayaran' => $total,
             'bukti_pembayaran' => $bukti,
             'tanggal_pembayaran' => Carbon::now(),
-            'status' => 'pending',
+            'status' =>  $statusPembayaran,
         ]);
 
         // 6. UPDATE STATUS ORDER
@@ -84,7 +88,13 @@ class PembayaranController extends Controller
         ]);
 
         // 7. REDIRECT
-        return redirect()->route('masyarakat.pages.home_masyarakat')->with('success', 'Pembayaran berhasil diproses!');
+        // return redirect()->route('masyarakat.pages.notifikasi')->with('success', 'Pembayaran berhasil diproses!');
+        return redirect()->route('masyarakat.pages.notifikasi')
+            ->with([
+                'success' => 'Pembayaran berhasil diproses!',
+                'highlight_order_id' => $order->id,
+                'highlight_payment_id' => $pembayaran->id
+            ]);
     }
 
     public function show($order_id)

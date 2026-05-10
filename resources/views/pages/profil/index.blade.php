@@ -84,7 +84,7 @@
 
             <!-- PASSWORD -->
             <div class="col-md-4 mb-3">
-              <p class="text-xs text-secondary mb-1">Password</p>
+              <p class="text-xs text-secondary mb-1">Kata Sandi</p>
               <h6 class="mb-0">
                 ********
               </h6>

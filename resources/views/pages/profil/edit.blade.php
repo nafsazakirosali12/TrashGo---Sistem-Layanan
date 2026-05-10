@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page', 'Edit Profil')
+@section('page', 'Ubah Profil')
 
 @section('content')
 
@@ -12,7 +12,7 @@
 
         <!-- HEADER -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h5 class="mb-0">Edit Profil</h5>
+          <h5 class="mb-0">Ubah Profil</h5>
 
           <a href="{{ route('admin.profil.index') }}" class="btn btn-secondary btn-sm">
             Kembali
@@ -26,7 +26,7 @@
           </div>
         @endif
 
-        <form action="{{ route('admin.profil.update') }}" method="POST" enctype="multipart/form-data">
+        <form id="formProfil" action="{{ route('admin.profil.update') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="row">
             <!-- FOTO -->
@@ -55,26 +55,95 @@
               </div>
 
               <div class="mb-3">
-                <label class="form-label">Password</label>
+                <label class="form-label">Kata Sandi</label>
                 <input type="password" name="password" 
                        class="form-control" 
                        placeholder="Kosongkan jika tidak diubah">
               </div>
 
-              <button type="submit" class="btn bg-gradient-primary">
+              <button type="button" id="btnSimpan" class="btn bg-gradient-primary">
                 Simpan Perubahan
               </button>
-
             </div>
-
           </div>
-
         </form>
-
       </div>
     </div>
   </div>
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.getElementById('btnSimpan').addEventListener('click', function(){
+
+    let form = document.getElementById('formProfil');
+
+    let nama = document.querySelector('input[name="nama_admin"]').value;
+    let email = document.querySelector('input[name="email"]').value;
+
+    // VALIDASI NAMA
+    if(nama.trim() == ""){
+        Swal.fire({
+            icon: 'warning',
+            title: 'Nama kosong!',
+            text: 'Silakan isi nama admin'
+        });
+        return;
+    }
+
+    // VALIDASI EMAIL KOSONG
+    if(email.trim() == ""){
+        Swal.fire({
+            icon: 'warning',
+            title: 'Email kosong!',
+            text: 'Silakan isi email'
+        });
+        return;
+    }
+
+    // VALIDASI FORMAT EMAIL
+    let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!regexEmail.test(email)){
+        Swal.fire({
+            icon: 'warning',
+            title: 'Email tidak valid!',
+            text: 'Masukkan format email yang benar'
+        });
+        return;
+    }
+
+    // KONFIRMASI
+    Swal.fire({
+        title: 'Simpan perubahan?',
+        text: "Pastikan data profil sudah benar",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#B7C43A',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Simpan!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+
+        if(result.isConfirmed){
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: 'Profil sedang diperbarui',
+                timer: 1500,
+                showConfirmButton: false
+            });
+
+            setTimeout(() => {
+                form.submit();
+            }, 1500);
+
+        }
+
+    });
+
+});
+</script>
 @endsection
