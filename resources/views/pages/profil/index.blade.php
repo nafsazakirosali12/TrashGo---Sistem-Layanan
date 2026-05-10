@@ -42,7 +42,7 @@
       <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto text-end">
         <a href="{{ route('admin.profil.edit') }}" 
            class="btn bg-gradient-primary btn-sm">
-          Edit Profile
+          Ubah Profil
         </a>
       </div>
 
@@ -59,7 +59,7 @@
 
         <!-- HEADER -->
         <div class="card-header pb-0 p-3">
-          <h6 class="mb-0">Profile Information</h6>
+          <h6 class="mb-0">Informasi Profil</h6>
         </div>
 
         <!-- BODY -->

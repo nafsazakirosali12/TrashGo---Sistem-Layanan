@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page', 'Dashboard')
+@section('page', 'Dasbor')
 
 @section('content')
 
@@ -33,7 +33,7 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Order</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Pesanan</p>
                     <h5 class="font-weight-bolder mb-0">
                       {{ $total_order }}
                     </h5>
@@ -239,7 +239,7 @@
   <script src="../assets_admin/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets_admin/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets_admin/js/plugins/chartjs.min.js"></script>
-  <script>
+  <script>\
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {

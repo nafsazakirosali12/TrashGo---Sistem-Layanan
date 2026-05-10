@@ -38,7 +38,7 @@ body {
 
     <!-- BUTTON KEMBALI -->
     <div class="mb-3">
-        <a href="{{ route('masyarakat.pages.order') }}"
+        <a href="{{ route('masyarakat.pages.home_masyarakat') }}"
            class="btn btn-outline-success"
            style="border-radius: 10px;">
             <i class="fa fa-arrow-left"></i>

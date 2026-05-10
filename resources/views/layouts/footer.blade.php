@@ -41,9 +41,9 @@
             <div class="col-12 text-center">
               <div class="text-center text-sm text-muted">
                 © {{ date('Y') }},
-                made with <i class="fa fa-heart"></i> by
-                <span class="fw-bold">RecyCode Team</span>
-                for a better environment.
+                Dibuat dengan <i class="fa fa-heart"></i> oleh
+                <span class="fw-bold">Tim RecyCode</span>
+                untuk lingkungan yang lebih baik.
               </div>
             </div>
           </div>

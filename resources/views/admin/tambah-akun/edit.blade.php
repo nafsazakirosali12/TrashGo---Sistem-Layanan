@@ -57,14 +57,14 @@
         <div class="mb-3">
         <label>Status</label>
         <select name="status" class="form-control">
-            <option value="acctive" {{ $petugas->status == 'acctive' ? 'selected' : '' }}>Acctive</option>
-            <option value="inacctive" {{ $petugas->status == 'inacctive' ? 'selected' : '' }}>Inacctive</option>
+            <option value="acctive" {{ $petugas->status == 'acctive' ? 'selected' : '' }}>Aktif</option>
+            <option value="inacctive" {{ $petugas->status == 'inacctive' ? 'selected' : '' }}>Non-aktif</option>
         </select>
         </div>
 
         <div class="d-flex justify-content-between">
             <a href="{{ route('tambah-akun') }}" class="btn btn-primary btn-sm">Kembali</a>
-            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+            <button type="submit" class="btn btn-primary btn-sm">Perbarui</button>
         </div>
     </form>
     </div>

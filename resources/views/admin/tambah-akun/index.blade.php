@@ -25,7 +25,7 @@
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Password</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                   <th class="text-secondary opacity-7"></th>
                 </tr>
               </thead>
@@ -40,7 +40,7 @@
                     <td>{{ $p->alamat }}</td>
                     <td class="text-center">
                       <a href="{{ route('tambah-akun.edit', $p->id) }}" class="btn bg-gradient-primary">
-                        Edit
+                        Ubah
                       </a>
                       <form action="{{ route('tambah-akun.delete', $p->id) }}" method="POST" style="display:inline;">
                         @csrf
