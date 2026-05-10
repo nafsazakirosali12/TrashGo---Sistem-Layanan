@@ -17,28 +17,28 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.home_masyarakat') }}">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.about_us') }}">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.order') }}">Order</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.home_masyarakat') }}">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.about_us') }}">Tentang Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.order') }}">Pesan</a></li>
                         
                         <!-- ICON POINT, NOTIFIKASI, DROPDOWN -->
-                        <li class="nav-item"><a class="nav-link" href="{{ route('masyarakat.pages.point') }}"><i class="fa fa-coins"></i></a></li>
                         <li class="nav-item">
-                            <a class="nav-link position-relative" href="{{ route ('masyarakat.pages.notifikasi') }}">
+                            <a class="nav-link" href="{{ route('masyarakat.pages.point') }}" data-toggle="tooltip" title="Lihat Point">
+                                <i class="fa fa-coins"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link position-relative" href="{{ route ('masyarakat.pages.notifikasi') }}" data-toggle="tooltip" title="Lihat Notifikasi">
                                 <i class="fa fa-bell"></i>
                                 @if(auth('masyarakat')->check())
                                     @php
                                         $lastRead = auth('masyarakat')->user()->last_read_notif;
 
-                                        $newOrders = $orders->filter(function ($o) use ($lastRead) {
-                                            return !$lastRead || $o->created_at->gt($lastRead);
+                                        $newNotif = $notificationsAll->filter(function ($n) use ($lastRead) {
+                                            return !$lastRead || $n->created_at->gt($lastRead);
                                         });
 
-                                        $newPembayarans = $pembayarans->filter(function ($p) use ($lastRead) {
-                                            return !$lastRead || $p->created_at->gt($lastRead);
-                                        });
-
-                                        $totalNotif = $newOrders->count() + $newPembayarans->count();
+                                        $totalNotif = $newNotif->count();
                                     @endphp
 
                                     @if($totalNotif > 0)
@@ -49,24 +49,47 @@
                                 @endif
                             </a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="nav-link" data-toggle="dropdown"><i class="fa fa-bars fs-4"></i></a>
-                            <ul class="dropdown-menu dropdown-menu-right" style="min-width: 220px; border-radius: 8px; padding: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: none;">
-                                <li style="margin-bottom: 5px;"><a href="{{ route('masyarakat.profile_m') }}" style="display: block; padding: 8px 15px; border-radius: 5px; transition: 0.3s;">
-                                    <i class="fa fa-user-circle" style="width: 20px; text-align: center; margin-right: 8px;"></i>My Profile</a>
-                                </li>
-                                <li style="margin-bottom: 5px;"><a href="{{ route('masyarakat.pages.riwayat_order') }}" style="display: block; padding: 8px 15px; border-radius: 5px; transition: 0.3s;">
-                                    <i class="fa fa-history" style="width: 20px; text-align: center; margin-right: 8px;"></i>Riwayat Order</a>
-                                </li>
-                                <li><hr style="margin: 10px 0; border-top: 1px solid #eee;"></li>
-                                <li style="margin-bottom: 5px;"><a href="/login" style="display: block; padding: 8px 15px; border-radius: 5px; color: #007bff; transition: 0.3s;">
-                                    <i class="fa fa-sign-in-alt" style="width: 20px; text-align: center; margin-right: 8px;"></i> Sign In</a>
-                                </li>
-                                <li><a href="/logout" style="display: block; padding: 8px 15px; border-radius: 5px; color: #dc3545; transition: 0.3s;">
-                                    <i class="fa fa-sign-out-alt" style="width: 20px; text-align: center; margin-right: 8px;"></i> Sign Out</a>
-                                </li>
-                            </ul>
-                        </li>
+                        @auth('masyarakat')
+                            <li class="dropdown nav-item d-flex align-items-center">
+                                <a href="#" class="nav-link" data-toggle="dropdown">
+                                    <i class="fa fa-bars fs-4"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" style="min-width: 220px; border-radius: 8px; padding: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: none;">
+                                    <li style="margin-bottom: 5px;">
+                                        <a href="{{ route('masyarakat.profile_m') }}" style="display: block; padding: 8px 15px; border-radius: 5px; transition: 0.3s;">
+                                            <i class="fa fa-user-circle" style="width: 20px; text-align: center; margin-right: 8px;"></i>Profil Saya
+                                        </a>
+                                    </li>
+                                    <li style="margin-bottom: 5px;">
+                                        <a href="{{ route('masyarakat.pages.riwayat_order') }}" style="display: block; padding: 8px 15px; border-radius: 5px; transition: 0.3s;">
+                                            <i class="fa fa-history" style="width: 20px; text-align: center; margin-right: 8px;"></i>Riwayat Pesanan
+                                        </a>
+                                    </li>
+                                    
+                                    <li><hr style="margin: 10px 0; border-top: 1px solid #eee;"></li>
+                                    
+                                    <li>
+                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="display: block; padding: 8px 15px; border-radius: 5px; color: #dc3545; transition: 0.3s;">
+                                            <i class="fa fa-sign-out-alt" style="width: 20px; text-align: center; margin-right: 8px;"></i> Keluar
+                                        </a>
+                                        <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @else
+                            <li class="nav-item d-flex align-items-center me-2">
+                                <a href="/login" class="btn btn-sm mb-1 ml-2" style="border: 2px solid #b0b435; color: #b0b435; font-weight: 600; border-radius: 8px; padding: 6px 18px; background: transparent; transition: 0.3s;">
+                                    Masuk
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex align-items-center">
+                                <a href="/register" class="btn btn-sm mb-1 ml-2" style="background-color: #b0b435; color: #ffffff; font-weight: 600; border-radius: 8px; padding: 6px 18px; border: 2px solid #b0b435; transition: 0.3s;">
+                                    Daftar
+                                </a>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -74,3 +97,12 @@
         </nav>
         <!-- End Navigation -->
     </header>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof $ !== 'undefined') {
+                $('[data-toggle="tooltip"]').tooltip({
+                    template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner" style="background-color: #b0b435; color: #ffffff; border-radius: 6px; padding: 6px 12px; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"></div></div>'
+                });   
+            }
+        });
+    </script>

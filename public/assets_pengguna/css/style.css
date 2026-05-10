@@ -287,9 +287,8 @@ p {
     color: #ffffff;
     opacity: 1;
 }
->>>>>>>9a30cf33803b35507db5850d337022c62d938fac
-    .bootstrap-select
-    .dropdown-toggle:focus {
+
+.bootstrap-select.dropdown-toggle:focus {
     box-shadow: none !important;
 }
 /*------------------------------------------------------------------ LOADER -------------------------------------------------------------------*/

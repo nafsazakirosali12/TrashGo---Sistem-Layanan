@@ -13,17 +13,17 @@ class KategoriController extends Controller
     public function index()
     {
         $kategori = Kategori::all(); // ambil semua data
-        return view('kategori.index', compact('kategori'));
+        return view('admin.kategori', compact('kategori'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('kategori.tambah_kategori');
-        return view('kategori.create');
-    }
+    // public function create()
+    // {
+    //     return view('kategori.tambah_kategori');
+    //     return view('kategori.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -31,8 +31,8 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'nama_kategori' => 'required',
-        'deskripsi' => 'required'
+            'nama_kategori' => 'required',
+            'deskripsi' => 'required'
         ], [
             'nama_kategori.required' => 'Nama kategori wajib diisi',
             'deskripsi.required' => 'Deskripsi wajib diisi',
@@ -43,9 +43,9 @@ class KategoriController extends Controller
             'deskripsi' => $request->deskripsi
         ]);
 
-        return redirect()->route('kategori.index')
-                         ->with('success', 'Kategori berhasil ditambahkan!');
-        return redirect('/kategori');
+        return redirect()
+            ->route('kategori.index')
+            ->with('success', 'Kategori berhasil ditambahkan!');
     }
 
     /**
@@ -59,11 +59,11 @@ class KategoriController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kategori $kategori)
-    {
-        return view('kategori.edit_kategori', compact('kategori'));
-        return view('kategori.edit', compact('kategori'));
-    }
+    // public function edit(Kategori $kategori)
+    // {
+    //     return view('kategori.edit_kategori', compact('kategori'));
+    //     return view('kategori.edit', compact('kategori'));
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -71,23 +71,30 @@ class KategoriController extends Controller
     public function update(Request $request, Kategori $kategori)
     {
         $request->validate([
-        'nama_kategori' => 'required',
-        'deskripsi' => 'required'
+            'nama_kategori' => 'required',
+            'deskripsi' => 'required'
         ], [
             'nama_kategori.required' => 'Nama kategori wajib diisi',
             'deskripsi.required' => 'Deskripsi wajib diisi',
         ]);
 
+        if (
+            $kategori->nama_kategori == $request->nama_kategori &&
+            $kategori->deskripsi == $request->deskripsi
+        ) {
+            return redirect()->back()
+                ->with('warning', 'Tidak ada peruahan data');
+        }
+
         $kategori->update([
             'nama_kategori' => $request->nama_kategori,
             'deskripsi' => $request->deskripsi
         ]);
-      
-        return redirect()->route('kategori.index')
-                         ->with('success', 'Kategori berhasil diupdate!');
-        return redirect('/kategori');
-    }
 
+        return redirect()
+            ->route('kategori.index')
+            ->with('success', 'Kategori berhasil diubah!');
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -95,7 +102,8 @@ class KategoriController extends Controller
     {
         $kategori->delete();
 
-        return redirect()->route('kategori.index')
-                         ->with('success', 'Kategori berhasil dihapus!');
+        return redirect()
+            ->route('kategori.index')
+            ->with('success', 'Kategori berhasil dihapus!');
     }
 }

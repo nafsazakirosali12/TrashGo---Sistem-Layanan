@@ -80,7 +80,7 @@ class PembayaranController extends Controller
 
         // 6. UPDATE STATUS ORDER
         $order->update([
-            'status' => 'processing'
+            'status' => 'pending'
         ]);
 
         // 7. REDIRECT
