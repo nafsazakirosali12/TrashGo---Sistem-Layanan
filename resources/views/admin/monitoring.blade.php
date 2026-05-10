@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page', 'Monitoring Order')
+@section('page', 'Monitor Order')
 
 @section('content')
 

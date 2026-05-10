@@ -14,7 +14,7 @@
           <a class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}" href="{{ url('/dashboard') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>office</title>
+                <title>kantor</title>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
                     <g transform="translate(1716.000000, 291.000000)">
@@ -27,14 +27,14 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
+            <span class="nav-link-text ms-1">Dasbor</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ request()->is('kategori*') ? 'active' : '' }}" href="{{ url('/kategori') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>office</title>
+                <title>Kantor</title>
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
                     <g transform="translate(1716.000000, 291.000000)">
@@ -88,7 +88,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Monitoring Order</span>
+            <span class="nav-link-text ms-1">Monitor Order</span>
           </a>
         </li>
       </ul>

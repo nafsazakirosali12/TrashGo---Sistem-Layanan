@@ -63,7 +63,7 @@
     <div>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0">
-          <li class="breadcrumb-item text-sm">Pages</li>
+          <li class="breadcrumb-item text-sm">Halaman</li>
           <li class="breadcrumb-item text-sm text-dark active">
             @yield('page')
           </li>
@@ -83,14 +83,14 @@
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
               <a class="dropdown-item" href="{{ route('admin.profil.index') }}">
-                My Profile
+                Profil Saya
               </a>
             </li>
             <li><hr class="dropdown-divider"></li>
             <li>
               <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button type="submit" class="dropdown-item">Logout</button>
+                <button type="submit" class="dropdown-item">Keluar</button>
               </form>
             </li>
           </ul>

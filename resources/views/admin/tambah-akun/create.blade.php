@@ -53,8 +53,8 @@
     <div class="mb-3">
       <label>Status</label>
       <select name="status" class="form-control">
-        <option value="acctive">Acctive</option>
-        <option value="inacctive">Inacctive</option>
+        <option value="acctive">Aktif</option>
+        <option value="inacctive">Non-aktif</option>
       </select>
     </div>
 
