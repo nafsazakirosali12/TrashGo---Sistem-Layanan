@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page', 'Profil')
+@section('pages', 'Profil')
 
 @section('content')
 
@@ -42,7 +42,7 @@
       <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto text-end">
         <a href="{{ route('admin.profil.edit') }}" 
            class="btn bg-gradient-primary btn-sm">
-          Edit Profile
+          Ubah Profil
         </a>
       </div>
 
@@ -59,7 +59,7 @@
 
         <!-- HEADER -->
         <div class="card-header pb-0 p-3">
-          <h6 class="mb-0">Profile Information</h6>
+          <h6 class="mb-0">Informasi Profil</h6>
         </div>
 
         <!-- BODY -->
@@ -84,7 +84,7 @@
 
             <!-- PASSWORD -->
             <div class="col-md-4 mb-3">
-              <p class="text-xs text-secondary mb-1">Password</p>
+              <p class="text-xs text-secondary mb-1">Kata Sandi</p>
               <h6 class="mb-0">
                 ********
               </h6>

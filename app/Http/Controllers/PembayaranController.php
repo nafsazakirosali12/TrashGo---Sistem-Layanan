@@ -84,7 +84,7 @@ class PembayaranController extends Controller
         ]);
 
         // 7. REDIRECT
-        return redirect()->route('masyarakat.pages.home_masyarakat')->with('success', 'Pembayaran berhasil diproses!');
+        return redirect()->route('masyarakat.pages.notifikasi')->with('success', 'Pembayaran berhasil diproses!');
     }
 
     public function show($order_id)

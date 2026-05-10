@@ -39,7 +39,7 @@
 
         <hr>
 
-        <form action="{{ route('pembayaran.store', $order->id) }}" method="POST" enctype="multipart/form-data">
+       <form id="formPembayaran" action="{{ route('pembayaran.store', $order->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <!-- METODE -->
@@ -95,10 +95,15 @@
 
             <br>
 
-           <button class="btn btn-trashgo w-100"> Bayar Sekarang </button>
+           <button type="button" id="btnBayar" class="btn btn-trashgo w-100">
+                Bayar Sekarang
+            </button>
         </form>
     </div>
 </div>
+
+<!-- SWEETALERT2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     const metode = document.getElementById('metode');
@@ -156,15 +161,74 @@
         totalBayar.innerText = 'Rp ' + hasil.toLocaleString('id-ID');
     }
 
-    document.querySelector("form").addEventListener("submit", function(e){
+    // SWEET ALERT KONFIRMASI
+    document.getElementById('btnBayar').addEventListener('click', function(){
+
+        let form = document.getElementById('formPembayaran');
         let point = parseInt(pointInput.value) || 0;
 
+        // VALIDASI POINT
         if(pakaiPoint.checked && point < 10){
-            e.preventDefault();
-            alert("Point minimal 10!");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Point minimal 10!'
+            });
+            return;
         }
+
+        // VALIDASI METODE
+        if(metode.value == ""){
+            Swal.fire({
+                icon: 'warning',
+                title: 'Metode pembayaran kosong!',
+                text: 'Silakan pilih metode pembayaran'
+            });
+            return;
+        }
+
+        // VALIDASI BUKTI TRANSFER
+        if(metode.value == "transfer" && bukti.files.length === 0){
+            Swal.fire({
+                icon: 'warning',
+                title: 'Bukti transfer belum diupload!',
+                text: 'Silakan upload bukti pembayaran'
+            });
+            return;
+        }
+
+        // KONFIRMASI
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: "Pastikan data pembayaran sudah benar",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#B7C43A',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Bayar!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: 'Pembayaran sedang diproses',
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+
+                setTimeout(() => {
+                    form.submit();
+                }, 1500);
+            }
+
+        });
+
     });
 </script>
+
 
 
 @endsection

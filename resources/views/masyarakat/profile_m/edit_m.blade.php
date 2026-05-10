@@ -64,11 +64,12 @@
 
                     <div class="card shadow-sm border-0 p-4 h-100">
 
-                        <h5 class="mb-3">Edit Profile</h5>
+                        <h5 class="mb-3">Ubah Profile</h5>
 
-                        <form action="{{ route('masyarakat.profile_m.update') }}"
-                              method="POST"
-                              enctype="multipart/form-data">
+                        <form id="formProfile"
+                            action="{{ route('masyarakat.profile_m.update') }}"
+                            method="POST"
+                            enctype="multipart/form-data">
 
                             @csrf
 
@@ -142,7 +143,7 @@
 
                             <!-- PASSWORD (OPTIONAL) -->
                             <div class="mb-3">
-                                <label>Password (kosongkan jika tidak diubah)</label>
+                                <label>Kata Sandi (kosongkan jika tidak diubah)</label>
                                 <input type="password"
                                        name="password"
                                        class="form-control">
@@ -151,7 +152,8 @@
                             <!-- BUTTON -->
                             <div class="text-end">
 
-                                <button type="submit"
+                                <button type="button" 
+                                        id="btnSimpan"
                                         class="btn btn-sm"
                                         style="background-color:#93a267; border-color:#93a267; color:white;">
                                     Simpan Perubahan
@@ -173,4 +175,112 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+document.getElementById('btnSimpan').addEventListener('click', function(){
+
+    let form = document.getElementById('formProfile');
+
+    let nama = document.querySelector('input[name="nama_masyarakat"]').value;
+    let email = document.querySelector('input[name="email"]').value;
+    let telepon = document.querySelector('input[name="no_telepon"]').value;
+    let gender = document.querySelector('select[name="jenis_kelamin"]').value;
+    let alamat = document.querySelector('textarea[name="alamat"]').value;
+
+    // VALIDASI NAMA
+    if(nama.trim() == ""){
+        Swal.fire({
+            icon: 'warning',
+            title: 'Nama kosong!',
+            text: 'Silakan isi nama'
+        });
+        return;
+    }
+
+    // VALIDASI EMAIL
+    if(email.trim() == ""){
+        Swal.fire({
+            icon: 'warning',
+            title: 'Email kosong!',
+            text: 'Silakan isi email'
+        });
+        return;
+    }
+
+    // VALIDASI FORMAT EMAIL
+    let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!regexEmail.test(email)){
+        Swal.fire({
+            icon: 'warning',
+            title: 'Email tidak valid!',
+            text: 'Masukkan format email yang benar'
+        });
+        return;
+    }
+
+    // VALIDASI TELEPON
+    if(telepon.trim() == ""){
+        Swal.fire({
+            icon: 'warning',
+            title: 'Nomor telepon kosong!',
+            text: 'Silakan isi nomor telepon'
+        });
+        return;
+    }
+
+    // VALIDASI JENIS KELAMIN
+    if(gender == ""){
+        Swal.fire({
+            icon: 'warning',
+            title: 'Jenis kelamin belum dipilih!',
+            text: 'Silakan pilih jenis kelamin'
+        });
+        return;
+    }
+
+    // VALIDASI ALAMAT
+    if(alamat.trim() == ""){
+        Swal.fire({
+            icon: 'warning',
+            title: 'Alamat kosong!',
+            text: 'Silakan isi alamat'
+        });
+        return;
+    }
+
+    // KONFIRMASI
+    Swal.fire({
+        title: 'Simpan perubahan?',
+        text: "Pastikan data profile sudah benar",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#93a267',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Simpan!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+
+        if(result.isConfirmed){
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: 'Profile sedang diperbarui',
+                timer: 1500,
+                showConfirmButton: false
+            });
+
+            setTimeout(() => {
+                form.submit();
+            }, 1500);
+
+        }
+
+    });
+
+});
+
+</script>
 @endsection
