@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page', 'Monitor Order')
+@section('page', 'Monitor Pesanan')
 
 @section('content')
 
@@ -12,7 +12,7 @@
 
             <!-- HEEADER -->
              <div class="card-header pb-0 d-flex justify-content-between">
-                <h6>Data Order</h6>
+                <h6>Data Pesanan</h6>
              </div>
 
              <!-- TABLE -->
