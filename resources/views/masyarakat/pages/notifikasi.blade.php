@@ -15,160 +15,140 @@
         </a>
     </div>
 
-    {{-- STATUS PENGIRIMAN --}}
-    <div class="bg-success-subtle text-success px-4 py-2 rounded-3 d-inline-flex align-items-center gap-2 mb-3">
-        <i class="fa fa-truck"></i>
-        <span class="fw-semibold">Status Pengiriman</span>
-    </div>
+    @forelse($notifications as $n)
 
-    @forelse($orders as $order)
-    <div class="d-flex align-items-start gap-3 p-3 mb-3 bg-white shadow-sm rounded-4">
+    @if($n->type == 'order')
 
-        {{-- ICON --}}
-        <div class="p-3 rounded-circle 
-            @if($order->status == 'pending') bg-secondary-subtle
-            @elseif($order->status == 'processing') bg-warning-subtle
-            @elseif($order->status == 'completed') bg-success-subtle
-            @endif">
+        <div class="d-flex align-items-start gap-3 p-3 mb-3 bg-white shadow-sm rounded-4">
 
-            <i class="fa 
-                @if($order->status == 'pending') fa-clock text-secondary
-                @elseif($order->status == 'processing') fa-truck text-warning
-                @elseif($order->status == 'completed') fa-check-circle text-success
+            <div class="p-3 rounded-circle 
+                @if($n->status == 'pending') bg-secondary-subtle
+                @elseif($n->status == 'processing') bg-warning-subtle
+                @elseif($n->status == 'completed') bg-success-subtle
                 @endif">
-            </i>
-        </div>
 
-        {{-- CONTENT --}}
-        <div class="flex-grow-1">
-            <div class="d-flex justify-content-between">
-                <h6 class="mb-1 fw-bold">Pesanan #{{ $order->id }}</h6>
-                <small class="text-muted">{{ $order->created_at->diffForHumans() }}</small>
+                <i class="fa 
+                    @if($n->status == 'pending') fa-clock text-secondary
+                    @elseif($n->status == 'processing') fa-truck text-warning
+                    @elseif($n->status == 'completed') fa-check-circle text-success
+                    @endif">
+                </i>
             </div>
 
-            <p class="mb-1">
-                Status:
-                @if($order->status == 'pending')
-                    <span class="badge bg-secondary text-white fs-6 ms-1">
-                        Menunggu
-                    </span>
+            <div class="flex-grow-1">
+                <div class="d-flex justify-content-between">
+                    <h6 class="mb-1 fw-bold">Pesanan #{{ $n->id }}</h6>
+                    <small class="text-muted">{{ $n->created_at->diffForHumans() }}</small>
+                </div>
 
-                @elseif($order->status == 'processing')
-                    <span class="badge bg-warning text-dark fs-6 ms-1">
-                        Diproses
-                    </span>
+                <p class="mb-1">
+                    Status:
+                    @if($n->status == 'pending')
+                        <span class="badge bg-secondary text-white fs-6 ms-1">Menunggu</span>
+                    @elseif($n->status == 'processing')
+                        <span class="badge bg-warning text-dark fs-6 ms-1">Diproses</span>
+                    @elseif($n->status == 'completed')
+                        <span class="badge bg-success text-white fs-6 ms-1">Selesai</span>
+                    @endif
+                </p>
 
-                @elseif($order->status == 'completed')
-                    <span class="badge bg-success text-white fs-6 ms-1">
-                        Selesai
-                    </span>
-                @endif
-            </p>
-
-           <!-- Narasi -->
-            <p class="mb-0 text-muted small">
-                @if($order->status == 'pending')
-                    Pesananmu masih menunggu konfirmasi.
-
-                @elseif($order->status == 'processing')
-                    Pesananmu sedang dalam proses pengolahan.
-
-                @elseif($order->status == 'completed')
-                    Pesananmu telah selesai.
-                @endif
-            </p>
-        </div>
-
-    </div>
-    @empty
-    <div class="text-center py-5">
-        <i class="fa fa-box-open fa-2x text-muted mb-2"></i>
-        <p class="text-muted">Belum ada notifikasi pengiriman</p>
-    </div>
-    @endforelse
-
-    {{-- PAGINATION ORDER --}}
-    <div class="d-flex justify-content-center mt-3">
-        {{ $orders->links() }}
-    </div>
-
-    {{-- STATUS PEMBAYARAN --}}
-    <div class="bg-success-subtle text-success px-4 py-2 rounded-3 d-inline-flex align-items-center gap-2 mt-5 mb-3">
-        <i class="fa fa-wallet"></i>
-        <span class="fw-semibold">Status Pembayaran</span>
-    </div>
-
-    @forelse($pembayarans as $p)
-    <div class="d-flex align-items-start gap-3 p-3 mb-3 bg-white shadow-sm rounded-4">
-
-        {{-- ICON --}}
-        <div class="p-3 rounded-circle 
-            @if($p->status == 'pending') bg-warning-subtle
-            @elseif($p->status == 'success') bg-success-subtle
-            @elseif($p->status == 'failed') bg-danger-subtle
-            @endif">
-
-            <i class="fa 
-                @if($p->status == 'pending') fa-hourglass-half text-warning
-                @elseif($p->status == 'success') fa-check text-success
-                @elseif($p->status == 'failed') fa-times text-danger
-                @endif">
-            </i>
-        </div>
-
-        {{-- CONTENT --}}
-        <div class="flex-grow-1">
-            <div class="d-flex justify-content-between">
-                <h6 class="mb-1 fw-bold">Pembayaran #{{ $p->id }}</h6>
-                <small class="text-muted">{{ $p->created_at->diffForHumans() }}</small>
+                <p class="mb-0 text-muted small">
+                    @if($n->status == 'pending')
+                        Pesananmu masih menunggu konfirmasi.
+                    @elseif($n->status == 'processing')
+                        Pesananmu sedang dalam proses pengolahan.
+                    @elseif($n->status == 'completed')
+                        Pesananmu telah selesai.
+                    @endif
+                </p>
             </div>
 
-            <p class="mb-1">
-                Status: 
-                @if($p->status == 'pending')
-                    <span class="badge bg-warning text-dark fs-6 ms-1">
-                        Menunggu
-                    </span>
-
-                @elseif($p->status == 'success')
-                    <span class="badge bg-success text-white fs-6 ms-1">
-                        Berhasil
-                    </span>
-
-                @elseif($p->status == 'failed')
-                    <span class="badge bg-danger text-white fs-6 ms-1">
-                        Gagal
-                    </span>
-                @endif
-            </p>
-
-           <!-- Narasi -->
-            <p class="mb-0 text-muted small">
-                @if($p->status == 'pending')
-                    Pembayaranmu masih menunggu untuk diselesaikan.
-
-                @elseif($p->status == 'success')
-                    Pembayaranmu berhasil.
-
-                @elseif($p->status == 'failed')
-                    Pembayaranmu gagal. Silakan coba lagi.
-                @endif
-            </p>
         </div>
 
-    </div>
-    @empty
-    <div class="text-center py-5">
-        <i class="fa fa-wallet fa-2x text-muted mb-2"></i>
-        <p class="text-muted">Belum ada notifikasi pembayaran</p>
-    </div>
-    @endforelse
+    @elseif($n->type == 'payment')
 
-    {{-- PAGINATION PEMBAYARAN --}}
+        <div class="d-flex align-items-start gap-3 p-3 mb-3 bg-white shadow-sm rounded-4">
+
+            <div class="p-3 rounded-circle 
+                @if($n->status == 'pending') bg-warning-subtle
+                @elseif($n->status == 'success') bg-success-subtle
+                @elseif($n->status == 'failed') bg-danger-subtle
+                @endif">
+
+                <i class="fa 
+                    @if($n->status == 'pending') fa-hourglass-half text-warning
+                    @elseif($n->status == 'success') fa-check text-success
+                    @elseif($n->status == 'failed') fa-times text-danger
+                    @endif">
+                </i>
+            </div>
+
+            <div class="flex-grow-1">
+                <div class="d-flex justify-content-between">
+                    <h6 class="mb-1 fw-bold">Pembayaran #{{ $n->id }}</h6>
+                    <small class="text-muted">{{ $n->created_at->diffForHumans() }}</small>
+                </div>
+
+                <p class="mb-1">
+                    Status:
+                    @if($n->status == 'pending')
+                        <span class="badge bg-warning text-dark fs-6 ms-1">Menunggu</span>
+                    @elseif($n->status == 'success')
+                        <span class="badge bg-success text-white fs-6 ms-1">Berhasil</span>
+                    @elseif($n->status == 'failed')
+                        <span class="badge bg-danger text-white fs-6 ms-1">Gagal</span>
+                    @endif
+                </p>
+
+                <p class="mb-0 text-muted small">
+                    @if($n->status == 'pending')
+                        Pembayaranmu masih menunggu untuk diselesaikan.
+                    @elseif($n->status == 'success')
+                        Pembayaranmu berhasil.
+                    @elseif($n->status == 'failed')
+                        Pembayaranmu gagal. Silakan coba lagi.
+                    @endif
+                </p>
+            </div>
+
+        </div>
+
+    @endif
+
+@empty
+    <div class="text-center py-5">
+        <i class="fa fa-bell fa-2x text-muted mb-2"></i>
+        <p class="text-muted">Belum ada notifikasi</p>
+    </div>
+@endforelse
+
     <div class="d-flex justify-content-center mt-3 mb-5">
-        {{ $pembayarans->links() }}
-    </div>
+    {{ $notifications->links() }}
+</div>
 
 </div>
+
+<style>
+    .pagination .page-link {
+        color: #9acd32;
+        border-color: ##9acd32;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #93a267;
+        color: white;
+        border-color: #93a267;
+    }
+
+    .pagination .active .page-link {
+        background-color: #93a267;
+        border-color: #93a267;
+        color: white;
+    }
+
+    .pagination .disabled .page-link {
+        color: #c0c0c0;
+    }
+</style>
 
 @endsection
