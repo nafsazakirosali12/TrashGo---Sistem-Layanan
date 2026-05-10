@@ -75,12 +75,12 @@ class PembayaranController extends Controller
             'total_pembayaran' => $total,
             'bukti_pembayaran' => $bukti,
             'tanggal_pembayaran' => Carbon::now(),
-            'status' => 'menunggu',
+            'status' => 'pending',
         ]);
 
         // 6. UPDATE STATUS ORDER
         $order->update([
-            'status' => 'menunggu'
+            'status' => 'pending'
         ]);
 
         // 7. REDIRECT

@@ -26,15 +26,15 @@
 
         {{-- ICON --}}
         <div class="p-3 rounded-circle 
-            @if($order->status == 'menunggu') bg-secondary-subtle
-            @elseif($order->status == 'diproses') bg-warning-subtle
-            @elseif($order->status == 'selesai') bg-success-subtle
+            @if($order->status == 'pending') bg-secondary-subtle
+            @elseif($order->status == 'processing') bg-warning-subtle
+            @elseif($order->status == 'completed') bg-success-subtle
             @endif">
 
             <i class="fa 
-                @if($order->status == 'menunggu') fa-clock text-secondary
-                @elseif($order->status == 'diproses') fa-truck text-warning
-                @elseif($order->status == 'selesai') fa-check-circle text-success
+                @if($order->status == 'pending') fa-clock text-secondary
+                @elseif($order->status == 'processing') fa-truck text-warning
+                @elseif($order->status == 'completed') fa-check-circle text-success
                 @endif">
             </i>
         </div>
@@ -46,27 +46,34 @@
                 <small class="text-muted">{{ $order->created_at->diffForHumans() }}</small>
             </div>
 
-            <p class="mb-1 text-muted">
-                <!-- Status: -->
+            <p class="mb-1">
+                Status:
+                @if($order->status == 'pending')
+                    <span class="badge bg-secondary text-white fs-6 ms-1">
+                        Menunggu
+                    </span>
 
-                @if($order->status == 'menunggu')
-                    <span class="badge bg-secondary text-white fs-8">Status: Menunggu</span>
+                @elseif($order->status == 'processing')
+                    <span class="badge bg-warning text-dark fs-6 ms-1">
+                        Diproses
+                    </span>
 
-                @elseif($order->status == 'diproses')
-                    <span class="badge bg-warning text-white fs-8">Status: Diproses</span>
-
-                @elseif($order->status == 'selesai')
-                    <span class="badge bg-success text-white fs-8">Status: Selesai</span>
+                @elseif($order->status == 'completed')
+                    <span class="badge bg-success text-white fs-6 ms-1">
+                        Selesai
+                    </span>
                 @endif
             </p>
 
            <!-- Narasi -->
             <p class="mb-0 text-muted small">
-                @if($order->status == 'menunggu')
+                @if($order->status == 'pending')
                     Pesananmu masih menunggu konfirmasi.
-                @elseif($order->status == 'diproses')
+
+                @elseif($order->status == 'processing')
                     Pesananmu sedang dalam proses pengolahan.
-                @elseif($order->status == 'selesai')
+
+                @elseif($order->status == 'completed')
                     Pesananmu telah selesai.
                 @endif
             </p>
@@ -96,15 +103,15 @@
 
         {{-- ICON --}}
         <div class="p-3 rounded-circle 
-            @if($p->status == 'menunggu') bg-warning-subtle
-            @elseif($p->status == 'berhasil') bg-success-subtle
-            @elseif($p->status == 'gagal') bg-danger-subtle
+            @if($p->status == 'pending') bg-warning-subtle
+            @elseif($p->status == 'success') bg-success-subtle
+            @elseif($p->status == 'failed') bg-danger-subtle
             @endif">
 
             <i class="fa 
-                @if($p->status == 'menunggu') fa-hourglass-half text-warning
-                @elseif($p->status == 'berhasil') fa-check text-success
-                @elseif($p->status == 'gagal') fa-times text-danger
+                @if($p->status == 'pending') fa-hourglass-half text-warning
+                @elseif($p->status == 'success') fa-check text-success
+                @elseif($p->status == 'failed') fa-times text-danger
                 @endif">
             </i>
         </div>
@@ -116,27 +123,34 @@
                 <small class="text-muted">{{ $p->created_at->diffForHumans() }}</small>
             </div>
 
-            <p class="mb-1 text-muted">
-                <!-- Status:  -->
+            <p class="mb-1">
+                Status: 
+                @if($p->status == 'pending')
+                    <span class="badge bg-warning text-dark fs-6 ms-1">
+                        Menunggu
+                    </span>
 
-                @if($p->status == 'menunggu')
-                    <span class="badge bg-secondary text-white fs-8">Status: Menunggu</span>
+                @elseif($p->status == 'success')
+                    <span class="badge bg-success text-white fs-6 ms-1">
+                        Berhasil
+                    </span>
 
-                @elseif($p->status == 'berhasil')
-                    <span class="badge bg-success text-white fs-8 ">Status: Berhasil</span>
-
-                @elseif($p->status == 'gagal')
-                    <span class="badge bg-danger text-white fs-8">Status: Gagal</span>
+                @elseif($p->status == 'failed')
+                    <span class="badge bg-danger text-white fs-6 ms-1">
+                        Gagal
+                    </span>
                 @endif
             </p>
 
            <!-- Narasi -->
             <p class="mb-0 text-muted small">
-                @if($p->status == 'menunggu')
+                @if($p->status == 'pending')
                     Pembayaranmu masih menunggu untuk diselesaikan.
-                @elseif($p->status == 'berhasil')
+
+                @elseif($p->status == 'success')
                     Pembayaranmu berhasil.
-                @elseif($p->status == 'gagal')
+
+                @elseif($p->status == 'failed')
                     Pembayaranmu gagal. Silakan coba lagi.
                 @endif
             </p>

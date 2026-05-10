@@ -32,15 +32,15 @@ class AppServiceProvider extends ServiceProvider
             if (auth('masyarakat')->check()) {
                 $user = auth('masyarakat')->user();
 
-                $navbarOrders = Order::where('masyarakat_id', $user->id)->get();
-                $navbarPembayarans = Pembayaran::where('masyarakat_id', $user->id)->get();
+                $Orders = Order::where('masyarakat_id', $user->id)->get();
+                $Pembayarans = Pembayaran::where('masyarakat_id', $user->id)->get();
             } else {
-                $navbarOrders = collect();
-                $navbarPembayarans = collect();
+                $Orders = collect();
+                $Pembayarans = collect();
             }
 
-        $view->with('navbarOrders', $navbarOrders)
-            ->with('navbarPembayarans', $navbarPembayarans);
+        $view->with('Orders', $Orders)
+            ->with('Pembayarans', $Pembayarans);
     });
 
         Paginator::useBootstrap();
