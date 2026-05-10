@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page', 'Tambah')
+@section('page', 'Tambah Akun')
 
 @section('content')
 
@@ -47,7 +47,19 @@
 
                         <div class="mb-3">
                             <label class="form-label">Sandi</label>
-                            <input type="password" name="password" class="form-control">
+
+                            <div class="input-group">
+                                <input type="password" 
+                                    name="password" 
+                                    class="form-control"
+                                    id="password">
+
+                                <span class="input-group-text" 
+                                    onclick="togglePassword()" 
+                                    style="cursor: pointer;">
+                                    <i class="fa fa-eye" id="eyeIcon"></i>
+                                </span>
+                            </div>
                         </div>
 
                         <div class="mb-3">
@@ -101,6 +113,23 @@
             }
         });
     });
+</script>
+
+<script>
+function togglePassword() {
+    const password = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    if (password.type === 'password') {
+        password.type = 'text';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+    } else {
+        password.type = 'password';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+    }
+}
 </script>
 
 @endsection
