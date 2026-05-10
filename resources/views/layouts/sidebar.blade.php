@@ -88,7 +88,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Monitor Order</span>
+            <span class="nav-link-text ms-1">Monitor Pesanan</span>
           </a>
         </li>
       </ul>
