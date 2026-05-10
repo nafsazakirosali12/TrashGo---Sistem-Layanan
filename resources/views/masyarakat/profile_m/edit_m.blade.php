@@ -64,7 +64,7 @@
 
                     <div class="card shadow-sm border-0 p-4 h-100">
 
-                        <h5 class="mb-3">Ubah Profile</h5>
+                        <h5 class="mb-3">Ubah Profil</h5>
 
                         <form id="formProfile"
                             action="{{ route('masyarakat.profile_m.update') }}"
@@ -114,6 +114,11 @@
                             <!-- JENIS KELAMIN -->
                             <div class="mb-3">
                                 <label>Jenis Kelamin</label>
+
+                                @php
+                                    $jk = strtolower(trim($user->jenis_kelamin));
+                                @endphp
+
                                 <select name="jenis_kelamin"
                                         class="form-control"
                                         required>
@@ -121,12 +126,12 @@
                                     <option value="">-- pilih --</option>
 
                                     <option value="Laki-laki"
-                                        {{ $user->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>
+                                        {{ $jk == 'laki-laki' ? 'selected' : '' }}>
                                         Laki-laki
                                     </option>
 
                                     <option value="Perempuan"
-                                        {{ $user->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>
+                                        {{ $jk == 'perempuan' ? 'selected' : '' }}>
                                         Perempuan
                                     </option>
 

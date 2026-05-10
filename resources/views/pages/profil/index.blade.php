@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('pages', 'Profil')
+@section('page', 'Profil')
 
 @section('content')
 

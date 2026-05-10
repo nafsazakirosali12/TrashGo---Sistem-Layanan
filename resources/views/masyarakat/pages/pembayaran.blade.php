@@ -16,7 +16,7 @@
     }
 </style>
 
-<div class="container mt-5 mb-5 pb-5">
+<div class="container mt-5 mb-5 pb-5" id="halamanPembayaran">
 
     <h2>Halaman Pembayaran</h2>
     @if(session('error'))
@@ -222,6 +222,39 @@
                 setTimeout(() => {
                     form.submit();
                 }, 1500);
+            }
+
+        });
+
+    });
+
+    // ambil semua link navbar
+    const navLinks = document.querySelectorAll('a');
+
+    navLinks.forEach(link => {
+
+        link.addEventListener('click', function(e){
+
+            // link tujuan
+            let tujuan = this.getAttribute('href');
+
+            // biar tombol bayar tetap bisa
+            if(this.id === 'btnBayar'){
+                return;
+            }
+
+            // cegah pindah halaman
+            if(tujuan && tujuan !== '#'){
+
+                e.preventDefault();
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Selesaikan Pembayaran',
+                    text: 'Silakan selesaikan pembayaran terlebih dahulu!',
+                    confirmButtonColor: '#B7C43A'
+                });
+
             }
 
         });

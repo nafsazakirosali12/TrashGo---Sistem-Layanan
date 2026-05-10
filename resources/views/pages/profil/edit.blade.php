@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('pages', 'Ubah Profil')
+@section('page', 'Ubah Profil')
 
 @section('content')
 

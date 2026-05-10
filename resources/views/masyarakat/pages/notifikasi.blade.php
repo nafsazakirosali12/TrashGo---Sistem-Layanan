@@ -19,7 +19,8 @@
 
     @if($n->type == 'order')
 
-        <div class="d-flex align-items-start gap-3 p-3 mb-3 bg-white shadow-sm rounded-4">
+        <!-- <div class="d-flex align-items-start gap-3 p-3 mb-3 bg-white shadow-sm rounded-4"> -->
+            <div class="d-flex align-items-start gap-3 p-3 mb-3 bg-white shadow-sm rounded-4 {{ session('highlight_order_id') == $n->id ? 'highlight-notif' : '' }}">
 
             <div class="p-3 rounded-circle 
                 @if($n->status == 'pending') bg-secondary-subtle
@@ -67,7 +68,8 @@
 
     @elseif($n->type == 'payment')
 
-        <div class="d-flex align-items-start gap-3 p-3 mb-3 bg-white shadow-sm rounded-4">
+        <!-- <div class="d-flex align-items-start gap-3 p-3 mb-3 bg-white shadow-sm rounded-4"> -->
+            <div class="d-flex align-items-start gap-3 p-3 mb-3 bg-white shadow-sm rounded-4 {{ session('highlight_payment_id') == $n->id ? 'highlight-notif' : '' }}">
 
             <div class="p-3 rounded-circle 
                 @if($n->status == 'pending') bg-warning-subtle
@@ -129,6 +131,23 @@
 </div>
 
 <style>
+    /* untuk highlight notif */
+    .highlight-notif{
+        border: 2px solid #B7C43A;
+        background-color: #f8ffe5;
+        animation: glowNotif 1s infinite alternate;
+    }
+
+    @keyframes glowNotif{
+        from{
+            box-shadow: 0 0 5px #B7C43A;
+        }
+
+        to{
+            box-shadow: 0 0 20px #B7C43A;
+        }
+    }
+
     .pagination .page-link {
         color: #9acd32;
         border-color: ##9acd32;
@@ -150,5 +169,17 @@
         color: #c0c0c0;
     }
 </style>
+
+<script>
+    setTimeout(() => {
+
+        const notif = document.querySelectorAll('.highlight-notif');
+
+        notif.forEach(item => {
+            item.classList.remove('highlight-notif');
+        });
+
+    }, 5000);
+</script>
 
 @endsection
