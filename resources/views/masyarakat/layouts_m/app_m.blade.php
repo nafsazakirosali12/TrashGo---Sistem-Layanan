@@ -71,6 +71,20 @@
     <script src="{{ asset('assets_pengguna/js/form-validator.min.js') }}"></script>
     <script src="{{ asset('assets_pengguna/js/contact-form-script.js') }}"></script>
     <script src="{{ asset('assets_pengguna/js/custom.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if(session('warning'))
+    <script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Profil Belum Lengkap',
+            text: '{{ session('warning') }}',
+            confirmButtonColor: '#B7C43A',
+            confirmButtonText: 'Lengkapi Sekarang'
+        }).then(() => {
+            window.location.href = "{{ route('masyarakat.profile_m.edit_m') }}";
+        });
+    </script>
+    @endif
 
     <script>
         window.addEventListener("pageshow", function (event) {

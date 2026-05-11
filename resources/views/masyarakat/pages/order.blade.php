@@ -32,8 +32,25 @@
 
                 <div class="card-body">
 
-                    <form action="{{ url('/order') }}" method="POST">
+                    <form id="formOrder" action="{{ url('/order') }}" method="POST">
                         @csrf
+
+                        <!-- KATEGORI -->
+                         <!-- NAMA -->
+                        <div class="mb-3">
+                            <label class="form-label">Nama</label>
+                            <input type="text" class="form-control"
+                                value="{{ $user->nama_masyarakat }}"
+                                readonly>
+                        </div>
+
+                        <!-- NOMOR TELEPON -->
+                        <div class="mb-3">
+                            <label class="form-label">Nomor Telepon</label>
+                            <input type="text" class="form-control"
+                                value="{{ $user->no_telepon }}"
+                                readonly>
+                        </div>
 
                         <!-- KATEGORI -->
                         <div class="mb-3">
@@ -51,7 +68,10 @@
                         <!-- LOKASI -->
                         <div class="mb-3">
                             <label class="form-label">Lokasi Penjemputan</label>
-                            <input type="text" name="lokasi" class="form-control" placeholder="Contoh: Jl. Sudirman No. 10" required>
+                            <textarea 
+                                name="lokasi"
+                                class="form-control"
+                                readonly>{{ $user->alamat }}</textarea>
                         </div>
 
                         <div class="row">
@@ -85,7 +105,7 @@
                         </div>
 
                         <!-- BUTTON -->
-                        <button type="submit" class="btn btn-trashgo w-100 py-2">
+                        <button type="button" id="btnOrder" class="btn btn-trashgo w-100 py-2">
                             Pesan Sekarang
                         </button>
 
@@ -132,5 +152,56 @@
     </div>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    document.getElementById('btnOrder').addEventListener('click', function () {
+
+        let kategori = document.querySelector('[name="kategori_id"]').value;
+        let tanggal = document.querySelector('[name="tanggal"]').value;
+        let waktu = document.querySelector('[name="waktu"]').value;
+        let catatan = document.querySelector('[name="catatan"]').value;
+
+        // VALIDASI KOSONG
+        if (
+            kategori === "" ||
+            tanggal === "" ||
+            waktu === "" ||
+            catatan === ""
+        ) {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Form Belum Lengkap',
+                text: 'Silakan lengkapi semua data pesanan terlebih dahulu.',
+                confirmButtonColor: '#B7C43A'
+            });
+
+            return;
+        }
+
+        // KONFIRMASI ORDER
+        Swal.fire({
+            title: 'Buat Pesanan?',
+            text: 'Pastikan data pesanan sudah benar',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#B7C43A',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Pesan!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                document.getElementById('formOrder').submit();
+            }
+
+        });
+
+    });
+
+});
+</script>
 
 @endsection

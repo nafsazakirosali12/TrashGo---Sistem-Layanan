@@ -29,8 +29,21 @@ class OrderController extends Controller
 
     public function index()
     {
-        $kategoris = Kategori::all();
-        return view('masyarakat.pages.order', compact('kategoris'));
+        $user = auth('masyarakat')->user();
+
+    // cek profil lengkap
+    if (
+        empty($user->alamat) ||
+        empty($user->no_telepon)
+    ) {
+        return redirect()->route('masyarakat.profile_m.edit_m')
+            ->with('warning', 'Lengkapi profil terlebih dahulu sebelum melakukan order.');
+    }
+
+    $kategoris = Kategori::all();
+
+    return view('masyarakat.pages.order', compact('kategoris', 'user'));
+
     }
 
     // public function create()
