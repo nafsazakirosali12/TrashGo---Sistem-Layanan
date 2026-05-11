@@ -175,22 +175,17 @@
                             <ul class="card-body">
                                 Cara melakukan pemesanan:
                                 <li>1. Klik menu "Pesan" pada navbar.</li>
-                                <li>2.  Lengkapi profil terlebih dahulu jika alamat atau nomor telepon belum diisi.</li>
+                                <li>2. Lengkapi profil terlebih dahulu jika alamat atau nomor telepon belum diisi.</li>
                                 <li>3. Isi formulir yang tersedia meliputi:</li>
                                 <li>- Kategori layanan</li>
-                                <li>- Lokasi Penjemputan</li>
                                 <li>- Tanggal dan waktu</li>
                                 <li>- Catatan</li>
-                                <li>4. Isi formulir yang tersedia meliputi:</li>
-                                <li>- Kategori layanan</li>
-                                <li>- Tanggal dan waktu</li>
-                                <li>- Catatan</li>
-                                <li>5. Pastikan data pesanan sudah benar</li>
-                                <li>6. Setelah semua data terisi, klik tombol "Pesan Sekarang"</li>
-                                <li>7. Anda akan diarahkan ke halaman pembayaran</li>
-                                <li>8. Pilih metode pembayaran yang tersedia</li>
+                                <li>4. Pastikan data pesanan sudah benar</li>
+                                <li>5. Setelah semua data terisi, klik tombol "Pesan Sekarang"</li>
+                                <li>6. Anda akan diarahkan ke halaman pembayaran</li>
+                                <li>7. Pilih metode pembayaran yang tersedia</li>
                                 <li>Jika menggunakan metode transfer, silakan kirim/upload bukti pembayaran</li>
-                                <li>Setelah selesai, klik tombol **Selesai** untuk menyelesaikan proses pemesanan</li>
+                                <li>Setelah selesai, klik tombol Bayar Sekarang untuk menyelesaikan proses pemesanan</li>
                             </ul>
                         </div>
                     </div>

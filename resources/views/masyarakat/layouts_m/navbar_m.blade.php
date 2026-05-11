@@ -95,7 +95,7 @@
                 <!-- /.navbar-collapse -->
             </div>
         </nav>
-        <!-- End Navigation -->zz
+        <!-- End Navigation -->
     </header>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
