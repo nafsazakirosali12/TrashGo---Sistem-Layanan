@@ -39,8 +39,20 @@ class PetugasController extends Controller
             'email' => 'required|email|unique:petugas',
             'password' => 'required|min:8',
             'alamat' => 'required|max:500',
-            'status' => 'required|in:acctive,inacctive', 
+            'status' => 'required|in:acctive,inacctive',
+        ], [
+            'nama_tim.required' => 'Nama tim wajib diisi.',
+            'nama_ketua.required' => 'Nama ketua wajib diisi.',
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah digunakan.',
+            'password.required' => 'Password wajib diisi.',
+            'password.min' => 'Password minimal 8 karakter.',
+            'alamat.required' => 'Alamat wajib diisi.',
+            'status.required' => 'Status wajib dipilih.',
         ]);
+
+        $validated['password'] = Hash::make($validated['password']);
 
         Petugas::create($validated);
 
@@ -97,6 +109,26 @@ class PetugasController extends Controller
             'password' => 'nullable|min:8',
             'alamat' => 'required|max:500',
             'status' => 'required|in:acctive,inacctive',
+        ], [
+            'nama_tim.required' => 'Nama tim wajib diisi.',
+            'nama_tim.min' => 'Nama tim minimal 3 karakter.',
+            'nama_tim.max' => 'Nama tim maksimal 100 karakter.',
+
+            'nama_ketua.required' => 'Nama ketua wajib diisi.',
+            'nama_ketua.min' => 'Nama ketua minimal 3 karakter.',
+            'nama_ketua.max' => 'Nama ketua maksimal 100 karakter.',
+
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah digunakan.',
+
+            'password.min' => 'Password minimal 8 karakter.',
+
+            'alamat.required' => 'Alamat wajib diisi.',
+            'alamat.max' => 'Alamat maksimal 500 karakter.',
+
+            'status.required' => 'Status wajib dipilih.',
+            'status.in' => 'Status tidak valid.',
         ]);
 
         if (!empty($request->password)) {
