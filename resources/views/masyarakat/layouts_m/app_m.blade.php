@@ -81,7 +81,7 @@
             confirmButtonColor: '#B7C43A',
             confirmButtonText: 'Lengkapi Sekarang'
         }).then(() => {
-            window.location.href = "{{ route('masyarakat.profile_m.edit_m') }}";
+            window.location.href = "/masyarakat/profile/edit?redirect=order";
         });
     </script>
     @endif
