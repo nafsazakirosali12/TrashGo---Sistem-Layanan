@@ -73,8 +73,13 @@ class MasyarakatController extends Controller
     $user->save();
 
     // return redirect()->route('masyarakat.profile_m')->with('success', 'Profil berhasil diupdate');
+    if ($request->redirect == 'order') {
     return redirect()->route('masyarakat.pages.order')
     ->with('success', 'Profil berhasil diperbarui, silakan lanjut membuat pesanan.');
+}
+    return redirect()->route('masyarakat.pages.home_masyarakat')
+    ->with('success', 'Profil berhasil diperbarui, silakan lanjut membuat pesanan.');
+// return back()->with('success', 'Profil berhasil diperbarui.');
 }
   
 }

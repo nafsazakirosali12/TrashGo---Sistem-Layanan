@@ -36,8 +36,8 @@ class OrderController extends Controller
         empty($user->alamat) ||
         empty($user->no_telepon)
     ) {
-        return redirect()->route('masyarakat.profile_m.edit_m')
-            ->with('warning', 'Lengkapi profil terlebih dahulu sebelum melakukan order.');
+       return redirect('/masyarakat/profile/edit?redirect=order')
+       ->with('warning', 'Lengkapi profil terlebih dahulu sebelum melakukan order.');
     }
 
     $kategoris = Kategori::all();

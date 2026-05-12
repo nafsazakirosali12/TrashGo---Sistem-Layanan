@@ -73,6 +73,8 @@
 
                             @csrf
 
+                            <input type="hidden" name="redirect" value="{{ request('redirect') }}">
+
                             <!-- FOTO -->
                             <div class="mb-3">
                                 <label>Foto Profil</label>
