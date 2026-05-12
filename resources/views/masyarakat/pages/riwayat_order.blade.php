@@ -13,17 +13,17 @@ body {
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Riwayat Order</h2>
+                <h2>Riwayat Pesanan</h2>
 
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item">
                         <a class="nav-link" href="{{ route('masyarakat.pages.order') }}">
-                            Order
+                            Pesan
                         </a>
                     </li>
 
                     <li class="breadcrumb-item active">
-                        Riwayat Order
+                        Riwayat Pesanan
                     </li>
                 </ul>
             </div>
@@ -50,7 +50,7 @@ body {
     @if($riwayatOrders->isEmpty())
 
         <div class="alert alert-warning text-center">
-            Belum ada riwayat order
+            Belum ada riwayat pesanan
         </div>
 
     @else

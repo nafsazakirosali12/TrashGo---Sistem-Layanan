@@ -6,10 +6,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>ABOUT US</h2>
+                    <h2>TENTANG KAMI</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a class="nav-link" href="{{ route('masyarakat.pages.home_masyarakat') }}">Home</a></li>
-                        <li class="breadcrumb-item active">ABOUT US</li>
+                        <li class="breadcrumb-item"><a class="nav-link" href="{{ route('masyarakat.pages.home_masyarakat') }}">Beranda</a></li>
+                        <li class="breadcrumb-item active">TENTANG KAMI</li>
                     </ul>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-justify">
-                    <h2 class="noo-sh-title-top">We are <span>TrashGo!</span></h2>
+                    <h2 class="noo-sh-title-top">Kami adalah <span>TrashGo!</span></h2>
                     <p>
                         TrashGo! adalah cara baru dalam mengelola sampah dengan lebih sederhana, lebih cerdas, dan sepenuhnya terintegrasi. Kami menghadirkan pengalaman digital yang mengubah proses yang sebelumnya rumit menjadi sesuatu yang praktis dan efisien. 
                     </p>
@@ -36,34 +36,34 @@
                         Kami percaya bahwa masa depan lingkungan yang lebih baik dimulai dari sistem yang lebih baik. Oleh karena itu, TrashGo! hadir untuk menghadirkan solusi yang tidak hanya efisien, tetapi juga berkelanjutan.
                     </p>
                     <p>
-                        Because better systems create better habits and better habits create a cleaner future.
+                        Karena sistem yang lebih baik menciptakan kebiasaan yang lebih baik dan kebiasaan yang lebih baik menciptakan masa depan yang lebih bersih.
                     </p>
-					<a class="btn hvr-hover nav-link" href="{{ route('masyarakat.pages.about_us') }}">Read More</a>
+					<a class="btn hvr-hover nav-link" href="{{ route('masyarakat.pages.about_us') }}">Baca Selengkapnya</a>
                 </div>
             </div>
             <div class="row my-5">
                 <div class="col-sm-6 col-lg-4">
                     <div class="service-block-inner">
-                        <h3>We are Trusted</h3>
+                        <h3>Kami Terpercaya</h3>
                         <p>TrashGo! hadir sebagai solusi terpercaya dalam pengelolaan sampah. Kami berkomitmen memberikan layanan yang konsisten, aman, dan dapat diandalkan untuk membantu masyarakat menjaga lingkungan tetap bersih. </p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <div class="service-block-inner">
-                        <h3>We are Professional</h3>
+                        <h3>Kami Profesional</h3>
                         <p>Dengan sistem digital yang terintegrasi, TrashGo! memberikan layanan yang cepat, terstruktur, dan efisien. Kami memastikan setiap proses, mulai dari penjadwalan hingga pengambilan sampah, berjalan secara profesional. </p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <div class="service-block-inner">
-                        <h3>We are Expert</h3>
+                        <h3>Kami Kompeten</h3>
                         <p>Kami memahami pentingnya pengelolaan sampah yang tepat. Melalui fitur klasifikasi dan sistem yang terarah, TrashGo! membantu pengguna mengelola sampah dengan lebih efektif dan berkelanjutan. </p>
                     </div>
                 </div>
             </div>
             <div class="row my-4 justify-content-center">
         <div class="col-12 text-center mb-4">
-            <h2 class="noo-sh-title">Meet Our Team</h2>
+            <h2 class="noo-sh-title">Tim Kami</h2>
         </div>
 
             <!-- 1 -->
