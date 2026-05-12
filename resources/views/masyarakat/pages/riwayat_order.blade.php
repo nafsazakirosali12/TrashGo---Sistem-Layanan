@@ -18,7 +18,7 @@ body {
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item">
                         <a class="nav-link" href="{{ route('masyarakat.pages.order') }}">
-                            Pesanan
+                            Pesan
                         </a>
                     </li>
 

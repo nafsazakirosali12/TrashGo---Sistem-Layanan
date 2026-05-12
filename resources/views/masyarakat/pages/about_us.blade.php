@@ -8,7 +8,7 @@
                 <div class="col-lg-12">
                     <h2>TENTANG KAMI</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a class="nav-link" href="{{ route('masyarakat.pages.home_masyarakat') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link" href="{{ route('masyarakat.pages.home_masyarakat') }}">Beranda</a></li>
                         <li class="breadcrumb-item active">TENTANG KAMI</li>
                     </ul>
                 </div>
