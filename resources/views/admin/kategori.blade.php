@@ -106,6 +106,12 @@
                               @csrf
                               @method('PUT')
 
+                              @if ($errors->any() && session('edit_modal') == $k->id)
+                                <div class="alert alert-danger text-white">
+                                    {{ implode(' & ', $errors->all()) }}
+                                </div>
+                              @endif
+
                               <!-- NAMA -->
                               <div class="mb-3">
                                 <label class="form-label">Nama Kategori</label>
@@ -113,7 +119,7 @@
                                   type="text" 
                                   name="nama_kategori" 
                                   class="form-control"
-                                  value="{{ $k->nama_kategori}}"
+                                  value="{{ $k->nama_kategori }}"
                                   placeholder="Masukkan nama kategori"
                                 >
                               </div>
@@ -125,8 +131,7 @@
                                   name="deskripsi" 
                                   class="form-control"
                                   rows="3"
-                                  placeholder="Masukkan deskripsi kategori"
-                                >{{ $k->deskripsi }}</textarea>
+                                  placeholder="Masukkan deskripsi kategori">{{ $k->deskripsi }}</textarea>
                               </div>
                             </div>
                             <div class="modal-footer">
@@ -228,7 +233,21 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-@if ($errors->any())
+@if ($errors->any() && session('edit_modal'))
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const modal = new bootstrap.Modal(
+        document.getElementById('modalUbah{{ session('edit_modal') }}')
+    );
+
+    modal.show();
+
+});
+</script>
+@endif
+
+@if ($errors->any() && !session('edit_modal'))
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -337,6 +356,33 @@ function resetModalTambah() {
     }
 }
 
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const modalUbahList = document.querySelectorAll('[id^="modalUbah"]');
+
+    modalUbahList.forEach(function(modalEl) {
+
+        modalEl.addEventListener('hidden.bs.modal', function () {
+
+            const form = modalEl.querySelector('form');
+            form.reset();
+
+            const alert = modalEl.querySelector('.alert');
+
+            if (alert) {
+                alert.remove();
+            }
+
+            window.location.href = "{{ route('kategori.index') }}";
+
+        });
+
+    });
+
+});
 </script>
 
 <style>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class KategoriController extends Controller
 {
@@ -30,7 +31,7 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nama_kategori' => 'required',
             'deskripsi' => 'required'
         ], [
@@ -38,10 +39,7 @@ class KategoriController extends Controller
             'deskripsi.required' => 'Deskripsi wajib diisi',
         ]);
 
-        Kategori::create([
-            'nama_kategori' => $request->nama_kategori,
-            'deskripsi' => $request->deskripsi
-        ]);
+        Kategori::create($validated);
 
         return redirect()
             ->route('kategori.index')
@@ -70,7 +68,7 @@ class KategoriController extends Controller
      */
     public function update(Request $request, Kategori $kategori)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'nama_kategori' => 'required',
             'deskripsi' => 'required'
         ], [
@@ -78,12 +76,21 @@ class KategoriController extends Controller
             'deskripsi.required' => 'Deskripsi wajib diisi',
         ]);
 
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('edit_modal', $kategori->id);
+        }
+
         if (
             $kategori->nama_kategori == $request->nama_kategori &&
             $kategori->deskripsi == $request->deskripsi
         ) {
             return redirect()->back()
-                ->with('warning', 'Tidak ada peruahan data');
+                ->with('warning', 'Tidak ada perubahan data')
+                ->with('edit_modal', $kategori->id);
         }
 
         $kategori->update([
