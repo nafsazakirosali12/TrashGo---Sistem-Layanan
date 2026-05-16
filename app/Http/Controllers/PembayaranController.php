@@ -66,9 +66,7 @@ class PembayaranController extends Controller
         }
 
         // 5. SIMPAN PEMBAYARAN
-        $statusPembayaran = $request->metode_pembayaran == 'transfer'
-            ? 'success'
-            : 'pending';
+        $statusPembayaran = 'pending';
             
         $pembayaran = Pembayaran::create([
             'masyarakat_id' => $order->masyarakat_id,
