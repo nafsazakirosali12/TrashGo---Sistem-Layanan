@@ -52,7 +52,7 @@ class PetugasController extends Controller
             'status.required' => 'Status wajib dipilih.',
         ]);
 
-        $validated['password'] = Hash::make($validated['password']);
+        // $validated['password'] = Hash::make($validated['password']);
 
         Petugas::create($validated);
 

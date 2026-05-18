@@ -27,4 +27,8 @@ class DashboardController extends Controller
             'total_petugas'
         ));
     }
+    public function dashboard_p()
+    {
+        return view('petugas.layouts_p.dashboard_p');
+    }
 }
