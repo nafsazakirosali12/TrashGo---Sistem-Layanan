@@ -7,6 +7,7 @@ use App\Models\Point;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
+use App\Models\Pendapatan;
 
 class OrderController extends Controller
 {
@@ -144,6 +145,13 @@ class OrderController extends Controller
                 'tanggal_point' => Carbon::now(),
             ]);
         }
+
+        Pendapatan::create([
+            'order_id' => $order->id,
+            'petugas_id' => auth('petugas')->id(),
+            'total_pendapatan' => $order->total_harga,
+            'tanggal_pendapatan' => Carbon::now(),
+        ]);
         
         return redirect()->back()->with('success', 'Order berstatus completed dan 10 Poin telah diberikan!');
     }

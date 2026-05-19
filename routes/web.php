@@ -15,6 +15,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PendapatanController;
 use App\Http\Controllers\PickupController;
 
 
@@ -65,25 +66,15 @@ Route::middleware('masyarakat.auth')->group(function () {
 });
 
 Route::middleware('petugas.auth')->group(function () {
-   Route::get('/home_petugas', [DashboardController::class, 'dashboard_p'])->name('home_petugas');
+    Route::get('/home_petugas', [DashboardController::class, 'dashboard_p'])->name('home_petugas');
     Route::get('/daftar-pesanan', [PickupController::class, 'index'])->name('daftar-pesanan');
     Route::get('/pengangkutan', [PickupController::class, 'create'])->name('pengangkutan');
     Route::put('/pengangkutan/{id}/selesai', [PickupController::class, 'selesai'])->name('pengangkutan.selesai');
     Route::put('/pengangkutan/{id}/update', [PickupController::class, 'update'])->name('pengangkutan.update');
-
-
-
-
-
-
-
-
-
     Route::get('/petugas/profile', [PetugasController::class, 'profile'])->name('petugas.profile');
     Route::get('/petugas/profile/edit', [PetugasController::class, 'editProfile'])->name('petugas.profile_p.edit_p');
     Route::put('/petugas/profile/update', [PetugasController::class, 'updateProfile'])->name('petugas.profile.update');
-
-    
+    Route::get('/pendapatan', [PendapatanController::class, 'index'])->name('pendapatan');
 });
 
 Route::get('/profil', function () {
