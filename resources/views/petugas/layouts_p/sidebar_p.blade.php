@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <!-- <a class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}" href="{{ url('/dashboard') }}"> -->
+          <a class="nav-link {{ request()->is('dashboard*') ? 'active' : '' }}" href="{{ url('/dashboard') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>kantor</title>
@@ -31,47 +31,31 @@
           </a>
         </li>
         <li class="nav-item">
-          <!-- <a class="nav-link {{ request()->is('kategori*') ? 'active' : '' }}" href="{{ url('/kategori') }}"> -->
+          <a class="nav-link {{ request()->routeIs('daftar-pesanan*') ? 'active' : '' }}" href="{{ route('daftar-pesanan') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>Kantor</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g id="office" transform="translate(153.000000, 2.000000)">
-                        <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
-                        <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
+              <svg style="width: 20px !important; height: 20px !important; transform: scale(1.15);" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <title>Daftar Pesanan</title>
+                <path class="color-background opacity-6" d="M9 2H15C15.55 2 16 2.45 16 3V4H18C19.1 4 20 4.9 20 6V20C20 21.1 19.1 22 18 22H6C4.9 22 4 21.1 4 20V6C4 4.9 4.9 4 6 4H8V3C8 2.45 8.45 2 9 2Z"></path>
+                <path class="color-background" d="M9 4V5C9 5.55 9.45 6 10 6H14C14.55 6 15 5.55 15 5V4H9ZM8 10H16V12H8V10ZM8 14H16V16H8V14ZM8 18H13V20H8V18Z"></path>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Kategori</span>
+            <span class="nav-link-text ms-1">Daftar Pesanan</span>
           </a>
         </li>
         <li class="nav-item">
-          <!-- <a class="nav-link {{ request()->is('tambah-akun*') ? 'active' : '' }}" href="{{ route('tambah-akun') }}"> -->
+          <a class="nav-link {{ request()->routeIs('pengangkutan*') ? 'active' : '' }}" href="{{ route('pengangkutan') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>credit-card</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(453.000000, 454.000000)">
-                        <path class="color-background opacity-6" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"></path>
-                        <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
+              <svg style="width: 20px !important; height: 20px !important; transform: scale(1.15);" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <title>Pengangkutan</title>
+                <path class="color-background opacity-6" d="M3 5C3 4.45 3.45 4 4 4H15C15.55 4 16 4.45 16 5V8H18.5C18.82 8 19.12 8.15 19.31 8.41L22 12V17C22 17.55 21.55 18 21 18H19C18.74 16.86 17.72 16 16.5 16C15.28 16 14.26 16.86 14 18H10C9.74 16.86 8.72 16 7.5 16C6.28 16 5.26 16.86 5 18H4C3.45 18 3 17.55 3 17V5Z"></path>
+                <path class="color-background" d="M16 10V13H20L18.5 10H16ZM7.5 17C8.33 17 9 17.67 9 18.5C9 19.33 8.33 20 7.5 20C6.67 20 6 19.33 6 18.5C6 17.67 6.67 17 7.5 17ZM16.5 17C17.33 17 18 17.67 18 18.5C18 19.33 17.33 20 16.5 20C15.67 20 15 19.33 15 18.5C15 17.67 15.67 17 16.5 17ZM5 7H14V9H5V7ZM5 10H12V12H5V10Z"></path>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Akun Petugas</span>
+            <span class="nav-link-text ms-1">Pengangkutan</span>
           </a>
         </li>
         <li class="nav-item">
-          <!-- <a class="nav-link {{ request()->is('monitoring*') ? 'active' : '' }}" href="{{ route('monitoring') }}"> -->
+          <a class="nav-link {{ request()->is('monitoring*') ? 'active' : '' }}" href="{{ route('monitoring') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>box-3d-50</title>
