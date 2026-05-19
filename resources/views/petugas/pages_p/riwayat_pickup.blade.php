@@ -15,8 +15,8 @@
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Waktu</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Selesai</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Waktu Selesai</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lokasi</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
@@ -26,15 +26,10 @@
                 @forelse ($riwayat_pickup as $item)
                   <tr>
                     <td><p class="text-xs font-weight-bold mb-0">{{ $loop->iteration + ($riwayat_pickup->currentPage() - 1) * $riwayat_pickup->perPage() }}</p></td>
-                    <td><p class="text-xs font-weight-bold mb-0">{{ \Carbon\Carbon::parse($item->order->tanggal)->translatedFormat('d F Y') }}</p></td>
-                    <td><p class="text-xs font-weight-bold mb-0">{{ $item->order->waktu }} WIB</p></td>
+                    <td><p class="text-xs font-weight-bold mb-0">{{ \Carbon\Carbon::parse($item->updated_at)->translatedFormat('d F Y') }}</p></td>
+                    <td><p class="text-xs font-weight-bold mb-0">{{ \Carbon\Carbon::parse($item->updated_at)->translatedFormat('H:i') }} WIB</p></td>
                     <td><p class="text-xs font-weight-bold mb-0">{{ $item->order->lokasi }}</p></td>
-                    <td>
-                        <span class="badge badge-sm 
-                            {{ $item->status == 'complete' ? 'bg-gradient-success' : 'bg-gradient-danger' }}">
-                            {{ ucfirst($item->status) }}
-                        </span>
-                    </td>
+                    <td><span class="badge badge-sm bg-gradient-success">Selesai</span></td>
                     <td class="text-center">
                         <button type="button" class="btn bg-gradient-info btn-sm mb-0" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}">
                         Lihat Detail
@@ -42,14 +37,18 @@
                     </td>
                   </tr>
 
-                  <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-labelledby="detailModalLabel{{ $item->id }}" aria-hidden="true">
+                  <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="detailModalLabel{{ $item->id }}">Detail Pengangkutan #ORD-{{ $item->order->id }}</h5>
+                          <h5 class="modal-title">Detail Pengangkutan #{{ $item->order->id }}</h5>
                           <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body text-start p-4">
+                            <div class="mb-3 border-bottom pb-2">
+                                <span class="text-muted d-block small">Nama Masyarakat</span>
+                                <span class="fw-bold text-dark">{{ $item->order->masyarakat->nama_masyarakat ?? 'Tidak diketahui' }}</span>
+                            </div>
                             <div class="mb-3 border-bottom pb-2">
                                 <span class="text-muted d-block small">Kategori Sampah</span>
                                 <span class="fw-bold text-dark">{{ $item->order->kategori->nama_kategori ?? 'Tidak diketahui' }}</span>
@@ -60,24 +59,35 @@
                             </div>
                             <div class="row mb-3 border-bottom pb-2">
                                 <div class="col-6">
-                                    <span class="text-muted d-block small">Tanggal</span>
+                                    <span class="text-muted d-block small">Tanggal Pengangkutan</span>
+                                    <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->updated_at)->translatedFormat('d F Y') }}</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="text-muted d-block small">Waktu Pengangkutan</span>
+                                    <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->updated_at)->translatedFormat('H:i') }} WIB</span>
+                                </div>
+                            </div>
+                            <div class="row mb-3 border-bottom pb-2">
+                                <div class="col-6">
+                                    <span class="text-muted d-block small">Tanggal Order</span>
                                     <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->order->tanggal)->translatedFormat('d F Y') }}</span>
                                 </div>
                                 <div class="col-6">
-                                    <span class="text-muted d-block small">Waktu</span>
+                                    <span class="text-muted d-block small">Waktu Order</span>
                                     <span class="fw-bold text-dark">{{ $item->order->waktu }} WIB</span>
                                 </div>
+                            </div>
+                            <div class="mb-3 border-bottom pb-2">
+                                <span class="text-muted d-block small">Catatan Masyarakat</span>
+                                <span class="fw-bold text-dark">{{ $item->order->catatan ?? 'Tidak ada catatan' }}</span>
                             </div>
                             <div class="mb-3 border-bottom pb-2">
                                 <span class="text-muted d-block small">Total Harga</span>
                                 <span class="fw-bold text-success">Rp {{ number_format($item->order->total_harga, 0, ',', '.') }}</span>
                             </div>
-                            <div class="mb-0">
-                                <span class="text-muted d-block small">Status Pengangkutan</span>
-                                <span class="badge {{ $item->status == 'complete' ? 'bg-gradient-success' : 'bg-gradient-danger' }}">
-                                    {{ ucfirst($item->status) }}
-                                </span>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn bg-gradient-secondary mb-0" data-bs-dismiss="modal">Tutup</button>
                         </div>
                       </div>
                     </div>

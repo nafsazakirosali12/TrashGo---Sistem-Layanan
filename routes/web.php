@@ -66,8 +66,10 @@ Route::middleware('masyarakat.auth')->group(function () {
 
 Route::middleware('petugas.auth')->group(function () {
    Route::get('/home_petugas', [DashboardController::class, 'dashboard_p'])->name('home_petugas');
-   Route::get('/daftar-pesanan', [PickupController::class, 'index'])->name('daftar-pesanan');
-   Route::get('/pengangkutan', [PickupController::class, 'create'])->name('pengangkutan');
+    Route::get('/daftar-pesanan', [PickupController::class, 'index'])->name('daftar-pesanan');
+    Route::get('/pengangkutan', [PickupController::class, 'create'])->name('pengangkutan');
+    Route::put('/pengangkutan/{id}/selesai', [PickupController::class, 'selesai'])->name('pengangkutan.selesai');
+    Route::put('/pengangkutan/{id}/update', [PickupController::class, 'update'])->name('pengangkutan.update');
    Route::get('/riwayat_pengangkutan', [PetugasController::class, 'history'])->name('petugas.riwayat_pengangkutan');
 });
 
@@ -97,4 +99,6 @@ Route::post('/register', [AuthController::class, 'register']);
 
 // ROUTE TESTING ORDER SELESAI (Hapus jika fitur petugas sudah jadi)
 Route::get('/test-selesai/{id}', [OrderController::class, 'update_status_point']);
+
+
 

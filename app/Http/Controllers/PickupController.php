@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pickup;
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class PickupController extends Controller
 {
@@ -20,8 +21,17 @@ class PickupController extends Controller
      */
     public function create()
     {
-        //
+        $orders = Order::with('pembayaran')->where('status', 'processing')->get();
+        return view('petugas.pages_p.pengangkutan_p', compact('orders'));
     }
+
+    public function selesai($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = 'completed';
+        $order->save();
+        return back()->with('success', 'Pengangkutan selesai');
+        }
 
     /**
      * Store a newly created resource in storage.
@@ -50,10 +60,22 @@ class PickupController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pickup $pickup)
-    {
-        //
-    }
+    public function update(Request $request, $id)
+{
+    $order = Order::findOrFail($id);
+
+    // update status order
+    $order->status = $request->status_order;
+    $order->save();
+
+    // update / create pembayaran
+    $order->pembayaran()->updateOrCreate(
+        ['order_id' => $order->id],
+        ['status' => $request->status_payment]
+    );
+
+    return back()->with('success', 'Data berhasil diupdate');
+}
 
     /**
      * Remove the specified resource from storage.

@@ -158,8 +158,9 @@ class PetugasController extends Controller
     {
         $riwayat_pickup = Pickup::with('order.kategori')
         -> where('petugas_id', auth('petugas')->id())
-        -> orderBy('created_at', 'desc')
-        -> paginate(10);
+        -> where('status', 'complete')
+        ->latest()
+        ->paginate(10);
 
         return view('petugas.pages_p.riwayat_pickup', compact('riwayat_pickup'));
     }
