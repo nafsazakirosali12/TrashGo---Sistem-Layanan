@@ -7,6 +7,7 @@ use App\Models\Pickup;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class PetugasController extends Controller
 {
@@ -132,9 +133,13 @@ class PetugasController extends Controller
             'status.in' => 'Status tidak valid.',
         ]);
 
-        if (!empty($request->password)) {
-            $validated['password'] = Hash::make($request->password);
-        } else {
+        // if (!empty($request->password)) {
+        //     $validated['password'] = Hash::make($request->password);
+        // } else {
+        //     unset($validated['password']);
+        // }
+
+        if (empty($request->password)) {
             unset($validated['password']);
         }
 
@@ -163,5 +168,70 @@ class PetugasController extends Controller
         -> get();
 
         return view('petugas.pages_p.riwayat_pickup', compact('riwayat_pickup'));
+    }
+
+    // ===================================================
+    // ===== untuk profil petugas di halaman petugas =====
+    // ===================================================
+
+    public function profile()
+    {
+        $petugas = Auth::guard('petugas')->user();
+
+        return view('petugas.profile_p.index_p', compact('petugas'));
+    }
+
+    public function editProfile()
+    {
+        $petugas = Auth::guard('petugas')->user();
+
+        return view('petugas.profile_p.edit_p', compact('petugas'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $petugas = Auth::guard('petugas')->user();
+
+        $request->validate([
+            'nama_tim' => 'required|min:3|max:100',
+            'nama_ketua' => 'required|min:3|max:100',
+            'email' => 'required|email|unique:petugas,email,' . $petugas->id,
+            'alamat' => 'required|max:500',
+            'foto_petugas' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        // upload foto
+        if ($request->hasFile('foto_petugas')) {
+
+            // hapus foto lama
+            if (
+                $petugas->foto_petugas &&
+                file_exists(public_path('foto_petugas/' . $petugas->foto_petugas))
+            ) {
+                unlink(public_path('foto_petugas/' . $petugas->foto_petugas));
+            }
+
+            $namaFoto = time() . '.' . $request->foto_petugas->extension();
+
+            $request->foto_petugas->move(
+                public_path('foto_petugas'),
+                $namaFoto
+            );
+
+            $petugas->foto_petugas = $namaFoto;
+        }
+
+        $petugas->nama_tim = $request->nama_tim;
+        $petugas->nama_ketua = $request->nama_ketua;
+        $petugas->email = $request->email;
+        $petugas->alamat = $request->alamat;
+
+        if ($request->filled('password')) {
+            $petugas->password = $request->password;
+        }
+
+        $petugas->save();
+
+        return redirect()->route('petugas.profile')->with('success', 'Profil berhasil diperbarui');
     }
 }
