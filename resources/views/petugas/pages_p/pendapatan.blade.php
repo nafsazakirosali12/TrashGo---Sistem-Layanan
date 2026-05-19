@@ -13,7 +13,7 @@
     {{-- CARD TOTAL --}}
     <div class="row mb-4">
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <div class="card shadow-sm border-0 rounded-4">
                 <div class="card-body">
 
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <div class="card shadow-sm border-0 rounded-4">
                 <div class="card-body">
 
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <div class="card shadow-sm border-0 rounded-4">
                 <div class="card-body">
 
@@ -57,6 +57,17 @@
                         Rp {{ number_format($bulanIni,0,',','.') }}
                     </h3>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h6 class="text-muted">Tahun Ini</h6>
+                    <h4 class="fw-bold text-success">
+                        Rp {{ number_format($tahunIni, 0, ',', '.') }}
+                    </h4>
                 </div>
             </div>
         </div>

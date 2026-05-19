@@ -57,11 +57,21 @@ class PendapatanController extends Controller
             Carbon::now()->year
         )->sum('total_pendapatan');
 
+        // TOTAL TAHUN INI
+        $tahunIni = Pendapatan::where(
+            'petugas_id',
+            auth('petugas')->id()
+        )->whereYear(
+            'tanggal_pendapatan',
+            Carbon::now()->year
+        )->sum('total_pendapatan');
+
         return view('petugas.pages_p.pendapatan', compact(
             'pendapatans',
             'hariIni',
             'mingguIni',
-            'bulanIni'
+            'bulanIni',
+            'tahunIni'
         ));
     }
 
