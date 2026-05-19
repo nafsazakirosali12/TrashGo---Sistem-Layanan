@@ -23,6 +23,9 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('assets_admin/css/soft-ui-dashboard.css?v=1.0.3') }}" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- data table -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.dataTables.min.css">
 </head>
 
 <body class="g-sidenav-show  bg-gray-100 d-flex flex-column min-vh-100">
@@ -57,6 +60,12 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets_admin/js/soft-ui-dashboard.min.js') }}"></script>
+
+  <!-- data tables -->
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+   <script src="https://cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
+   @stack('scripts')
 </body>
+
 
 </html>
