@@ -24,13 +24,13 @@
 
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              <a class="dropdown-item" href="">
+              <a class="dropdown-item" href="{{ route('petugas.profile') }}">
                 Profil Saya
               </a>
             </li>
             <li><hr class="dropdown-divider"></li>
             <li>
-              <form action="" method="POST">
+              <form id="logout-form" action="/logout"method="POST">
                 @csrf
                 <button type="submit" class="dropdown-item">Keluar</button>
               </form>

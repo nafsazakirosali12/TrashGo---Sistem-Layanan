@@ -32,4 +32,9 @@ class Order extends Model
     {
         return $this->hasOne(Pembayaran::class, 'order_id');
     }
+
+    public function pendapatan()
+    {
+        return $this->hasOne(Pendapatan::class);
+    }
 }
