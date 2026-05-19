@@ -66,8 +66,9 @@ Route::middleware('masyarakat.auth')->group(function () {
 
 Route::middleware('petugas.auth')->group(function () {
    Route::get('/home_petugas', [DashboardController::class, 'dashboard_p'])->name('home_petugas');
-    Route::get('/daftar-pesanan', [PickupController::class, 'index'])->name('daftar-pesanan');
-    Route::get('/pengangkutan', [PickupController::class, 'create'])->name('pengangkutan');
+   Route::get('/daftar-pesanan', [PickupController::class, 'index'])->name('daftar-pesanan');
+   Route::get('/pengangkutan', [PickupController::class, 'create'])->name('pengangkutan');
+   Route::get('/riwayat_pengangkutan', [PetugasController::class, 'history'])->name('petugas.riwayat_pengangkutan');
 });
 
 Route::get('/profil', function () {

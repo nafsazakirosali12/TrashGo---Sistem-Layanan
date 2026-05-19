@@ -10,7 +10,7 @@
                 </a>
             </div>
 
-            <h2 class="text-center mb-4 text-success" style="font-weight: bold; font-size: 2rem;">MY TRASHGO! POINT</h2>
+            <h2 class="text-center mb-4 text-success" style="font-weight: bold; font-size: 2rem;">TRASHGO! POINT</h2>
             <div class="card shadow-sm mb-4 text-center" style="border-radius: 15px; border-top: 5px solid #28a745;">
                 <div class="card-body py-4">
                     <h5 class="text-muted mb-2">Total Poin Terkumpul</h5>

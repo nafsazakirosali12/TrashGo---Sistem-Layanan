@@ -55,6 +55,18 @@
           </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('petugas.riwayat_pengangkutan*') ? 'active' : '' }}" href="{{ route('petugas.riwayat_pengangkutan') }}">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <svg style="width: 20px !important; height: 20px !important; transform: scale(1.15);" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <title>Riwayat Pengangkutan</title>
+                        <path class="color-background opacity-6" d="M3 5C3 4.45 3.45 4 4 4H15C15.55 4 16 4.45 16 5V8H18.5C18.82 8 19.12 8.15 19.31 8.41L22 12V17C22 17.55 21.55 18 21 18H19C18.74 16.86 17.72 16 16.5 16C15.28 16 14.26 16.86 14 18H10C9.74 16.86 8.72 16 7.5 16C6.28 16 5.26 16.86 5 18H4C3.45 18 3 17.55 3 17V5Z"></path>
+                        <path class="color-background" d="M16 10V13H20L18.5 10H16ZM7.5 17C8.33 17 9 17.67 9 18.5C9 19.33 8.33 20 7.5 20C6.67 20 6 19.33 6 18.5C6 17.67 6.67 17 7.5 17ZM16.5 17C17.33 17 18 17.67 18 18.5C18 19.33 17.33 20 16.5 20C15.67 20 15 19.33 15 18.5C15 17.67 15.67 17 16.5 17ZM5 7H14V9H5V7ZM5 10H12V12H5V10Z"></path>
+                    </svg>
+                </div>
+                <span class="nav-link-text ms-1">Riwayat Pengangkutan</span>
+            </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link {{ request()->is('monitoring*') ? 'active' : '' }}" href="{{ route('monitoring') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
