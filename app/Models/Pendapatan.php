@@ -12,4 +12,9 @@ class Pendapatan extends Model
         'total_pendapatan',
         'tanggal_pendapatan',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
