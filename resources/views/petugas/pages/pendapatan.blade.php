@@ -1,4 +1,4 @@
-@extends('layouts_p.app')
+@extends('petugas.layouts_p.app_p')
 
 @section('page', 'Pendapatan')
 
@@ -6,9 +6,9 @@
 
 <div class="container">
 
-    <h3 class="fw-bold mb-4">
+    <h4 class="fw-bold mb-4">
         Pendapatan Petugas
-    </h3>
+    </h4>
 
     {{-- CARD TOTAL --}}
     <div class="row mb-4">
@@ -105,9 +105,9 @@
 
             <div class="table-responsive">
 
-                <table class="table table-bordered align-middle">
+                <table class="table table-bordered align-middle text-center">
 
-                    <thead class="table-success">
+                    <thead class="table-success text-center">
                         <tr>
                             <th>Order</th>
                             <th>Tanggal</th>

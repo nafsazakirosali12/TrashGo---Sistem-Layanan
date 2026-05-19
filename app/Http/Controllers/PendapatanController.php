@@ -13,9 +13,11 @@ class PendapatanController extends Controller
      */
     public function index()
     {
+        $petugasId = auth('petugas')->id();
+
         $query = Pendapatan::with([
             'order.pembayaran'
-        ]);
+        ])->where('petugas_id', $petugasId);
 
         // FILTER TANGGAL
         if(request('dari') && request('sampai')){
@@ -32,13 +34,13 @@ class PendapatanController extends Controller
         $pendapatans = $query->latest()->paginate(10);
 
         // TOTAL HARI INI
-        $hariIni = Pendapatan::whereDate(
-            'tanggal_pendapatan',
-            Carbon::today()
-        )->sum('total_pendapatan');
+        $hariIni = Pendapatan::where('petugas_id', $petugasId)->whereDate(
+                'tanggal_pendapatan',
+                Carbon::today()
+            )->sum('total_pendapatan');
 
         // TOTAL MINGGU INI
-        $mingguIni = Pendapatan::whereBetween(
+        $mingguIni = Pendapatan::where('petugas_id', $petugasId)->whereBetween(
             'tanggal_pendapatan',
             [
                 Carbon::now()->startOfWeek(),
@@ -47,17 +49,15 @@ class PendapatanController extends Controller
         )->sum('total_pendapatan');
 
         // TOTAL BULAN INI
-        $bulanIni = Pendapatan::whereMonth(
+        $bulanIni = Pendapatan::where('petugas_id', $petugasId)->whereMonth(
             'tanggal_pendapatan',
             Carbon::now()->month
-        )
-        ->whereYear(
+        )->whereYear(
             'tanggal_pendapatan',
             Carbon::now()->year
-        )
-        ->sum('total_pendapatan');
+        )->sum('total_pendapatan');
 
-        return view('petugas.pendapatan.index', compact(
+        return view('petugas.pages.pendapatan', compact(
             'pendapatans',
             'hariIni',
             'mingguIni',

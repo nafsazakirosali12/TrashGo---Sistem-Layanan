@@ -66,8 +66,7 @@ Route::middleware('masyarakat.auth')->group(function () {
 
 Route::middleware('petugas.auth')->group(function () {
     Route::get('/home_petugas', [DashboardController::class, 'dashboard_p'])->name('home_petugas');
-    Route::get('/pendapatan', [PendapatanController::class, 'index'])
-        ->name('pendapatan');
+    Route::get('/pendapatan', [PendapatanController::class, 'index'])->name('pendapatan');
 });
 
 Route::get('/profil', function () {
