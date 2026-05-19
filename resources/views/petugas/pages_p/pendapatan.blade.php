@@ -1,4 +1,4 @@
-<!-- @extends('petugas.layouts_p.app_p')
+@extends('petugas.layouts_p.app_p')
 
 @section('page', 'Pendapatan')
 
@@ -187,4 +187,4 @@
 
 </div>
 
-@endsection -->
+@endsection

@@ -57,7 +57,7 @@ class PendapatanController extends Controller
             Carbon::now()->year
         )->sum('total_pendapatan');
 
-        return view('petugas.pages.pendapatan', compact(
+        return view('petugas.pages_p.pendapatan', compact(
             'pendapatans',
             'hariIni',
             'mingguIni',
