@@ -15,6 +15,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PendapatanController;
 
 
 Route::get('/', function () {
@@ -64,8 +65,9 @@ Route::middleware('masyarakat.auth')->group(function () {
 });
 
 Route::middleware('petugas.auth')->group(function () {
-   Route::get('/home_petugas', [DashboardController::class, 'dashboard_p'])->name('home_petugas');
-
+    Route::get('/home_petugas', [DashboardController::class, 'dashboard_p'])->name('home_petugas');
+    Route::get('/pendapatan', [PendapatanController::class, 'index'])
+        ->name('pendapatan');
 });
 
 Route::get('/profil', function () {

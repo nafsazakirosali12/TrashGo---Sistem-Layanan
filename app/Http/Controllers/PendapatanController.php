@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendapatan;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PendapatanController extends Controller
 {
@@ -12,7 +13,56 @@ class PendapatanController extends Controller
      */
     public function index()
     {
-        //
+        $query = Pendapatan::with([
+            'order.pembayaran'
+        ]);
+
+        // FILTER TANGGAL
+        if(request('dari') && request('sampai')){
+
+            $query->whereBetween(
+                'tanggal_pendapatan',
+                [
+                    request('dari'),
+                    request('sampai')
+                ]
+            );
+        }
+
+        $pendapatans = $query->latest()->paginate(10);
+
+        // TOTAL HARI INI
+        $hariIni = Pendapatan::whereDate(
+            'tanggal_pendapatan',
+            Carbon::today()
+        )->sum('total_pendapatan');
+
+        // TOTAL MINGGU INI
+        $mingguIni = Pendapatan::whereBetween(
+            'tanggal_pendapatan',
+            [
+                Carbon::now()->startOfWeek(),
+                Carbon::now()->endOfWeek()
+            ]
+        )->sum('total_pendapatan');
+
+        // TOTAL BULAN INI
+        $bulanIni = Pendapatan::whereMonth(
+            'tanggal_pendapatan',
+            Carbon::now()->month
+        )
+        ->whereYear(
+            'tanggal_pendapatan',
+            Carbon::now()->year
+        )
+        ->sum('total_pendapatan');
+
+        return view('petugas.pendapatan.index', compact(
+            'pendapatans',
+            'hariIni',
+            'mingguIni',
+            'bulanIni'
+        ));
     }
 
     /**
