@@ -68,6 +68,7 @@ Route::middleware('masyarakat.auth')->group(function () {
 Route::middleware('petugas.auth')->group(function () {
     Route::get('/home_petugas', [DashboardController::class, 'dashboard_p'])->name('home_petugas');
     Route::get('/daftar-pesanan', [PickupController::class, 'index'])->name('daftar-pesanan');
+    Route::post('/daftar-pesanan/{id}/ambil', [PickupController::class, 'ambil'])->name('daftar-pesanan.ambil');
     Route::get('/pengangkutan', [PickupController::class, 'create'])->name('pengangkutan');
     Route::put('/pengangkutan/{id}/selesai', [PickupController::class, 'selesai'])->name('pengangkutan.selesai');
     Route::put('/pengangkutan/{id}/update', [PickupController::class, 'update'])->name('pengangkutan.update');
