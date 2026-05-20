@@ -17,4 +17,9 @@ class Pickup extends Model
     {
         return $this->belongsTo(Order::class, 'order_id');
     }
+
+    public function petugas()
+    {
+        return $this->belongsTo(Petugas::class, 'petugas_id');
+    }
 }

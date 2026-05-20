@@ -7,6 +7,9 @@ use App\Models\Pembayaran;
 use App\Models\Order;
 use App\Models\Petugas;
 use Illuminate\Http\Request;
+use App\Models\Pickup;
+use App\Models\Pendapatan;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -27,8 +30,42 @@ class DashboardController extends Controller
             'total_petugas'
         ));
     }
+    
     public function dashboard_p()
     {
-        return view('petugas.layouts_p.dashboard_p');
+        $petugas_id = Auth::guard('petugas')->id();
+
+        // total pendapatan
+        $total_pendapatan = Pendapatan::where('petugas_id', $petugas_id)
+            ->sum('total_pendapatan');
+
+        // total pengangkutan selesai
+        $pickup_completed = Pickup::where('petugas_id', $petugas_id)
+            ->whereHas('order', function ($query) {
+                $query->where('status', 'completed');
+            })
+            ->count();
+
+        // total pengangkutan diproses
+        $pickup_processing = Pickup::where('petugas_id', $petugas_id)
+            ->whereHas('order', function ($query) {
+                $query->where('status', 'processing');
+            })
+            ->count();
+
+        // total pengangkutan selesai hari ini
+        $pickup_today = Pickup::where('petugas_id', $petugas_id)
+            ->whereDate('created_at', today())
+            ->whereHas('order', function ($query) {
+                $query->where('status', 'completed');
+            })
+            ->count();
+
+        return view('petugas.layouts_p.dashboard_p', compact(
+            'total_pendapatan',
+            'pickup_completed',
+            'pickup_processing',
+            'pickup_today'
+        ));
     }
 }

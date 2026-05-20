@@ -26,4 +26,10 @@ class Petugas extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    // relasi ke pickup
+    public function pickups()
+    {
+        return $this->hasMany(Pickup::class, 'petugas_id');
+    }
 }

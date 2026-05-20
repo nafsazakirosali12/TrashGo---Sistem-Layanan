@@ -4,7 +4,7 @@
 
 @section('content')
 
-<!-- <div class="container-fluid py-4">
+<div class="container-fluid py-4">
       <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
@@ -12,9 +12,9 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Pembayaran</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Pendapatan</p>
                     <h5 class="font-weight-bolder mb-0">
-                      Rp {{ number_format($total_pembayaran, 0, ',', '.') }}
+                        Rp {{ number_format($total_pendapatan, 0, ',', '.') }}
                     </h5>
                   </div>
                 </div>
@@ -33,15 +33,15 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Pesanan</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Pengangkutan Selesai</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{ $total_order }}
+                        {{ $pickup_completed }}
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-bag-17 text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-check-bold text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -54,15 +54,15 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Petugas</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Pengangkutan Diproses</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{ $total_petugas }}
+                        {{ $pickup_processing }}
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-badge text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-time-alarm text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
@@ -75,73 +75,93 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Kategori</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Pengangkutan Hari Ini</p>
                     <h5 class="font-weight-bolder mb-0">
-                      {{ $total_kategori }}
+                        {{ $pickup_today }}
                     </h5>
                   </div>
                 </div>
                 <div class="col-4 text-end">
                   <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                    <i class="ni ni-calendar-grid-58 text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
       <div class="row mt-4">
-        <div class="col-lg-7 mb-lg-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-lg-7">
-                  <div class="d-flex flex-column h-100">
-                    <h5 class="font-weight-bolder mb-4 pt-2">Visi TrashGo!</h5>
-                    <p class="mb-0 text-sm text-justify">
-                      TrashGo! adalah produk di segmen layanan lingkungan berbasis digital
-                      yang memberikan manfaat dalam mempermudah pengelolaan sampah secara
-                      terorganisir dan efisien bagi masyarakat yang mengalami masalah
-                      penumpukan sampah serta kurangnya sistem pengelolaan yang terjadwal.
-                    </p>
-
-                    <p class="mt-3 mb-0 text-sm text-justify">
-                      Berbeda dengan produk kompetitor, TrashGo! menawarkan sistem
-                      terintegrasi dengan fitur klasifikasi sampah, penjadwalan fleksibel,
-                      serta reward poin untuk meningkatkan partisipasi pengguna dalam
-                      menjaga kebersihan lingkungan dan menciptakan kota yang lebih sehat.
-                    </p>
+          <!-- CARD KIRI -->
+          <div class="col-lg-7 mb-lg-0 mb-4">
+              <div class="card">
+                  <div class="card-body p-3">
+                      <div class="row">
+                          <div class="col-lg-7">
+                              <div class="d-flex flex-column h-100">
+                                  <h5 class="font-weight-bolder mb-4 pt-2">
+                                      Informasi Pengangkutan
+                                  </h5>
+                                  <p class="mb-2 text-sm">
+                                      Selamat datang di dashboard petugas TrashGo!.
+                                  </p>
+                                  <p class="mb-2 text-sm">
+                                      Di halaman ini petugas dapat melihat data
+                                      pengangkutan, status pickup, pendapatan,
+                                      serta aktivitas pengangkutan sampah yang
+                                      sedang berjalan.
+                                  </p>
+                                  <p class="mb-0 text-sm">
+                                      Pastikan setiap pengangkutan dilakukan tepat
+                                      waktu agar pelayanan kepada masyarakat tetap optimal.
+                                  </p>
+                              </div>
+                          </div>
+                          <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
+                              <div class="bg-gradient-primary border-radius-lg h-100">
+                                  <img src="../assets_admin/img/shapes/waves-white.svg"
+                                      class="position-absolute h-100 w-50 top-0 d-lg-block d-none"
+                                      alt="waves">
+                                  <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                                      <img class="w-100 position-relative z-index-2 pt-4"
+                                          src="../assets_admin/img/illustrations/rocket-white.png"
+                                          alt="rocket">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                </div>
-                <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-                  <div class="bg-gradient-primary border-radius-lg h-100">
-                    <img src="../assets_admin/img/shapes/waves-white.svg" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
-                    <div class="position-relative d-flex align-items-center justify-content-center h-100">
-                      <img class="w-100 position-relative z-index-2 pt-4" src="../assets_admin/img/illustrations/rocket-white.png" alt="rocket">
-                    </div>
+              </div>
+          </div>
+          <!-- CARD KANAN -->
+          <div class="col-lg-5">
+              <div class="card h-100 p-3 bg-gradient-primary">
+                  <div class="overflow-hidden position-relative border-radius-lg h-100">
+                      <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-2">
+                          <h5 class="text-white font-weight-bolder mb-2 pt-2">
+                              Tugas Petugas
+                          </h5>
+                          <ul class="text-white text-sm ps-3 mb-0" style="line-height:1.8;">
+                              <li>
+                                  Melakukan pengangkutan sampah sesuai jadwal pickup.
+                              </li>
+                              <li>
+                                  Memastikan status pengangkutan diperbarui secara berkala.
+                              </li>
+                              <li>
+                                  Menjaga kebersihan dan ketepatan waktu pelayanan.
+                              </li>
+                              <li>
+                                  Mengelola pengangkutan dengan aman dan tertib.
+                              </li>
+                              <li>
+                                  Memberikan pelayanan terbaik kepada masyarakat.
+                              </li>
+                          </ul>
+                      </div>
                   </div>
-                </div>
               </div>
-            </div>
           </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="card h-100 p-3 bg-gradient-primary">
-            <div class="overflow-hidden position-relative border-radius-lg h-100">
-              <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-2">
-                <h5 class="text-white font-weight-bolder mb-2 pt-2">Misi TrashGo!</h5>
-                <ul class="text-white text-sm ps-3 mb-0" style="line-height:1.8;">
-                  <li>Memiliki 150 pengguna yang terdaftar dalam kurun waktu 3 bulan.</li>
-                  <li>Meningkatkan jumlah pengangkutan sampah melalui platform TrashGo!</li>
-                  <li>Meningkatkan partisipasi masyarakat dalam klasifikasi sampah melalui platform TrashGo!</li>
-                  <li>Memungkinkan pengguna menentukan jadwal pengambilan sampah secara fleksibel sesuai kebutuhan melalui platform TrashGo!</li>
-                  <li>Mendorong partisipasi aktif masyarakat melalui pemberian reward poin sebagai bentuk apresiasi atas pengelolaan sampah.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="row mt-4">
         <div class="col-lg-5 mb-lg-0 mb-4">
