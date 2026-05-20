@@ -17,6 +17,14 @@
     <!-- KANAN -->
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav align-items-center">
+        <!-- SAPAAN -->
+      <li class="nav-item me-3">
+        <span class="fw-semibold text-dark">
+          Hallo,
+          {{ Auth::guard('petugas')->user()->nama_ketua }} !
+        </span>
+      </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link" href="#" data-bs-toggle="dropdown">
             <i class="bi bi-menu-button-wide fs-4"></i>
