@@ -20,7 +20,7 @@
                 <div class="card-body px-3 pt-3 pb-3">
                     <div class="table-responsive">
                         <table id="riwayatTable" class="table table-hover align-items-center mb-0 text-center">
-                            <thead style="background-color: #2e7d32; border-bottom: 2px solid #c8e6c9;">
+                            <thead style="background-color: #4f8f12; border-bottom: 2px solid #c8e6c9;">
                                 <tr>
                                     <th class="text-uppercase text-xs font-weight-bolder text-center py-3" style="color: #edf7ed;">No</th>
                                     <th class="text-uppercase text-xs font-weight-bolder text-center py-3" style="color: #edf7ed;">Tanggal</th>
@@ -61,9 +61,9 @@
                                         </td>
                                         <td class="align-middle text-center">
                                             <button type="button" class="btn btn-sm mb-0 px-3 py-1" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}"
-                                                style="color: #2e7d32; border: 1px solid #2e7d32; background-color: transparent; transition: all 0.2s;"
-                                                onmouseover="this.style.backgroundColor='#2e7d32'; this.style.color='#edf7ed';"
-                                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#2e7d32';">
+                                                style="color: #4f8f12; border: 1px solid #4f8f12; background-color: transparent; transition: all 0.2s;"
+                                                onmouseover="this.style.backgroundColor='#4f8f12'; this.style.color='#edf7ed';"
+                                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#4f8f12';">
                                                 <i class="fas fa-eye me-1" aria-hidden="true"></i> Detail
                                             </button>
                                         </td>
@@ -128,10 +128,15 @@
                 </div>
                 <div class="mb-3 border-bottom pb-2">
                     <span class="text-muted d-block small">Total Harga</span>
-                    <span class="fw-bold text-success">Rp {{ number_format($item->order->total_harga, 0, ',', '.') }}</span>
+                    <span class="fw-bold" style="color: #4f8f12;">Rp {{ number_format($item->order->total_harga, 0, ',', '.') }}</span>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="fw-bold text-dark btn bg-success mb-0" data-bs-dismiss="modal">Tutup</button>
+                <div class="modal-footer" style="border-top: 1px solid #e9ecef;">
+                    <button type="button" class="btn fw-bold mb-0" data-bs-dismiss="modal"
+                        style="background-color: #4f8f12; color: #edf7ed; border: 1px solid #4f8f12; border-radius: 8px; padding: 0.5rem 1.2rem; font-size: 0.85rem; transition: all 0.2s ease-in-out;"
+                        onmouseover="this.style.backgroundColor='#3d6f0e'; this.style.borderColor='#3d6f0e'; this.style.transform='translateY(-1px)';"
+                        onmouseout="this.style.backgroundColor='#4f8f12'; this.style.borderColor='#4f8f12'; this.style.transform='translateY(0)';">
+                        Tutup
+                    </button>
                 </div>
             </div>                
         </div>

@@ -163,7 +163,7 @@ class PetugasController extends Controller
     {
         $riwayat_pickup = Pickup::with('order.kategori')
         -> where('petugas_id', auth('petugas')->id())
-        -> where('status', 'complete')
+        -> where('status', 'completed')
         -> latest()
         -> get();
 
