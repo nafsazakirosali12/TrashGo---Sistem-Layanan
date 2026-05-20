@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Petugas;
+use App\Models\Pickup;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -156,6 +157,17 @@ class PetugasController extends Controller
         $petugas->delete();
 
         return redirect()->route('tambah-akun')->with ('success', 'Data Berhasil Dihapus');
+    }
+
+    public function history()
+    {
+        $riwayat_pickup = Pickup::with('order.kategori')
+        -> where('petugas_id', auth('petugas')->id())
+        -> where('status', 'complete')
+        -> latest()
+        -> get();
+
+        return view('petugas.pages_p.riwayat_pickup', compact('riwayat_pickup'));
     }
 
     // ===================================================

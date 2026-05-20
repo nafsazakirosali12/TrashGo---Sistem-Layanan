@@ -76,7 +76,7 @@ Route::middleware('petugas.auth')->group(function () {
     Route::get('/petugas/profile/edit', [PetugasController::class, 'editProfile'])->name('petugas.profile_p.edit_p');
     Route::put('/petugas/profile/update', [PetugasController::class, 'updateProfile'])->name('petugas.profile.update');
     Route::get('/pendapatan', [PendapatanController::class, 'index'])->name('pendapatan');
-
+    Route::get('/riwayat_pengangkutan', [PetugasController::class, 'history'])->name('petugas.riwayat_pengangkutan');
 });
 
 Route::get('/profil', function () {
