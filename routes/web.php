@@ -104,7 +104,7 @@ Route::get('/register', [AuthController::class, 'showRegister'])
 Route::post('/register', [AuthController::class, 'register']);
 
 // ROUTE TESTING ORDER SELESAI (Hapus jika fitur petugas sudah jadi)
-Route::get('/test-selesai/{id}', [OrderController::class, 'update_status_point']);
+// Route::get('/test-selesai/{id}', [OrderController::class, 'update_status_point']);
 
 
 
