@@ -9,6 +9,7 @@ class Pendapatan extends Model
     protected $table = 'pendapatans';
     protected $fillable = [
         'order_id',
+        'petugas_id',
         'total_pendapatan',
         'tanggal_pendapatan',
     ];

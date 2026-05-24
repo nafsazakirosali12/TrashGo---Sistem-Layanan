@@ -7,6 +7,9 @@ use App\Models\Pickup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Pendapatan;
+use App\Models\Point;
+use Carbon\Carbon;
 
 class PickupController extends Controller
 {
@@ -86,6 +89,28 @@ public function create()
         ->update([
             'status' => 'completed'
         ]);
+
+    // TAMBAH POINT
+    $cek_point = Point::where('order_id', $order->id)
+        ->where('total_point', '>', 0)
+        ->first();
+
+    if(!$cek_point){
+        Point::create([
+            'masyarakat_id' => $order->masyarakat_id,
+            'order_id' => $order->id,
+            'total_point' => 10,
+            'tanggal_point' => Carbon::now(),
+        ]);
+    }
+
+    // TAMBAH PENDAPATAN
+    Pendapatan::create([
+        'order_id' => $order->id,
+        'petugas_id' => Auth::guard('petugas')->id(),
+        'total_pendapatan' => $order->total_harga,
+        'tanggal_pendapatan' => Carbon::now(),
+    ]);
 
     return back()->with('success', 'Pengangkutan selesai');
     }
