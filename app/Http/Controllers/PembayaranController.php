@@ -62,8 +62,17 @@ class PembayaranController extends Controller
         $bukti = null;
 
         if ($request->hasFile('bukti_pembayaran')) {
-            $bukti = $request->file('bukti_pembayaran')
-                ->store('bukti_pembayaran', 'public');
+
+            $file = $request->file('bukti_pembayaran');
+
+            // bikin nama unik
+            $namaFile = time() . '_' . $file->getClientOriginalName();
+
+            // pindahkan ke public/assets_pengguna
+            $file->move(public_path('assets_pengguna'), $namaFile);
+
+            // simpan nama file ke database
+            $bukti = 'assets_pengguna/' . $namaFile;
         }
 
         // 5. SIMPAN PEMBAYARAN

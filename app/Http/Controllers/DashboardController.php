@@ -36,8 +36,16 @@ class DashboardController extends Controller
         $petugas_id = Auth::guard('petugas')->id();
 
         // total pendapatan
-        $total_pendapatan = Pendapatan::where('petugas_id', $petugas_id)
-            ->sum('total_pendapatan');
+        $total_pendapatan = Pembayaran::where('status', 'success')
+            ->whereHas('order', function ($query) use ($petugas_id) {
+
+                $query->where('status', 'completed')
+                    ->whereHas('pickup', function ($q) use ($petugas_id) {
+                            $q->where('petugas_id', $petugas_id);
+                    });
+
+            })
+            ->sum('total_pembayaran');
 
         // total pengangkutan selesai
         $pickup_completed = Pickup::where('petugas_id', $petugas_id)

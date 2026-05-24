@@ -141,18 +141,22 @@
                     </p>
 
                     {{-- BUKTI TF --}}
-                    @if($pickup->order->pembayaran?->bukti_pembayaran)
+                   @if($pickup->order->pembayaran?->bukti_pembayaran)
 
-<div class="mb-3">
+                    <div class="mb-3">
 
-    <label class="fw-bold d-block mb-2">
-        Bukti Transfer
-    </label>
+                        <label class="fw-bold d-block mb-2">
+                            Bukti Transfer
+                        </label>
 
-    <img src="{{ asset($pickup->order->pembayaran->bukti_pembayaran) }}">
-</div>
+                        <img src="{{ asset($pickup->order->pembayaran->bukti_pembayaran) }}"
+                            alt="Bukti Transfer"
+                            class="img-fluid rounded-3 border shadow-sm"
+                            style="max-height: 300px; object-fit: cover;">
 
-@endif
+                    </div>
+
+                    @endif
 
                     {{-- STATUS ORDER --}}
                     <div class="mb-3">
