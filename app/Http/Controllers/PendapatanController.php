@@ -21,12 +21,11 @@ class PendapatanController extends Controller
 
         // FILTER TANGGAL
         if(request('dari') && request('sampai')){
-
             $query->whereBetween(
                 'tanggal_pendapatan',
                 [
-                    request('dari'),
-                    request('sampai')
+                    Carbon::parse(request('dari'))->startOfDay(),
+                    Carbon::parse(request('sampai'))->endOfDay()
                 ]
             );
         }
