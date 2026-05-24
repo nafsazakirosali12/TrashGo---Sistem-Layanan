@@ -10,6 +10,48 @@
         Pengangkutan
     </h4>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: "{{ session('success') }}",
+        confirmButtonColor: '#B7C43A'
+    });
+</script>
+@endif
+
+@if(session('error'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Gagal!',
+        text: "{{ session('error') }}",
+        confirmButtonColor: '#d33'
+    });
+</script>
+@endif
+
+<style>
+    .btn-trashgo {
+        background-color: #B7C43A;
+        border: none;
+        color: white;
+        min-width: 110px;
+        height: 55px;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .btn-trashgo:hover {
+        background-color: #9EAA2F;
+        color: white;
+    }
+</style>
+
     @if($pickups->isEmpty())
 
         <!-- <div class="alert alert-info rounded-4 shadow-sm border-0">
@@ -49,31 +91,55 @@
             </p>
 
             <p class="mb-3">
-                <strong>Status Pembayaran:</strong>
-                {{ $pickup->order->pembayaran->status ?? '-' }}
+                <strong>Tanggal:</strong>
+                {{ $pickup->order->tanggal ?? '-' }}
             </p>
+
+            <p class="mb-3">
+                <strong>Waktu:</strong>
+                {{ \Carbon\Carbon::parse($pickup->order->waktu)->format('H:i') }}
+            </p>
+
+            <p class="mb-3">
+                <strong>Status Order:</strong>
+
+                @if($pickup->order->status == 'pending')
+                    Menunggu
+
+                @elseif($pickup->order->status == 'processing')
+                    Diproses
+
+                @elseif($pickup->order->status == 'completed')
+                    Selesai
+
+                @else
+                    -
+                @endif
+
+            </p>
+
 
             <div class="d-flex gap-2">
 
                 {{-- BUTTON UPDATE --}}
                 <button type="button"
-                        class="btn btn-success"
+                        class="btn btn-trashgo"
                         data-bs-toggle="modal"
                         data-bs-target="#updatePickup{{ $pickup->id }}">
 
-                    Update
+                    Ubah
 
                 </button>
 
                 {{-- BUTTON SELESAI --}}
                 <form action="{{ route('pengangkutan.selesai', $pickup->order->id) }}"
-                      method="POST">
+                method="POST" class="form-selesai">
 
                     @csrf
                     @method('PUT')
 
-                    <button type="submit"
-                            class="btn btn-primary">
+                    <button type="button"
+                            class="btn btn-trashgo btn-selesai">
 
                         Selesai
 
@@ -112,33 +178,67 @@
 
             </div>
 
-            <form action="{{ route('pengangkutan.update', $pickup->order->id) }}"
-                  method="POST">
+            <form action="{{ route('pengangkutan.update', $pickup->order->id) }}" method="POST" class="form-update">
 
                 @csrf
                 @method('PUT')
 
                 <div class="modal-body">
 
-                    <p>
+                    <p class="border-bottom pb-2">
                         <strong>Nama:</strong>
                         {{ $pickup->order->masyarakat->nama_masyarakat ?? '-' }}
                     </p>
 
-                    <p>
+                    <p class="border-bottom pb-2">
                         <strong>Kategori:</strong>
                         {{ $pickup->order->kategori->nama_kategori ?? '-' }}
                     </p>
 
-                    <p>
+                    <div class="row mb-3 border-bottom pb-2">
+                        <div class="col-6">
+                            <p>
+                                <strong>Tanggal:</strong>
+                                {{ $pickup->order->tanggal ?? '-' }}
+                            </p>
+                        </div>
+
+                        <div class="col-6">
+                            <p>
+                                <strong>Waktu:</strong>
+                                {{ \Carbon\Carbon::parse($pickup->order->waktu)->format('H:i') }}
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <p class="border-bottom pb-2">
                         <strong>Alamat:</strong>
                         {{ $pickup->order->lokasi ?? '-' }}
                     </p>
 
-                    <p>
+                    <div class="border-bottom pb-2">
+                        <strong>Total Harga:</strong>
+                        <span class="fw-bold" style="color: #4f8f12;">
+                            Rp {{ number_format($pickup->order->pembayaran->total_pembayaran ?? 0, 0, ',', '.') }}
+                        </span>
+                    </div>
+
+                    <p class="border-bottom pb-2">
+                        <strong>Catatan:</strong>
+                        {{ $pickup->order->catatan ?? '-' }}
+                    </p>
+
+                    <p class="border-bottom pb-2">
                         <strong>Metode Pembayaran:</strong>
                         {{ $pickup->order->pembayaran->metode_pembayaran ?? '-' }}
                     </p>
+                    
+                    <!-- <p class="border-bottom pb-2">
+                        <!-- <strong>Status Pembayaran:</strong> -->
+                        <!-- {{ $pickup->order->pembayaran->status ?? '-' }} -->
+                    <!-- </p> -->
+                     
 
                     {{-- BUKTI TF --}}
                    @if($pickup->order->pembayaran?->bukti_pembayaran)
@@ -161,26 +261,23 @@
                     {{-- STATUS ORDER --}}
                     <div class="mb-3">
 
-                        <label class="fw-bold">
-                            Status Order
-                        </label>
-
+                        <strong>Status Order</strong>
                         <select name="status_order"
                                 class="form-select">
 
                             <option value="pending"
                                 {{ $pickup->order->status == 'pending' ? 'selected' : '' }}>
-                                Pending
+                                Menunggu
                             </option>
 
                             <option value="processing"
                                 {{ $pickup->order->status == 'processing' ? 'selected' : '' }}>
-                                Processing
+                                Diproses
                             </option>
 
                             <option value="completed"
                                 {{ $pickup->order->status == 'completed' ? 'selected' : '' }}>
-                                Completed
+                                Selesai
                             </option>
 
                         </select>
@@ -190,26 +287,23 @@
                     {{-- STATUS PEMBAYARAN --}}
                     <div class="mb-3">
 
-                        <label class="fw-bold">
-                            Status Pembayaran
-                        </label>
-
+                    <strong>Status Pembayaran</strong>
                         <select name="status_pembayaran"
                                 class="form-select">
 
                             <option value="pending"
                                 {{ ($pickup->order->pembayaran->status ?? '') == 'pending' ? 'selected' : '' }}>
-                                Pending
+                                Menunggu
                             </option>
 
                             <option value="success"
                                 {{ ($pickup->order->pembayaran->status ?? '') == 'success' ? 'selected' : '' }}>
-                                Success
+                                Berhasil
                             </option>
 
                             <option value="failed"
                                 {{ ($pickup->order->pembayaran->status ?? '') == 'failed' ? 'selected' : '' }}>
-                                Failed
+                                Gagal
                             </option>
 
                         </select>
@@ -220,12 +314,10 @@
 
                 <div class="modal-footer">
 
-                    <button type="submit"
-                            class="btn btn-success">
-
-                        Simpan
-
-                    </button>
+                <button type="button"
+                    class="btn btn-success btn-update">
+                    Simpan
+                </button>
 
                 </div>
 
@@ -243,5 +335,48 @@
 
 </div>
 @endif
-
 @endsection
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    document.querySelectorAll('.btn-selesai').forEach(button => {
+        button.addEventListener('click', function () {
+            let form = this.closest('form');
+
+            Swal.fire({
+                title: 'Yakin sudah selesai?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#B7C43A',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Selesai!'
+            }).then((result) => {
+                if (result.isConfirmed) form.submit();
+            });
+        });
+    });
+
+    document.querySelectorAll('.btn-update').forEach(button => {
+        button.addEventListener('click', function () {
+            let form = this.closest('form');
+
+            Swal.fire({
+                title: 'Simpan perubahan?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#B7C43A',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Simpan!'
+            }).then((result) => {
+                if (result.isConfirmed) form.submit();
+            });
+        });
+    });
+
+});
+</script>
+@endpush
