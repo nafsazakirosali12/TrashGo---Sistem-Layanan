@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Pembayaran;
 
 class Order extends Model
 {
@@ -29,12 +30,17 @@ class Order extends Model
     }
 
     public function pembayaran()
-    {
-        return $this->hasOne(Pembayaran::class, 'order_id');
-    }
+{
+    return $this->hasOne(Pembayaran::class, 'order_id');
+}
 
     public function pendapatan()
     {
         return $this->hasOne(Pendapatan::class);
     }
+
+    public function pickup()
+{
+    return $this->hasOne(Pickup::class, 'order_id');
+}
 }

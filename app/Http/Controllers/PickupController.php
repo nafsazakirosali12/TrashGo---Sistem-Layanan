@@ -23,57 +23,72 @@ class PickupController extends Controller
         return view('petugas.pages_p.daftar_pesanan', compact('orders'));
     }
 
-    public function ambil(int $id)
-    {
-        $berhasil = DB::transaction(function () use ($id) {
-            $order = Order::where('id', $id)
-                ->where('status', 'pending')
-                ->lockForUpdate()
-                ->first();
+public function ambil(int $id)
+{
+    $order = Order::findOrFail($id);
 
-            if (!$order) {
-                return false;
-            }
+    // optional: cegah double ambil order yang sama oleh petugas yang sama
+    $exists = Pickup::where('order_id', $id)
+        ->where('petugas_id', Auth::guard('petugas')->id())
+        ->where('status', 'processing')
+        ->exists();
 
-            $order->update([
-                'status' => 'processing',
-            ]);
-
-            Pickup::create([
-                'order_id' => $order->id,
-                'petugas_id' => Auth::guard('petugas')->id(),
-                'status' => 'processing',
-            ]);
-
-            return true;
-        });
-
-        if (!$berhasil) {
-            return redirect()->route('daftar-pesanan')
-                ->with('error', 'Pesanan sudah diambil oleh petugas lain.');
-        }
-
-        return redirect()->route('pengangkutan')
-            ->with('success', 'Pesanan berhasil diambil dan masuk ke pengangkutan.');
+    if ($exists) {
+        return back()->with('error', 'Order sudah kamu ambil');
     }
 
+    Pickup::create([
+        'order_id' => $order->id,
+        'petugas_id' => Auth::guard('petugas')->id(),
+        'status' => 'processing',
+    ]);
+
+    return redirect()->route('pengangkutan')
+        ->with('success', 'Pesanan berhasil diambil');
+}
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        $orders = Order::with('pembayaran')->where('status', 'processing')->get();
-        return view('petugas.pages_p.pengangkutan_p', compact('orders'));
-    }
+public function create()
+{
+    $pickups = Pickup::with([
+        'order.masyarakat',
+        'order.kategori',
+        'order.pembayaran'
+    ])
+    ->where('petugas_id', Auth::guard('petugas')->id())
+    ->where('status', 'processing')
+    ->latest()
+    ->get();
+
+    return view(
+        'petugas.pages_p.pengangkutan_p',
+        compact('pickups')
+    );
+}
 
     public function selesai($id)
     {
+        // $order = Order::findOrFail($id);
+        // $order->status = 'completed';
+        // $order->save();
+        // Pickup::where('order_id', $order->id)->update(['status' => 'completed']);
+        // return back()->with('success', 'Pengangkutan selesai');
         $order = Order::findOrFail($id);
-        $order->status = 'completed';
-        $order->save();
-        return back()->with('success', 'Pengangkutan selesai');
-        }
+
+    $order->update([
+        'status' => 'completed'
+    ]);
+
+    Pickup::where('order_id', $id)
+        ->where('petugas_id', Auth::guard('petugas')->id())
+        ->update([
+            'status' => 'completed'
+        ]);
+
+    return back()->with('success', 'Pengangkutan selesai');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -102,7 +117,7 @@ class PickupController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+public function update(Request $request, $id)
 {
     $order = Order::findOrFail($id);
 
@@ -110,11 +125,21 @@ class PickupController extends Controller
     $order->status = $request->status_order;
     $order->save();
 
-    // update / create pembayaran
-    $order->pembayaran()->updateOrCreate(
-        ['order_id' => $order->id],
-        ['status' => $request->status_payment]
-    );
+    // update status pembayaran
+    if ($order->pembayaran) {
+
+        $order->pembayaran->status = $request->status_pembayaran;
+        $order->pembayaran->save();
+
+    }
+
+    // // update status pickup
+    // if ($order->pickup) {
+
+    //     $order->pickup->status = $request->status_pickup;
+    //     $order->pickup->save();
+
+    // }
 
     return back()->with('success', 'Data berhasil diupdate');
 }
