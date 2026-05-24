@@ -220,7 +220,7 @@
                 });
 
                 setTimeout(() => {
-                    form.submit();
+                    form.requestSubmit();
                 }, 1500);
             }
 

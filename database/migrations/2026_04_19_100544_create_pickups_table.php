@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
             $table->foreignId('petugas_id')->constrained('petugas')->cascadeOnDelete();
-            $table->enum('status', ['complete', 'incomplete']);
+            $table->enum('status', ['processing', 'completed']);
             $table->timestamps();
         });
     }
