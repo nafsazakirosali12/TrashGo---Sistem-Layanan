@@ -5,18 +5,9 @@
 @section('content')
 <div class="container-fluid py-4">
 
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card shadow-sm border-0">
-                <div class="card-body py-4">
-                    <h5 class="mb-1">Daftar Pesanan</h5>
-                    <p class="text-sm text-secondary mb-0">
-                        Pesanan masuk yang dapat diambil oleh petugas.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <h4 class="fw-bold mb-4">
+        Daftar Pesanan
+    </h4>
 
     @if(session('success'))
         <div class="alert alert-success text-white">
@@ -103,6 +94,27 @@
         font-size: 26px;
         line-height: 1;
     }
+
+    .swal-custom-popup {
+        border-radius: 18px !important;
+        padding: 28px !important;
+    }
+
+    .swal-custom-title {
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        color: #555 !important;
+    }
+
+    .swal2-html-container {
+        font-size: 18px !important;
+        color: #666 !important;
+    }
+
+    .swal2-icon.swal2-question {
+        border-color: #9ab5bf !important;
+        color: #9ab5bf !important;
+    }
 </style>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 row-cols-xxl-5 g-3">
@@ -162,7 +174,9 @@
                             Detail
                         </button>
 
-                        <form action="{{ route('daftar-pesanan.ambil', $order->id) }}" method="POST" class="w-50">
+                        <form action="{{ route('daftar-pesanan.ambil', $order->id) }}" 
+                            method="POST" 
+                            class="w-50 form-ambil-pesanan">
                             @csrf
                             <button type="submit" class="btn btn-sm bg-gradient-success w-100 mb-0 py-2">
                                 Ambil
@@ -317,4 +331,35 @@
 @endif
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.querySelectorAll('.form-ambil-pesanan').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                icon: 'question',
+                title: 'Ambil pesanan?',
+                text: 'Pastikan pesanan sudah sesuai.',
+                showCancelButton: true,
+                confirmButtonText: 'AMBIL',
+                cancelButtonText: 'BATAL',
+                reverseButtons: true,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn bg-gradient-success mx-2',
+                    cancelButton: 'btn btn-secondary mx-2',
+                    popup: 'swal-custom-popup',
+                    title: 'swal-custom-title'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
 @endsection
