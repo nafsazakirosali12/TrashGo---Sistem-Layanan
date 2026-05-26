@@ -92,77 +92,232 @@
         </div>
       </div>
       <div class="row mt-4">
-          <!-- CARD KIRI -->
-          <div class="col-lg-7 mb-lg-0 mb-4">
-              <div class="card">
-                  <div class="card-body p-3">
-                      <div class="row">
-                          <div class="col-lg-7">
-                              <div class="d-flex flex-column h-100">
-                                  <h5 class="font-weight-bolder mb-4 pt-2">
-                                      Informasi Pengangkutan
-                                  </h5>
-                                  <p class="mb-2 text-sm">
-                                      Selamat datang di dashboard petugas TrashGo!.
-                                  </p>
-                                  <p class="mb-2 text-sm">
-                                      Di halaman ini petugas dapat melihat data
-                                      pengangkutan, status pickup, pendapatan,
-                                      serta aktivitas pengangkutan sampah yang
-                                      sedang berjalan.
-                                  </p>
-                                  <p class="mb-0 text-sm">
-                                      Pastikan setiap pengangkutan dilakukan tepat
-                                      waktu agar pelayanan kepada masyarakat tetap optimal.
-                                  </p>
-                              </div>
-                          </div>
-                          <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-                              <div class="bg-gradient-primary border-radius-lg h-100">
-                                  <img src="../assets_admin/img/shapes/waves-white.svg"
-                                      class="position-absolute h-100 w-50 top-0 d-lg-block d-none"
-                                      alt="waves">
-                                  <div class="position-relative d-flex align-items-center justify-content-center h-100">
-                                      <img class="w-100 position-relative z-index-2 pt-4"
-                                          src="../assets_admin/img/illustrations/rocket-white.png"
-                                          alt="rocket">
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- CARD KANAN -->
-          <div class="col-lg-5">
-              <div class="card h-100 p-3 bg-gradient-primary">
-                  <div class="overflow-hidden position-relative border-radius-lg h-100">
-                      <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-2">
-                          <h5 class="text-white font-weight-bolder mb-2 pt-2">
-                              Tugas Petugas
-                          </h5>
-                          <ul class="text-white text-sm ps-3 mb-0" style="line-height:1.8;">
-                              <li>
-                                  Melakukan pengangkutan sampah sesuai jadwal pickup.
-                              </li>
-                              <li>
-                                  Memastikan status pengangkutan diperbarui secara berkala.
-                              </li>
-                              <li>
-                                  Menjaga kebersihan dan ketepatan waktu pelayanan.
-                              </li>
-                              <li>
-                                  Mengelola pengangkutan dengan aman dan tertib.
-                              </li>
-                              <li>
-                                  Memberikan pelayanan terbaik kepada masyarakat.
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+
+    <!-- CARD INFORMASI -->
+    <div class="col-lg-7 mb-lg-0 mb-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+
+                <!-- HEADER -->
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon icon-shape bg-gradient-primary shadow text-center rounded-circle me-3">
+                        <i class="fas fa-truck text-white opacity-10"></i>
+                    </div>
+
+                    <div>
+                        <h5 class="mb-1 fw-bold">
+                            Informasi Pengangkutan
+                        </h5>
+
+                        <p class="text-sm text-muted mb-0">
+                            Dashboard aktivitas petugas TrashGo
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DESKRIPSI -->
+                <div class="bg-light border-radius-lg p-4 mb-4">
+                    <p class="text-sm text-dark mb-0" style="line-height: 1.9;">
+                        Selamat datang di dasbor petugas TrashGo.
+                        Halaman ini digunakan untuk memantau aktivitas
+                        pengangkutan sampah, status pengangkutan, pendapatan,
+                        dan proses pelayanan yang sedang berjalan.
+                        Pastikan setiap pengangkutan dilakukan tepat waktu
+                        agar pelayanan kepada masyarakat tetap optimal.
+                    </p>
+                </div>
+
+                <!-- FITUR -->
+                <div class="row">
+
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex">
+                            <div class="me-3">
+                                <div class="icon icon-shape icon-sm bg-gradient-primary shadow text-center rounded-circle">
+                                    <i class="fas fa-route text-white opacity-10"></i>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h6 class="text-sm fw-bold mb-1">
+                                    Monitoring pengangkutan
+                                </h6>
+
+                                <p class="text-xs text-muted mb-0">
+                                    Memantau status pengangkutan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex">
+                            <div class="me-3">
+                                <div class="icon icon-shape icon-sm bg-gradient-primary shadow text-center rounded-circle">
+                                    <i class="fas fa-wallet text-white opacity-10"></i>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h6 class="text-sm fw-bold mb-1">
+                                    Pendapatan
+                                </h6>
+
+                                <p class="text-xs text-muted mb-0">
+                                    Melihat total pendapatan pengangkutan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex">
+                            <div class="me-3">
+                                <div class="icon icon-shape icon-sm bg-gradient-primary shadow text-center rounded-circle">
+                                    <i class="fas fa-clock text-white opacity-10"></i>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h6 class="text-sm fw-bold mb-1">
+                                    Ketepatan Waktu
+                                </h6>
+
+                                <p class="text-xs text-muted mb-0">
+                                    Memastikan pengangkutan dilakukan tepat waktu.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="d-flex">
+                            <div class="me-3">
+                                <div class="icon icon-shape icon-sm bg-gradient-primary shadow text-center rounded-circle">
+                                    <i class="fas fa-shield-alt text-white opacity-10"></i>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h6 class="text-sm fw-bold mb-1">
+                                    Pelayanan Aman
+                                </h6>
+
+                                <p class="text-xs text-muted mb-0">
+                                    Menjaga pengangkutan tetap aman dan tertib.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD TUGAS -->
+    <div class="col-lg-5">
+        <div class="card h-100 border-0 shadow-sm bg-gradient-primary">
+            <div class="card-body p-4 d-flex flex-column">
+
+                <!-- HEADER -->
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon icon-shape bg-white shadow text-center rounded-circle me-3">
+                        <i class="fas fa-clipboard-check text-primary"></i>
+                    </div>
+
+                    <div>
+                        <h5 class="text-white fw-bold mb-1">
+                            Tugas Petugas
+                        </h5>
+
+                        <p class="text-white text-sm mb-0 opacity-8">
+                            Standar operasional pengangkutan
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIST -->
+                <div class="bg-white border-radius-lg p-4 flex-grow-1">
+
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3">
+                            <span class="badge bg-gradient-primary rounded-circle p-2">
+                                <i class="fas fa-check text-white"></i>
+                            </span>
+                        </div>
+
+                        <div>
+                            <p class="text-dark text-sm mb-0">
+                                Melakukan pengangkutan sampah sesuai jadwal pengangkutan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3">
+                            <span class="badge bg-gradient-primary rounded-circle p-2">
+                                <i class="fas fa-check text-white"></i>
+                            </span>
+                        </div>
+
+                        <div>
+                            <p class="text-dark text-sm mb-0">
+                                Memastikan status pengangkutan diperbarui secara berkala.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3">
+                            <span class="badge bg-gradient-primary rounded-circle p-2">
+                                <i class="fas fa-check text-white"></i>
+                            </span>
+                        </div>
+
+                        <div>
+                            <p class="text-dark text-sm mb-0">
+                                Menjaga kebersihan dan ketepatan waktu pelayanan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="me-3">
+                            <span class="badge bg-gradient-primary rounded-circle p-2">
+                                <i class="fas fa-check text-white"></i>
+                            </span>
+                        </div>
+
+                        <div>
+                            <p class="text-dark text-sm mb-0">
+                                Mengelola pengangkutan dengan aman dan tertib.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start">
+                        <div class="me-3">
+                            <span class="badge bg-gradient-primary rounded-circle p-2">
+                                <i class="fas fa-check text-white"></i>
+                            </span>
+                        </div>
+
+                        <div>
+                            <p class="text-dark text-sm mb-0">
+                                Memberikan pelayanan terbaik kepada masyarakat.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
       <div class="row mt-4">
         <div class="col-lg-5 mb-lg-0 mb-4">
           <div class="card z-index-2">

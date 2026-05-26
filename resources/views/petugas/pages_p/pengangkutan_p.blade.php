@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container-fluid py-4" style="min-height: 80vh;">
 
     <h4 class="fw-bold mb-4">
         Pengangkutan

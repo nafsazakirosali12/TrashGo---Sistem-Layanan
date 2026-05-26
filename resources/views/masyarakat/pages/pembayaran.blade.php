@@ -35,7 +35,7 @@
 
         <!-- <p><b>Order ID:</b> {{ $order->id }}</p> -->
         <p><b>Total Harga:</b> Rp {{ number_format($order->total_harga, 0, ',', '.') }}</p>
-        <p><b>Status:</b> {{ $order->status }}</p>
+        <!-- <p><b>Status:</b> {{ $order->status }}</p> -->
 
         <hr>
 
