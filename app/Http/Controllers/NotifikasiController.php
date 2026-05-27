@@ -38,6 +38,7 @@ class NotifikasiController extends Controller
         $lastTime = $notifications->first()?->created_at;
 
         $user->last_read_notif = $lastTime;
+        $user->last_read_status = now();
         $user->save();
 
         return view('masyarakat.pages.notifikasi', compact('notifications'));
