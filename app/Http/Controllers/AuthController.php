@@ -41,7 +41,7 @@ class AuthController extends Controller
                 ->with('success', 'Login Anda Sebagai Petugas Berhasil!');
         }
 
-        return back()->with('error', 'Terjadi kesalahan, periksa email atau password anda!');
+        return back()->with('error', 'Email atau kata sandi yang Anda masukkan salah.');
     }
 
     public function logout(Request $request)
