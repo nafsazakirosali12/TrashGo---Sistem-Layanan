@@ -21,7 +21,7 @@
         <li class="nav-item me-3">
           <span class="fw-semibold text-dark">
             Hallo Admin,
-            {{ Auth::guard('admin')->user()->nama_admin }} !
+            {{ Auth::guard('admin')->user()->nama_admin }}!
           </span>
         </li>
         <li class="nav-item dropdown">

@@ -21,7 +21,7 @@
       <li class="nav-item me-3">
         <span class="fw-semibold text-dark">
           Hallo,
-          {{ Auth::guard('petugas')->user()->nama_ketua }} !
+          {{ Auth::guard('petugas')->user()->nama_ketua }}!
         </span>
       </li>
 
