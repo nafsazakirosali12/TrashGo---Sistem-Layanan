@@ -30,6 +30,13 @@
                         <li class="nav-item">
                             <a class="nav-link position-relative" href="{{ route ('masyarakat.pages.notifikasi') }}" data-toggle="tooltip" title="Lihat Notifikasi">
                                 <i class="fa fa-bell"></i>
+
+                                {{-- DOT = status berubah --}}
+                                @if($hasStatusUpdate)
+                                    <span class="notif-dot position-absolute top-0 start-100 translate-middle"></span>
+                                @endif
+
+                                 {{-- ANGKA = notif baru --}}
                                 @if(auth('masyarakat')->check())
                                     @php
                                         $lastRead = auth('masyarakat')->user()->last_read_notif;
@@ -97,6 +104,19 @@
         </nav>
         <!-- End Navigation -->
     </header>
+
+    <style>
+        .notif-dot{
+        width: 10px;
+        height: 10px;
+
+        background-color: #b0b435;
+        border-radius: 50%;
+
+        border: 2px solid white;
+    }
+    </style>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             if (typeof $ !== 'undefined') {
