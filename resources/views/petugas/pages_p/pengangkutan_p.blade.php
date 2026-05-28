@@ -168,7 +168,7 @@
             <div class="modal-header">
 
                 <h5 class="modal-title">
-                    Update Pengangkutan
+                    Ubah Pengangkutan
                 </h5>
 
                 <button type="button"
@@ -185,17 +185,17 @@
 
                 <div class="modal-body">
 
-                    <p class="border-bottom pb-2">
+                    <p class="border-bottom pb-2 mb-3">
                         <strong>Nama:</strong>
                         {{ $pickup->order->masyarakat->nama_masyarakat ?? '-' }}
                     </p>
 
-                    <p class="border-bottom pb-2">
+                    <p class="border-bottom pb-2 mb-3">
                         <strong>Kategori:</strong>
                         {{ $pickup->order->kategori->nama_kategori ?? '-' }}
                     </p>
 
-                    <div class="row mb-3 border-bottom pb-2">
+                    <div class="border-bottom row mb-3 pb-1">
                         <div class="col-6">
                             <p>
                                 <strong>Tanggal:</strong>
@@ -212,24 +212,24 @@
                     </div>
 
 
-                    <p class="border-bottom pb-2">
+                    <p class="border-bottom pb-2 mb-3">
                         <strong>Alamat:</strong>
                         {{ $pickup->order->lokasi ?? '-' }}
                     </p>
 
-                    <div class="border-bottom pb-2">
+                    <div class="border-bottom pb-2 mb-3">
                         <strong>Total Harga:</strong>
                         <span class="fw-bold" style="color: #4f8f12;">
                             Rp {{ number_format($pickup->order->pembayaran->total_pembayaran ?? 0, 0, ',', '.') }}
                         </span>
                     </div>
 
-                    <p class="border-bottom pb-2">
+                    <p class="border-bottom pb-2 mb-3">
                         <strong>Catatan:</strong>
                         {{ $pickup->order->catatan ?? '-' }}
                     </p>
 
-                    <p class="border-bottom pb-2">
+                    <p class="border-bottom pb-2 mb-3">
                         <strong>Metode Pembayaran:</strong>
                         {{ $pickup->order->pembayaran->metode_pembayaran ?? '-' }}
                     </p>
