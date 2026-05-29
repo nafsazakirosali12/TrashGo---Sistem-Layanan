@@ -86,14 +86,16 @@
                         <label>Dari Tanggal</label>
                         <input type="date"
                                name="dari"
-                               class="form-control">
+                               class="form-control"
+                               value="{{ request('dari') }}">
                     </div>
 
                     <div class="col-md-4">
                         <label>Sampai Tanggal</label>
                         <input type="date"
                                name="sampai"
-                               class="form-control">
+                               class="form-control"
+                               value="{{ request('sampai') }}">
                     </div>
 
                     <div class="col-md-4 d-flex align-items-end">
@@ -189,6 +191,17 @@
             </div>
 
             <div class="mt-3">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <small class="text-muted">
+                        Menampilkan
+                        {{ $pendapatans->firstItem() }}
+                        sampai
+                        {{ $pendapatans->lastItem() }}
+                        dari
+                        {{ $pendapatans->total() }}
+                        data
+                    </small>
+                </div>
                 {{ $pendapatans->links() }}
             </div>
 
