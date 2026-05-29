@@ -21,24 +21,24 @@ class AuthController extends Controller
         ], [
             'email.required' => 'Email wajib diisi',
             'email.email' => 'Format email tidak valid',
-            'password.required' => 'Password wajib diisi',
+            'password.required' => 'Kata sandi wajib diisi',
         ]);
 
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('admin')->attempt($credentials)) {
             return redirect('/dashboard')
-                ->with('success', 'Login Anda Sebagai Admin Berhasil!');
+                ->with('success', 'Masuk Anda Sebagai Admin Berhasil!');
         }
 
         if (Auth::guard('masyarakat')->attempt($credentials)) {
             return redirect('/home_masyarakat')
-                ->with('success', 'Login Anda Sebagai Masyarakat Berhasil!');
+                ->with('success', 'Masuk Anda Sebagai Masyarakat Berhasil!');
         }
 
         if (Auth::guard('petugas')->attempt($credentials)) {
             return redirect('/home_petugas')
-                ->with('success', 'Login Anda Sebagai Petugas Berhasil!');
+                ->with('success', 'Masuk Anda Sebagai Petugas Berhasil!');
         }
 
         return back()->with('error', 'Email atau kata sandi yang Anda masukkan salah.');
@@ -57,7 +57,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login')->with('success', 'Berhasil logout!');
+        return redirect('/login')->with('success', 'Berhasil Keluar!');
     }
 
     public function showRegister()
