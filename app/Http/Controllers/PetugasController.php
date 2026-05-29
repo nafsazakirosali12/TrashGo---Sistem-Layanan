@@ -48,13 +48,12 @@ class PetugasController extends Controller
             'email.required' => 'Email wajib diisi.',
             'email.email' => 'Format email tidak valid.',
             'email.unique' => 'Email sudah digunakan.',
-            'password.required' => 'Password wajib diisi.',
-            'password.min' => 'Password minimal 8 karakter.',
+            'password.required' => 'Sandi wajib diisi.',
+            'password.min' => 'Sandi minimal 8 karakter.',
             'alamat.required' => 'Alamat wajib diisi.',
             'status.required' => 'Status wajib dipilih.',
         ]);
 
-        // $validated['password'] = Hash::make($validated['password']);
 
         Petugas::create($validated);
 
@@ -81,25 +80,6 @@ class PetugasController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    // public function update(Request $request, $id)
-    // {
-    //     $validated = $request->validate([
-    //         'nama_tim' => 'required|min:3|max:100',
-    //         'nama_ketua' => 'required|min:3|max:100',
-    //         'email' => 'required|email|unique:petugas',
-    //         'password' => 'required|min:8',
-    //         'alamat' => 'required|max:500',
-    //         'status' => 'required|in:acctive,inacctive',
-    //     ]);
-
-    //     Petugas::findOrFail($id)->update($request->validated());
-
-    //     return redirect('tambah-akun')->with('success', 'Data Berhasil Diubah');
-    // }
-
     public function update(Request $request, $id)
     {
         $petugas = Petugas::findOrFail($id);
@@ -124,7 +104,7 @@ class PetugasController extends Controller
             'email.email' => 'Format email tidak valid.',
             'email.unique' => 'Email sudah digunakan.',
 
-            'password.min' => 'Password minimal 8 karakter.',
+            'password.min' => 'Sandi minimal 8 karakter.',
 
             'alamat.required' => 'Alamat wajib diisi.',
             'alamat.max' => 'Alamat maksimal 500 karakter.',
@@ -132,12 +112,6 @@ class PetugasController extends Controller
             'status.required' => 'Status wajib dipilih.',
             'status.in' => 'Status tidak valid.',
         ]);
-
-        // if (!empty($request->password)) {
-        //     $validated['password'] = Hash::make($request->password);
-        // } else {
-        //     unset($validated['password']);
-        // }
 
         if (empty($request->password)) {
             unset($validated['password']);

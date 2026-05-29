@@ -77,7 +77,7 @@
         <div class="card-body">
 
             <h5 class="fw-bold mb-3">
-                Order #{{ $pickup->order->id }}
+                Pemesanan #{{ $pickup->order->id }}
             </h5>
 
             <p class="mb-2">
@@ -101,7 +101,7 @@
             </p>
 
             <p class="mb-3">
-                <strong>Status Order:</strong>
+                <strong>Status Pemesanan:</strong>
 
                 @if($pickup->order->status == 'pending')
                     Menunggu
@@ -235,8 +235,8 @@
                     </p>
                     
                     <!-- <p class="border-bottom pb-2">
-                        <!-- <strong>Status Pembayaran:</strong> -->
-                        <!-- {{ $pickup->order->pembayaran->status ?? '-' }} -->
+                        <!- <strong>Status Pembayaran:</strong> -->
+                        <!--{{ $pickup->order->pembayaran->status ?? '-' }} -->
                     <!-- </p> -->
                      
 
@@ -261,7 +261,7 @@
                     {{-- STATUS ORDER --}}
                     <div class="mb-3">
 
-                        <strong>Status Order</strong>
+                        <strong>Status Pemesanan</strong>
                         <select name="status_order"
                                 class="form-select">
 
