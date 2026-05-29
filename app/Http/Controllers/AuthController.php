@@ -80,9 +80,9 @@ class AuthController extends Controller
         'email.required' => 'Email wajib diisi',
         'email.email' => 'Format email tidak valid',
         'email.unique' => 'Email sudah terdaftar',
-        'password.required' => 'Password wajib diisi',
-        'password.min' => 'Password minimal 8 karakter',
-        'password.regex' => 'Password harus mengandung huruf dan angka',
+        'password.required' => 'Kata sandi wajib diisi',
+        'password.min' => 'Kata sandi minimal 8 karakter',
+        'password.regex' => 'Kata sandi harus mengandung huruf dan angka',
     ]);
 
         Masyarakat::create([
@@ -91,6 +91,6 @@ class AuthController extends Controller
             'password' => $request->password
         ]);
 
-        return redirect('/login')->with('success', 'Registrasi berhasil! Silakan login.');
+        return redirect('/login')->with('success', 'Pendaftaran berhasil! Silahkan masuk.');
     }
 }

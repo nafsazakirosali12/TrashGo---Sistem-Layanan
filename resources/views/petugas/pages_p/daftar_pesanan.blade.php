@@ -191,9 +191,7 @@
         {{-- Modal Detail Pesanan --}}
         <div class="modal fade" id="detailPesanan{{ $order->id }}" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content border-0 modal-simple">
-
-                    <div class="modal-simple-top"></div>
+                <div class="modal-content border-0 shadow">
 
                     @php
                         $pembayaran = $order->pembayaran;
@@ -210,100 +208,96 @@
                         ];
                     @endphp
 
-                    <div class="modal-header" style="background: #82d616; border-bottom: none;">
-                        <div>
-                            <h6 class="modal-title mb-0 text-white">Detail Pesanan</h6>
-                            <p class="text-xs mb-0 text-white" style="opacity: 0.85;">
-                                Informasi lengkap pesanan pengangkutan
-                            </p>
-                        </div>
-
-                        <button type="button"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                                style="background: transparent; border: none; color: #fff; font-size: 26px; line-height: 1;">
-                            &times;
-                        </button>
+                    <div class="modal-header">
+                        <h5 class="modal-title">Detail Pesanan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
 
                     <div class="modal-body">
 
-                        <div class="detail-row">
-                            <p class="detail-label">Nama Pemesan</p>
-                            <p class="detail-value">
-                                {{ $order->masyarakat->nama_masyarakat ?? 'Nama tidak tersedia' }}
-                            </p>
+                        <div class="mb-3 border-bottom pb-2">
+                            <span class="text-muted d-block small">Nama Pemesan</span>
+                            <span class="fw-bold text-dark">
+                                {{ $order->masyarakat->nama_masyarakat ?? 'Tidak diketahui' }}
+                            </span>
                         </div>
 
-                        <div class="detail-row">
-                            <p class="detail-label">Alamat</p>
-                            <p class="detail-value">
-                                {{ $order->lokasi ?? '-' }}
-                            </p>
+                        <div class="mb-3 border-bottom pb-2">
+                            <span class="text-muted d-block small">Kategori Sampah</span>
+                            <span class="fw-bold text-dark">
+                                {{ $order->kategori->nama_kategori ?? 'Tidak diketahui' }}
+                            </span>
                         </div>
 
-                        <div class="row">
-                            <div class="col-6 detail-row">
-                                <p class="detail-label">Tanggal</p>
-                                <p class="detail-value">
+                        <div class="row mb-3 border-bottom pb-2">
+                            <div class="col-6">
+                                <span class="text-muted d-block small">Tanggal Order</span>
+                                <span class="fw-bold text-dark">
                                     {{ \Carbon\Carbon::parse($order->tanggal)->locale('id')->translatedFormat('d F Y') }}
-                                </p>
+                                </span>
                             </div>
 
-                            <div class="col-6 detail-row">
-                                <p class="detail-label">Waktu</p>
-                                <p class="detail-value">
+                            <div class="col-6">
+                                <span class="text-muted d-block small">Waktu Order</span>
+                                <span class="fw-bold text-dark">
                                     {{ \Carbon\Carbon::parse($order->waktu)->format('H.i') }}
-                                </p>
+                                </span>
                             </div>
                         </div>
 
-                        <div class="detail-row">
-                            <p class="detail-label">Kategori Sampah</p>
-                            <p class="detail-value">
-                                {{ $order->kategori->nama_kategori ?? '-' }}
-                            </p>
+                        <div class="mb-3 border-bottom pb-2">
+                            <span class="text-muted d-block small">Alamat</span>
+                            <span class="fw-bold text-dark">
+                                {{ $order->lokasi ?? '-' }}
+                            </span>
                         </div>
 
-                        <div class="row">
-                            <div class="col-6 detail-row">
-                                <p class="detail-label">Metode Pembayaran</p>
-                                <p class="detail-value">
+                        <div class="mb-3 border-bottom pb-2">
+                            <span class="text-muted d-block small">Catatan</span>
+                            <span class="fw-bold text-dark">
+                                {{ $order->catatan ?? 'Tidak ada catatan' }}
+                            </span>
+                        </div>
+
+                        <div class="row mb-3 border-bottom pb-2">
+                            <div class="col-6">
+                                <span class="text-muted d-block small">Metode Pembayaran</span>
+                                <span class="fw-bold text-dark">
                                     {{ $metodePembayaran[$pembayaran->metode_pembayaran ?? ''] ?? '-' }}
-                                </p>
+                                </span>
                             </div>
 
-                            <div class="col-6 detail-row">
-                                <p class="detail-label">Status Pembayaran</p>
-                                <p class="detail-value">
+                            <div class="col-6">
+                                <span class="text-muted d-block small">Status Pembayaran</span>
+                                <span class="fw-bold text-dark">
                                     {{ $statusPembayaran[$pembayaran->status ?? ''] ?? '-' }}
-                                </p>
+                                </span>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-6 detail-row">
-                                <p class="detail-label">Point Digunakan</p>
-                                <p class="detail-value">
+                        <div class="row mb-3 border-bottom pb-2">
+                            <div class="col-6">
+                                <span class="text-muted d-block small">Point Digunakan</span>
+                                <span class="fw-bold text-dark">
                                     {{ number_format($pembayaran->point_digunakan ?? 0, 0, ',', '.') }} point
-                                </p>
+                                </span>
                             </div>
 
-                            <div class="col-6 detail-row">
-                                <p class="detail-label">Total Pembayaran</p>
-                                <p class="detail-value">
-                                    Rp{{ number_format($pembayaran->total_pembayaran ?? $order->total_harga ?? 0, 0, ',', '.') }}
-                                </p>
+                            <div class="col-6">
+                                <span class="text-muted d-block small">Total Harga</span>
+                                <span class="fw-bold" style="color: #4f8f12;">
+                                    Rp {{ number_format($pembayaran->total_pembayaran ?? $order->total_harga ?? 0, 0, ',', '.') }}
+                                </span>
                             </div>
                         </div>
 
-                        <div class="detail-row mb-0">
-                            <p class="detail-label">Catatan</p>
-                            <p class="detail-value">
-                                {{ $order->catatan ?? 'Tidak ada catatan.' }}
-                            </p>
-                        </div>
+                    </div>
 
+                    <div class="modal-footer" style="border-top: 1px solid #e9ecef;">
+                        <button type="button" class="btn fw-bold mb-0" data-bs-dismiss="modal"
+                            style="background-color: #4f8f12; color: #edf7ed; border: 1px solid #4f8f12; border-radius: 8px; padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+                            Tutup
+                        </button>
                     </div>
 
                 </div>
