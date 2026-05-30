@@ -62,7 +62,7 @@
 
             <!-- POINT USER -->
             <div class="mt-3">
-                <label>Total Point Kamu</label>
+                <label>Total Poin Kamu</label>
                 <input type="text" class="form-control" 
                        value="{{ $total_point }}" readonly>
             </div>
@@ -71,12 +71,12 @@
             <div class="mt-3">
                 <label>
                     <input type="checkbox" id="pakaiPoint" name="pakai_point">
-                    Gunakan Point
+                    Gunakan Poin
                 </label>
             </div>
 
             <div id="inputPoint" style="display:none;">
-                <label>Masukkan Point</label>
+                <label>Masukkan Poin</label>
                 <input type="number" name="point_digunakan" id="pointInput" class="form-control" placeholder="Minimal 10">
                 <small id="errorPoint" class="text-danger"></small>
             </div>

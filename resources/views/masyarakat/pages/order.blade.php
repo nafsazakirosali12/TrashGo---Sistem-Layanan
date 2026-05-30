@@ -27,7 +27,7 @@
 
                 <div class="card-header bg-white border-0">
                     <h3 class="mb-0">Pesanan Layanan TrashGo!</h>
-                    <p><small class="text-muted">Isi data dengan benar sebelum checkout</small></p>
+                    <p><small class="text-muted">Isi data dengan benar</small></p>
                 </div>
 
                 <div class="card-body">
@@ -128,19 +128,19 @@
 
                     <ul class="list-unstyled">
                         <li>✔ Penjemputan sampah cepat</li>
-                        <li>✔ Harga fix Rp 10.000</li>
+                        <li>✔ Harga Rp 10.000</li>
                         <li>✔ Sistem otomatis</li>
                         <li>✔ Langsung ke pembayaran</li>
                     </ul>
 
                     <hr>
 
-                    <h6>Proses Order</h6>
+                    <h6>Proses Pesanan</h6>
                     <ol>
-                        <li>Isi form</li>
-                        <li>Klik pesan</li>
+                        <li>Isi formulir</li>
+                        <li>Tekan pesan</li>
                         <li>Masuk pembayaran</li>
-                        <li>Order diproses</li>
+                        <li>Pesanan diproses</li>
                     </ol>
 
                 </div>

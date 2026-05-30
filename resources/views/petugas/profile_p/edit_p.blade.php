@@ -56,11 +56,11 @@
 
                             <img src="{{ $petugas->foto_petugas
                                 ? asset('foto_petugas/' . $petugas->foto_petugas)
-                                : asset('assets/img/team-1.jpg') }}"
-                                 class="border-radius-lg shadow-sm mb-3"
-                                 width="150"
-                                 height="150"
-                                 style="object-fit: cover;">
+                                : asset('assets_admin/img/user.jpeg') }}"
+                                class="border-radius-lg shadow-sm mb-3"
+                                width="150"
+                                height="150"
+                                style="object-fit: cover;">
 
                             <input type="file"
                                    name="foto_petugas"

@@ -27,10 +27,9 @@
 
                     <img src="{{ $petugas->foto_petugas 
                         ? asset('foto_petugas/' . $petugas->foto_petugas) 
-                        : asset('assets/img/team-1.jpg') }}"
-                         class="w-100 border-radius-lg shadow-sm"
-                         style="object-fit: cover;">
-
+                        : asset('assets_admin/img/user.jpeg') }}"
+                        class="w-100 border-radius-lg shadow-sm"
+                        style="object-fit: cover;">
                 </div>
 
             </div>

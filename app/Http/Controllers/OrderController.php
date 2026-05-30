@@ -87,7 +87,7 @@ class OrderController extends Controller
         ]);
 
         // 3. LANJUT KE PEMBAYARAN
-        return redirect()->route('pembayaran.show', $order->id) ->with('success', 'Order berhasil dibuat, lanjut ke pembayaran!');
+        return redirect()->route('pembayaran.show', $order->id) ->with('success', 'Pesanan berhasil dibuat, lanjut ke pembayaran!');
     }
     /**
      * Display the specified resource.
