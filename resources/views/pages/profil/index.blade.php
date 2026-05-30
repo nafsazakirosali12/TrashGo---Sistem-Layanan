@@ -21,8 +21,8 @@
         <div class="avatar avatar-xl position-relative">
           <img src="{{ $admin->foto_admin 
               ? asset($admin->foto_admin) 
-              : asset('assets/img/team-1.jpg') }}" 
-               class="w-100 border-radius-lg shadow-sm">
+              : asset('assets_admin/img/user.jpeg') }}" 
+              class="w-100 border-radius-lg shadow-sm">
         </div>
       </div>
 

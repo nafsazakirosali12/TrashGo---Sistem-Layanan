@@ -33,7 +33,7 @@
             <div class="col-md-4 text-center mb-3">
               <img src="{{ $admin->foto_admin 
                   ? asset($admin->foto_admin) 
-                  : asset('assets/img/team-1.jpg') }}"
+                  : asset('assets_admin/img/user.jpeg') }}"
                   class="border-radius-lg shadow-sm mb-2"
                   width="120">
               <input type="file" name="foto_admin" class="form-control mt-2">
