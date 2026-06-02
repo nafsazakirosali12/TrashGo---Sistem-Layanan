@@ -41,12 +41,12 @@
                                         </td>
                                         <td>
                                             <span class="text-sm font-weight-bold d-block">
-                                                {{ \Carbon\Carbon::parse($item->updated_at)->translatedFormat('d F Y') }}
+                                                {{ \Carbon\Carbon::parse($item->updated_at)->locale('id')->translatedFormat('d F Y') }}
                                             </span>
                                         </td>
                                         <td>
                                             <span class="text-sm text-dark">
-                                                {{ \Carbon\Carbon::parse($item->updated_at)->translatedFormat('H:i') }} WIB
+                                                {{ \Carbon\Carbon::parse($item->updated_at)->locale('id')->translatedFormat('H:i') }} WIB
                                             </span>
                                         </td>
                                         <td>
@@ -105,17 +105,17 @@
                 <div class="row mb-3 border-bottom pb-2">
                     <div class="col-6">
                         <span class="text-muted d-block small">Tanggal Pengangkutan</span>
-                        <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->updated_at)->translatedFormat('d F Y') }}</span>
+                        <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->updated_at)->locale('id')->translatedFormat('d F Y') }}</span>
                     </div>
                     <div class="col-6">
                         <span class="text-muted d-block small">Waktu Pengangkutan</span>
-                        <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->updated_at)->translatedFormat('H:i') }} WIB</span>
+                        <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->updated_at)->locale('id')->translatedFormat('H:i') }} WIB</span>
                     </div>
                 </div>
                 <div class="row mb-3 border-bottom pb-2">
                     <div class="col-6">
                         <span class="text-muted d-block small">Tanggal Order</span>
-                        <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->order->tanggal)->translatedFormat('d F Y') }}</span>
+                        <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->order->tanggal)->locale('id')->translatedFormat('d F Y') }}</span>
                     </div>
                     <div class="col-6">
                         <span class="text-muted d-block small">Waktu Order</span>
