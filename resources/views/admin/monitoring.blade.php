@@ -18,12 +18,12 @@
              <!-- TABLE -->
               <div class="card-body px-4 pt-0 pb-2">
                 <div class="table-responsive p-0">
-                    <table id="myTable" class="table align-items-center mb-0" style="table-layout: fixed; width:100%;">
+                    <table id="myTable" class="table align-items-center mb-0">
 
                     <!-- THEAD -->
                      <thead>
                         <tr  style="text-align: center;">
-                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No</th>
+                            <th style="width: 40px;" class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">No</th>
                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">ID</th>
                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Masyarakat</th>
                             <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Kategori</th>
@@ -37,15 +37,15 @@
                      <!-- TBODY -->
                       <tbody>
                         @forelse($dataOrders as $order)
-                        <tr style="text-align: center;">
-                           <td>{{ $loop->iteration }}</td>
-                            <td>{{ $order->id }}</td>
+                        <tr>
+                           <td class="text-center"></td>
+                            <td class="text-center">{{ $order->id }}</td>
                             <td>{{ $order->masyarakat->nama_masyarakat ?? '-' }}</td>
-                            <td>{{ $order->kategori->nama_kategori ?? '-'}}</td>
-                            <td>{{ $order->status }}</td>
-                            <td>{{ $order->total_harga }}</td>
-                            <td style="white-space: normal; word-wrap: break-word; max-width: 200px;">{{ $order->tanggal}}</td>
-                            <td style="white-space: normal; word-wrap: break-word; max-width: 200px;">
+                            <td class="text-center">{{ $order->kategori->nama_kategori ?? '-'}}</td>
+                            <td class="text-center">{{ $order->status }}</td>
+                            <td class="text-center">{{ $order->total_harga }}</td>
+                            <td class="text-center" style="white-space: normal; word-wrap: break-word; max-width: 200px;">{{ $order->tanggal}}</td>
+                            <td class="text-center" style="white-space: normal; word-wrap: break-word; max-width: 200px;">
                             {{ $order->catatan ?? '-' }}</td>
                         </tr>
                         @empty
@@ -71,7 +71,7 @@
 <script src="https://cdn.datatables.net/columncontrol/1.1.0/js/dataTables.columnControl.min.js"></script>
 <script>
 $(document).ready(function () {
-    $('#myTable').DataTable({
+    let table = $('#myTable').DataTable({
         order: [[6, 'desc']],
 
         language: {
@@ -89,6 +89,13 @@ $(document).ready(function () {
             }
         }
     });
+    table.on('order.dt search.dt', function () {
+        table.column(0, { search: 'applied', order: 'applied' })
+            .nodes()
+            .each(function (cell, i) {
+                cell.innerHTML = i + 1;
+            });
+    }).draw();
 });
 </script>
 
@@ -145,6 +152,10 @@ div.dt-container .dt-length select {
 div.dt-container .dt-length select option {
     background-color: white !important;
     color: #344767 !important;
+}
+
+#myTable thead th {
+    text-align: center !important;
 }
 
 </style>
