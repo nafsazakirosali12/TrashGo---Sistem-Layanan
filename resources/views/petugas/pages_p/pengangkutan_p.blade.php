@@ -231,7 +231,11 @@
 
                     <p class="border-bottom pb-2 mb-3">
                         <strong>Metode Pembayaran:</strong>
-                        {{ $pickup->order->pembayaran->metode_pembayaran ?? '-' }}
+                         {{ match($pickup->order->pembayaran->metode_pembayaran ?? '') {
+                         'cod' => 'COD',
+                         'transfer' => 'Transfer',
+                         default => '-'
+                         } }}
                     </p>
                     
                     <!-- <p class="border-bottom pb-2">
