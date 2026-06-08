@@ -110,7 +110,7 @@
                         </h5>
 
                         <p class="text-sm text-muted mb-0">
-                            Dashboard aktivitas petugas TrashGo
+                            Dasbor aktivitas petugas TrashGo
                         </p>
                     </div>
                 </div>

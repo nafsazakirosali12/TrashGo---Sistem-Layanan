@@ -20,8 +20,8 @@
         <!-- SAPAAN -->
       <li class="nav-item me-3">
         <span class="fw-semibold text-dark">
-          Hallo,
-          {{ Auth::guard('petugas')->user()->nama_ketua }}!
+          Hallo Petugas,
+          {{ Auth::guard('petugas')->user()->nama_tim }}!
         </span>
       </li>
 

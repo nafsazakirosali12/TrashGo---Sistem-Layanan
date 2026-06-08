@@ -36,9 +36,21 @@
                   : asset('assets_admin/img/user.jpeg') }}"
                   class="border-radius-lg shadow-sm mb-2"
                   width="120">
-              <input type="file" name="foto_admin" class="form-control mt-2">
+              <div class="input-group mt-2">
+                  <label for="foto_admin" class="btn btn-outline-secondary mb-0">
+                      Pilih Foto
+                  </label>
+                  <input type="file"
+                        name="foto_admin"
+                        id="foto_admin"
+                        hidden>
+                  <input type="text"
+                        id="namaFoto"
+                        class="form-control ps-3"
+                        value="Belum ada foto terpilih"
+                        readonly>
+              </div>
             </div>
-
             <div class="col-md-8">
               <div class="mb-3">
                 <label class="form-label">Nama</label>
@@ -143,6 +155,16 @@
         }
 
     });
+
+});
+
+document.getElementById('foto_admin').addEventListener('change', function () {
+
+    const nama = this.files.length > 0
+        ? this.files[0].name
+        : 'Belum ada foto terpilih';
+
+    document.getElementById('namaFoto').value = nama;
 
 });
 </script>

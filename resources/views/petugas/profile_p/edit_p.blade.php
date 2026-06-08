@@ -62,9 +62,35 @@
                                 height="150"
                                 style="object-fit: cover;">
 
-                            <input type="file"
-                                   name="foto_petugas"
-                                   class="form-control">
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Foto Profil
+                                </label>
+
+                                <div class="input-group">
+
+                                    <label for="foto_petugas"
+                                        class="btn btn-outline-secondary mb-0">
+
+                                        Pilih Foto
+
+                                    </label>
+
+                                    <input type="text"
+                                        id="namaFoto"
+                                        class="form-control ps-3"
+                                        value="Belum ada foto terpilih"
+                                        readonly>
+
+                                </div>
+
+                                <input type="file"
+                                    name="foto_petugas"
+                                    id="foto_petugas"
+                                    class="d-none">
+
+                            </div>
 
                         </div>
 
@@ -279,6 +305,17 @@ document.getElementById('btnSimpan').addEventListener('click', function(){
     });
 
 });
+
+document.getElementById('foto_petugas').addEventListener('change', function () {
+
+    const nama = this.files.length > 0
+        ? this.files[0].name
+        : 'Belum ada foto terpilih';
+
+    document.getElementById('namaFoto').value = nama;
+
+});
+
 
 </script>
 @endsection
