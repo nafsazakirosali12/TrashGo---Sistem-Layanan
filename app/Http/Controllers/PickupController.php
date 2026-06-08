@@ -81,12 +81,12 @@ public function selesai($id)
 
     // cek status order
     if ($order->status !== 'completed') {
-        return back()->with('error', 'Status order harus completed terlebih dahulu');
+        return back()->with('error', 'Status pemesanan harus selesai terlebih dahulu');
     }
 
     // cek pembayaran
     if ($order->pembayaran->status !== 'success') {
-        return back()->with('error', 'Status pembayaran harus success terlebih dahulu');
+        return back()->with('error', 'Status pembayaran harus berhasil terlebih dahulu');
     }
 
     // pindahkan pickup ke completed
