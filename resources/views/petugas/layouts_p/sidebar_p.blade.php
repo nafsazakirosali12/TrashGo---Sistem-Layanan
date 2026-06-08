@@ -1,3 +1,8 @@
+<style>
+.sidenav .navbar-nav .nav-link {
+    margin: 0.25rem 0.6rem !important;
+}
+</style>
 
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
