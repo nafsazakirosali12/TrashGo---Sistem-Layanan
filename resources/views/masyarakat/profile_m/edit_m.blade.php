@@ -78,9 +78,26 @@
                             <!-- FOTO -->
                             <div class="mb-3">
                                 <label>Foto Profil</label>
-                                <input type="file"
-                                       name="foto_masyarakat"
-                                       class="form-control">
+
+                                <div class="input-group">
+
+                                    <label for="foto_masyarakat"
+                                        class="btn btn-outline-secondary mb-0">
+                                        Pilih Foto
+                                    </label>
+
+                                    <input type="file"
+                                        name="foto_masyarakat"
+                                        id="foto_masyarakat"
+                                        hidden>
+
+                                    <input type="text"
+                                        id="namaFoto"
+                                        class="form-control ps-3"
+                                        value="Belum ada foto terpilih"
+                                        readonly>
+
+                                </div>
                             </div>
 
                             <!-- NAMA -->
@@ -260,7 +277,7 @@ document.getElementById('btnSimpan').addEventListener('click', function(){
     // KONFIRMASI
     Swal.fire({
         title: 'Simpan perubahan?',
-        text: "Pastikan data profile sudah benar",
+        text: "Pastikan data profil sudah benar",
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#93a267',
@@ -274,7 +291,7 @@ document.getElementById('btnSimpan').addEventListener('click', function(){
             Swal.fire({
                 icon: 'success',
                 title: 'Berhasil!',
-                text: 'Profile sedang diperbarui',
+                text: 'Profil sedang diperbarui',
                 timer: 1500,
                 showConfirmButton: false
             });
@@ -286,6 +303,16 @@ document.getElementById('btnSimpan').addEventListener('click', function(){
         }
 
     });
+
+});
+
+document.getElementById('foto_masyarakat').addEventListener('change', function () {
+
+    const nama = this.files.length > 0
+        ? this.files[0].name
+        : 'Belum ada foto terpilih';
+
+    document.getElementById('namaFoto').value = nama;
 
 });
 

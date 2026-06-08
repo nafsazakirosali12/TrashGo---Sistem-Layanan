@@ -14,6 +14,8 @@
         background-color: #9EAA2F; /* lebih gelap dikit */
         color: white;
     }
+
+    
 </style>
 
 <div class="container mt-5 mb-5 pb-5" id="halamanPembayaran">
@@ -50,10 +52,10 @@
                 <option value="transfer">Transfer</option>
             </select>
 
-            <br>
+            <!-- <br> -->
 
             <!-- INFO REKENING -->
-            <div id="rekeningBox" style="display:none;" class="alert alert-info">
+            <div id="rekeningBox" style="display:none;" class="alert alert-info mt-3">
                 <b>Transfer ke:</b><br>
                 Bank BCA<br>
                 No Rekening: <b>1234567890</b><br>
@@ -88,9 +90,29 @@
 
             <!-- BUKTI -->
             <div class="mt-3" id="buktiBox" style="display:none;">
-                <label>Bukti Transfer</label>
-                <input type="file" name="bukti_pembayaran" id="bukti" class="form-control">
-                <small class="text-danger">* Wajib jika memilih transfer</small>
+                <label class="form-label">Bukti Transfer</label>
+
+                <div class="input-group">
+                    
+                    <label for="bukti" class="btn btn-outline-secondary mb-0">
+                        Pilih File
+                    </label>
+
+                    <input type="file"
+                        name="bukti_pembayaran"
+                        id="bukti"
+                        hidden>
+
+                    <input type="text"
+                        id="namaFile"
+                        class="form-control"
+                        value="Belum ada file dipilih"
+                        readonly>
+                </div>
+
+                <small class="text-danger">
+                    * Wajib jika memilih transfer
+                </small>
             </div>
 
             <br>
@@ -102,10 +124,12 @@
     </div>
 </div>
 
+
 <!-- SWEETALERT2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+    let pembayaranSelesai = false;
     const metode = document.getElementById('metode');
     const rekeningBox = document.getElementById('rekeningBox');
     const buktiBox = document.getElementById('buktiBox');
@@ -220,6 +244,7 @@
                 });
 
                 setTimeout(() => {
+                    pembayaranSelesai = true;
                     form.requestSubmit();
                 }, 1500);
             }
@@ -228,40 +253,53 @@
 
     });
 
-    // ambil semua link navbar
-    const navLinks = document.querySelectorAll('a');
+    // BLOK SEMUA LINK / BUTTON SELAMA BELUM BAYAR
+    document.addEventListener('click', function(e){
 
-    navLinks.forEach(link => {
+        if(pembayaranSelesai) return;
 
-        link.addEventListener('click', function(e){
+        const target = e.target.closest('a, button');
 
-            // link tujuan
-            let tujuan = this.getAttribute('href');
+        if(!target) return;
 
-            // biar tombol bayar tetap bisa
-            if(this.id === 'btnBayar'){
-                return;
-            }
+        // IZINKAN tombol bayar
+        if(target.id === 'btnBayar'){
+            return;
+        }
 
-            // cegah pindah halaman
-            if(tujuan && tujuan !== '#'){
+        // IZINKAN tombol SweetAlert
+        if(target.classList.contains('swal2-confirm') ||
+        target.classList.contains('swal2-cancel')){
+            return;
+        }
 
-                e.preventDefault();
+        // IZINKAN area upload file
+        if(target.closest('#buktiBox')){
+            return;
+        }
 
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Selesaikan Pembayaran',
-                    text: 'Silakan selesaikan pembayaran terlebih dahulu!',
-                    confirmButtonColor: '#B7C43A'
-                });
+        // cegah semua aksi
+        e.preventDefault();
+        e.stopPropagation();
 
-            }
-
+        Swal.fire({
+            icon: 'warning',
+            title: 'Selesaikan Pembayaran',
+            text: 'Silakan selesaikan pembayaran terlebih dahulu!',
+            confirmButtonColor: '#B7C43A'
         });
+
+    }, true);
+
+    bukti.addEventListener('change', function () {
+
+        const nama = this.files.length > 0
+            ? this.files[0].name
+            : 'Belum ada file dipilih';
+
+        document.getElementById('namaFile').value = nama;
 
     });
 </script>
-
-
 
 @endsection
