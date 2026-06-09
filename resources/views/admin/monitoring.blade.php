@@ -42,9 +42,17 @@
                             <td class="text-center">{{ $order->id }}</td>
                             <td>{{ $order->masyarakat->nama_masyarakat ?? '-' }}</td>
                             <td class="text-center">{{ $order->kategori->nama_kategori ?? '-'}}</td>
-                            <td class="text-center">{{ $order->status }}</td>
+                            <td class="text-center">
+                            {{
+                            $order->status == 'pending' ? 'Menunggu' :
+                            ($order->status == 'processing' ? 'Diproses' :
+                            ($order->status == 'completed' ? 'Selesai' : $order->status))
+                            }}
+                            </td>
                             <td class="text-center">{{ $order->total_harga }}</td>
-                            <td class="text-center" style="white-space: normal; word-wrap: break-word; max-width: 200px;">{{ $order->tanggal}}</td>
+                            <td class="text-center" style="white-space: normal; word-wrap: break-word; max-width: 200px;">
+                            {{ \Carbon\Carbon::parse($order->tanggal)->locale('id')->translatedFormat('d F Y') }}
+                            </td>
                             <td class="text-center" style="white-space: normal; word-wrap: break-word; max-width: 200px;">
                             {{ $order->catatan ?? '-' }}</td>
                         </tr>
