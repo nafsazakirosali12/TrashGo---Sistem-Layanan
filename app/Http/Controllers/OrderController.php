@@ -68,7 +68,7 @@ class OrderController extends Controller
         $request->validate([
             'kategori_id' => 'required',
             'lokasi' => 'required',
-            'tanggal' => 'required',
+            'tanggal' => 'required|date|after_or_equal:today',
             'waktu' => 'required',
             // 'total_harga' => 'required|integer',
             'catatan' => 'required',

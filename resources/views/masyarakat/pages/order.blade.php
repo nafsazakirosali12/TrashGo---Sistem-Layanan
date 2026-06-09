@@ -14,6 +14,13 @@
         background-color: #9EAA2F; /* lebih gelap dikit */
         color: white;
     }
+
+    input.flatpickr-input {
+        background-color: #fff !important;
+        color: #495057 !important;
+        opacity: 1 !important;
+        cursor: pointer;
+    }
 </style>
 
 <div class="container py-5 mb-5 pb-5">
@@ -79,13 +86,14 @@
                             <!-- TANGGAL -->
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Tanggal</label>
-                                <input type="date" name="tanggal" class="form-control" required>
+                                <input type="date" name="tanggal" class="form-control" 
+                                min="{{ date('Y-m-d', strtotime('+1 day')) }}" required>
                             </div>
 
                             <!-- WAKTU -->
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Waktu</label>
-                                <input type="time" name="waktu" class="form-control" required>
+                                <input type="text" name="waktu" id="waktu" class="form-control"  placeholder="Pilih Waktu"required>
                             </div>
 
                         </div>
@@ -155,6 +163,15 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    flatpickr("#waktu", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true,
+        minTime: "10:00",
+        maxTime: "17:00"
+    });
+
 
     document.getElementById('btnOrder').addEventListener('click', function () {
 
@@ -202,6 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+
 </script>
 
 @endsection
