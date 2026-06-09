@@ -92,7 +92,7 @@
 
             <p class="mb-3">
                 <strong>Tanggal:</strong>
-                {{ $pickup->order->tanggal ?? '-' }}
+                {{ \Carbon\Carbon::parse($pickup->order->tanggal)->locale('id')->translatedFormat('d F Y') ?? '-' }}
             </p>
 
             <p class="mb-3">
@@ -199,7 +199,7 @@
                         <div class="col-6">
                             <p>
                                 <strong>Tanggal:</strong>
-                                {{ $pickup->order->tanggal ?? '-' }}
+                                {{ $pickup->order->tanggal ? \Carbon\Carbon::parse($pickup->order->tanggal)->locale('id')->translatedFormat('d F Y') : '-' }}
                             </p>
                         </div>
 
