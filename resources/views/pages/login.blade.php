@@ -137,7 +137,7 @@
               Swal.fire({ icon: 'error', title: 'Gagal Masuk!', text: '{{ session('error') }}', confirmButtonColor: '#b0b435' });
           @endif
           @if($errors->any())
-              Swal.fire({ icon: 'error', title: 'Oops...', text: 'Terjadi kesalahan, periksa email atau password anda!', confirmButtonColor: '#b0b435' });
+              Swal.fire({ icon: 'error', title: 'Oops...', text: 'Terjadi kesalahan, periksa email atau kata sandi anda!', confirmButtonColor: '#b0b435' });
           @endif
           @if(session('success'))
               Swal.fire({ icon: 'success', title: 'Berhasil!', text: '{{ session('success') }}', confirmButtonColor: '#b0b435' });

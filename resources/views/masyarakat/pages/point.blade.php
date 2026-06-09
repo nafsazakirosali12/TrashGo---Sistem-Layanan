@@ -21,7 +21,7 @@
                         <small><i class="fa fa-info-circle"></i> Total poin Anda setara dengan Rp {{ number_format($total_point * 10, 0, ',', '.') }}</small>
                     </p>
                     <p class="text-muted mb-0">
-                        <small>Kumpulkan terus poinmu dari setiap order yang selesai dan tukarkan saat pembayaran!</small>
+                        <small>Kumpulkan terus poinmu dari setiap pesanan yang selesai dan tukarkan saat pembayaran!</small>
                     </p>
                 </div>
             </div>
@@ -43,10 +43,10 @@
                             <tbody>
                                 @forelse($riwayat_point as $rp)
                                     <tr>
-                                        <td class="pl-4">{{ \Carbon\Carbon::parse($rp->tanggal_point)->format('d M Y, H:i') }}</td>
+                                        <td class="pl-4">{{ \Carbon\Carbon::parse($rp->tanggal_point)->locale('id')->translatedFormat('d F Y') }}</td>
                                         <td>
                                             @if($rp->total_point > 0)
-                                                <span class="badge badge-success px-2 py-1">Penyelesaian Order #{{ $rp->order_id }}</span>
+                                                <span class="badge badge-success px-2 py-1">Didapatkan dari Pesanan #{{ $rp->order_id }}</span>
                                             @else
                                                 <span class="badge badge-danger px-2 py-1">Ditukar untuk Pembayaran #{{ $rp->order_id }}</span>
                                             @endif
@@ -61,7 +61,7 @@
                                     <tr>
                                         <td colspan="3" class="text-center text-muted py-5">
                                             <i class="fa fa-folder-open mb-3" style="font-size: 30px; color: #ccc;"></i><br>
-                                            Belum ada riwayat poin, mulai order pengangkutan sampah pertamamu!
+                                            Belum ada riwayat poin, mulai pengangkutan sampah pertamamu!
                                         </td>
                                     </tr>
                                 @endforelse
