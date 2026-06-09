@@ -39,7 +39,9 @@
             <div class="flex-grow-1">
                 <div class="d-flex justify-content-between">
                     <h6 class="mb-1 fw-bold">Pesanan #{{ $n->id }}</h6>
-                    <small class="text-muted">{{ $n->created_at->diffForHumans() }}</small>
+                    <small class="text-muted">
+                        {{ $n->created_at->locale('id')->diffForHumans() }}
+                    </small>
                 </div>
 
                 <p class="mb-1">
@@ -88,7 +90,9 @@
             <div class="flex-grow-1">
                 <div class="d-flex justify-content-between">
                     <h6 class="mb-1 fw-bold">Pembayaran #{{ $n->id }}</h6>
-                    <small class="text-muted">{{ $n->created_at->diffForHumans() }}</small>
+                    <small class="text-muted">
+                        {{ $n->created_at->locale('id')->diffForHumans() }}
+                    </small>
                 </div>
 
                 <p class="mb-1">
