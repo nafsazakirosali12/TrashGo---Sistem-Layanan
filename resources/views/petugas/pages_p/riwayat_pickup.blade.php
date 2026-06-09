@@ -46,7 +46,7 @@
                                         </td>
                                         <td>
                                             <span class="text-sm text-dark">
-                                                {{ \Carbon\Carbon::parse($item->updated_at)->locale('id')->translatedFormat('H:i') }} WIB
+                                                {{ \Carbon\Carbon::parse($item->updated_at)->locale('id')->translatedFormat('H:i') }}
                                             </span>
                                         </td>
                                         <td>
@@ -109,7 +109,7 @@
                     </div>
                     <div class="col-6">
                         <span class="text-muted d-block small">Waktu Pengangkutan</span>
-                        <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->updated_at)->locale('id')->translatedFormat('H:i') }} WIB</span>
+                        <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->updated_at)->locale('id')->translatedFormat('H:i') }}</span>
                     </div>
                 </div>
                 <div class="row mb-3 border-bottom pb-2">
@@ -119,7 +119,7 @@
                     </div>
                     <div class="col-6">
                         <span class="text-muted d-block small">Waktu Order</span>
-                        <span class="fw-bold text-dark">{{ $item->order->waktu }} WIB</span>
+                        <span class="fw-bold text-dark">{{ \Carbon\Carbon::parse($item->order->waktu)->locale('id')->translatedFormat('H:i') }}</span>
                     </div>
                 </div>
                 <div class="mb-3 border-bottom pb-2">
