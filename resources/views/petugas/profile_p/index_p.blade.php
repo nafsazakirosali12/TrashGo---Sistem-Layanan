@@ -147,13 +147,13 @@
                                         @if($petugas->status == 'acctive')
 
                                             <span class="badge bg-success px-3 py-2">
-                                                Active
+                                                Aktif
                                             </span>
 
                                         @else
 
                                             <span class="badge bg-danger px-3 py-2">
-                                                Inactive
+                                                Non-aktif
                                             </span>
 
                                         @endif
